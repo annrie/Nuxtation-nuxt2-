@@ -1,0 +1,24 @@
+  {
+    "name": "Nuxtation",
+    "short_name": "Nuxtation",
+    "short_url": ".",
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "background_color": "#fff",
+    "description": "This is a sample site that applies Foundation to Nuxt.js.",
+    "icons": [
+      {
+        "src": "manifest-icon-192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "maskable any"
+      },
+      {
+        "src": "manifest-icon-512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "maskable any"
+      }
+    ]
+  }

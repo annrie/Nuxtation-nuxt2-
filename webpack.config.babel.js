@@ -1,0 +1,244 @@
+const path = require("path");
+const { VueLoaderPlugin } = require("vue-loader");
+
+const TerserJSPlugin = require("terser-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const ImageminPlugin = require("imagemin-webpack-plugin").default;
+const imageminMozjpeg = require("imagemin-mozjpeg");
+
+const srcpath = "./src/";
+const cssfile = "./app.scss";
+const outputpath = "./dist/";
+// const current = process.cwd()
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
+const SpriteLoaderPlugin = require("svg-sprite-loader/plugin");
+
+// function resolve(dir) {
+//   return path.join(__dirname, '..', dir)
+// }
+
+module.exports = (env) => {
+  const mode = env && env.production ? "production" : "development";
+  return {
+    mode,
+    entry: {
+      main: path.resolve(__dirname, srcpath + "plugins/main.js"),
+      css: path.resolve(__dirname, srcpath + "assets/scss" + cssfile),
+    },
+    context: srcpath,
+    output: {
+      chunkFilename: "[id].[hash].js",
+      // https://reactjs.org/docs/cross-origin-errors.html
+      crossOriginLoading: "anonymous",
+      filename: "[name].[hash].js",
+      // path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, outputpath),
+      // filename: 'main.js',
+    },
+    // ローカル開発用環境を立ち上げる
+    // 実行時にブラウザが自動的に localhost を開く
+    devServer: {
+      contentBase: path.resolve(__dirname, "dist"),
+      clientLogLevel: "none",
+      // quiet: false,
+      disableHostCheck: true,
+    },
+    stats: {
+      children: false,
+      hash: false,
+      warnings: false,
+      performance: false,
+      modules: false,
+    },
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: [
+            {
+              loader: "babel-loader",
+              query: {
+                presets: ["@babel/preset-env"],
+              },
+            },
+          ],
+        },
+        {
+          test: /\.vue$/,
+          use: [
+            {
+              loader: "vue-loader",
+              options: {
+                prettify: true,
+                transformAssetUrls: {
+                  video: ["src", "poster"],
+                  source: "src",
+                  img: "src",
+                  image: "xlink:href",
+                },
+              },
+            },
+          ],
+        },
+        {
+          test: /\.(png|jpe?g|gif|svg|webp)$/,
+          use: [
+            {
+              loader: "url-loader",
+              query: {
+                limit: 1000, // 1kB
+                name: "img/[name].[hash:7].[ext]",
+              },
+            },
+          ],
+        },
+        {
+          test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+          use: [
+            {
+              loader: "url-loader",
+              query: {
+                limit: 1000, // 1kB
+                name: "fonts/[name].[hash:7].[ext]",
+              },
+            },
+          ],
+        },
+        {
+          test: /\.svg$/,
+          use: [
+            {
+              loader: "svg-sprite-loader",
+              options: {
+                extract: true,
+                spriteFilename: "./assets/sprite/svg/up.svg",
+                runtimeCompat: true,
+              },
+            },
+            "svg-transform-loader",
+            "svgo-loader",
+          ],
+        },
+        {
+          test: /\.(sa|sc|c)ss$/,
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                hmr: process.env.NODE_ENV === "development",
+              },
+            },
+            {
+              loader: "css-loader",
+              options: {
+                importLoaders: 1,
+                url: true,
+                sourceMap: !!(env && env.production),
+              },
+            },
+            {
+              loader: "postcss-loader",
+              options: {
+                ident: "postcss",
+                sourceMap: !!(env && env.production),
+              },
+            },
+            {
+              loader: "sass-loader",
+              options: {
+                sourceMap: !!(env && env.production),
+              },
+            },
+          ],
+        },
+      ],
+    },
+    resolve: {
+      extensions: ["*", ".js", ".jsx", ".vue", ".json"],
+      modules: [srcpath, "node_modules"],
+      alias: {
+        vue$: "vue/dist/vue.esm.js",
+        Foundation: "foundation-sites/js",
+        whatInput: "what-input",
+      },
+    },
+    optimization: {
+      minimizer: [
+        new TerserJSPlugin({
+          terserOptions: {
+            compress: {
+              extractComments: false,
+              drop_console: true,
+            },
+          },
+        }),
+        new OptimizeCssAssetsPlugin({
+          cssProcessor: require("cssnano"),
+          cssProcessorPluginOptions: {
+            preset: ["default", { discardComments: { removeAll: true } }],
+          },
+        }),
+      ],
+    },
+    plugins: [
+      new VueLoaderPlugin(),
+      new HardSourceWebpackPlugin(),
+      new MiniCssExtractPlugin({
+        filename: cssfile,
+      }),
+      new FriendlyErrorsWebpackPlugin(),
+      new ImageminPlugin({
+        disable: !env.production,
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        pngquant: { quality: "80" },
+        plugins: [imageminMozjpeg({ quality: "80" })],
+      }),
+      new SpriteLoaderPlugin({
+        plainSprite: true,
+      }),
+      new HardSourceWebpackPlugin({
+        cacheDirectory: "node_modules/.cache/hard-source/[confighash]",
+        configHash: function (webpackConfig) {
+          // node-object-hash on npm can be used to build this.
+          return require("node-object-hash")({ sort: false }).hash(
+            webpackConfig
+          );
+        },
+        // Either false, a string, an object, or a project hashing function.
+        environmentHash: {
+          root: process.cwd(),
+          directories: [],
+          files: ["package-lock.json", "yarn.lock"],
+        },
+        // An object.
+        info: {
+          // 'none' or 'test'.
+          mode: "none",
+          // 'debug', 'log', 'info', 'warn', or 'error'.
+          level: "debug",
+        },
+        // Clean up large, old caches automatically.
+        cachePrune: {
+          // Caches younger than `maxAge` are not considered for deletion. They must
+          // be at least this (default: 2 days) old in milliseconds.
+          maxAge: 2 * 24 * 60 * 60 * 1000,
+          // All caches together must be larger than `sizeThreshold` before any
+          // caches will be deleted. Together they must be at least this
+          // (default: 50 MB) big in bytes.
+          sizeThreshold: 50 * 1024 * 1024,
+        },
+      }),
+    ],
+    performance: {
+      hints: false,
+      maxEntrypointSize: 50000000,
+      maxAssetsSize: 30000000,
+      assetFilter(assetFilename) {
+        return assetFilename.endWith(".js");
+      },
+    },
+  };
+};

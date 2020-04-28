@@ -1,0 +1,19 @@
+body {
+  overflow-x: hidden;
+  color: $black;
+}
+#mainNav {
+  margin-top: -1em;
+}
+main {
+  a {
+    @include disable-mouse-outline;
+  }
+}
+h1 {
+  font-size: $h1-font-size;
+  color: $black;
+}
+footer a {
+  @include disable-mouse-outline;
+}

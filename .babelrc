@@ -1,0 +1,32 @@
+{
+  "presets": [
+    [
+      // "@babel/preset-env",
+      "@nuxt/babel-preset-app",
+      {
+        "useBuiltIns": "entry",
+        "corejs": 3, // ← バージョンを追加
+        "targets": {
+          "esmodules": true,
+          "ie": "11"
+        }
+      }
+    ]
+  ],
+  "env": {
+    "test": {
+      "presets": [["env", {"targets": {"node": "current"}}]]
+    }
+  }
+  // "plugins": [
+  //   // "transform-runtime",
+  //   "transform-vue-jsx",
+  //   [
+  //     "transform-regenerator",
+  //     {
+  //       "polyfill": false,
+  //       "regenerator": true
+  //     }
+  //   ]
+  // ]
+}

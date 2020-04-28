@@ -1,0 +1,78 @@
+.main-container {
+  @include xy-grid-container;
+  &.fluid {
+    @include xy-grid-container(100%);
+  }
+  &.full {
+    @include xy-grid-container(100%, 0);
+  }
+}
+.main-grid {
+  @include xy-grid();
+  @include flex-align(center);
+
+  /*
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+*/
+
+  @include breakpoint(medium) {
+
+    /*
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+*/
+  }
+  &.sidebar-left {
+
+    // Place the sidebar below main content on small screens ...
+    @include breakpoint(small) {
+      .main-content {
+        order: 1;
+      }
+      .sidebar {
+        order: 2;
+      }
+    }
+
+    // ... and to the left on medium-up screens, when using the sidebar-left template
+    @include breakpoint(medium) {
+      .main-content {
+        order: 2;
+      }
+      .sidebar {
+        order: 1;
+      }
+    }
+  }
+
+  // Full width template
+  .main-content-full-width {
+    //     @include xy-cell();
+    @include xy-cell(full, $gutters: 0, $gutter-type: margin, $gutter-position: right left, $breakpoint: null, $vertical: false);
+    //       @include xy-gutters(medium, margin, right left, true);
+  }
+
+  // Default template
+  .main-content {
+    // flex-grow: 1;
+    @include breakpoint(small) {
+      @include xy-cell(12);
+    }
+
+    @include breakpoint(medium) {
+      @include xy-cell(8);
+    }
+  }
+  .sidebar {
+    @include breakpoint(small) {
+      @include xy-cell(12);
+    }
+
+    @include breakpoint(medium) {
+      @include xy-cell(4);
+
+      padding-top: 1rem;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+# dependencies
+node_modules
+
+# logs
+npm-debug.log
+
+# Nuxt build
+.nuxt
+.*cache*
+report.\s+.json
+# Nuxt generate
+dist
+
+# Yarn2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state*.yml
+.pnp.*
+
+# Service worker
+sw.*
+
+# vscode
+.vscode

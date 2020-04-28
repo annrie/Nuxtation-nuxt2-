@@ -1,0 +1,187 @@
+.no-js {
+  @include breakpoint(small only) {
+    .desktop-menu {
+      display: none;
+    }
+  }
+
+  @include breakpoint(medium) {
+    .mobile-menu {
+      display: none;
+    }
+  }
+}
+.mobile-menu,
+.site-title-bar {
+  @include hide-for(medium);
+}
+.desktop-menu,
+.site-navigation {
+  opacity: 0.8;
+  .top-bar-left {
+    @include show-for(medium);
+  }
+}
+.vertical {
+  &.nested {
+    &.menu {
+      background-color: $topbar-background;
+    }
+  }
+}
+.off-canvas {
+  height: 100vh;
+  .close-button {
+    z-index: 20;
+    color: $white;
+  }
+  & .mobile-menu {
+    padding-top: 3rem;
+    background-color: $black;
+    a {
+      font-size: rem-calc(15);
+      font-weight: 600;
+      color: $white;
+      &.is-active {
+        color: $white;
+        background-color: lighten($topbar-background, 10%);
+      }
+      &:not(.is-active) {
+        color: $white;
+        background-color: $black;
+      }
+      &:hover {
+        background-color: lighten($dark-nav-color, 5%);
+      }
+    }
+    .is-drilldown-submenu {
+      height: 100vh;
+      background-color: $black;
+      & .js-drilldown-back {
+        & a {
+          color: $white;
+          background-color: lighten($topbar-background, 10%);
+        }
+      }
+    }
+  }
+}
+.title-bar {
+  // mobile menu
+  margin-top: -20px;
+  text-align: left;
+  background-color: $primary-color;
+  opacity: 0.9;
+  a {
+    font-size: 1rem;
+    color: $white;
+    & h1 {
+      margin-top: 5px;
+      font-size: $h5-font-size;
+      @media screen and (max-width: 23em) {
+        font-size: rem-calc(13);
+      }
+      @include breakpoint(small only) {
+        font-size: rem-calc(16);
+      }
+      @include breakpoint(medium down) {
+        font-size: rem-calc(18);
+      }
+    }
+  }
+  .title-bar-left {
+    margin-left: 20px;
+    color: $white;
+    a {
+      color: $white;
+      &:hover {
+        color: $red;
+      }
+    }
+  }
+  .title-bar-right {
+    margin-right: 20px;
+    .menu-icon {
+      @include hamburger($color: rgba($white, 0.8));
+    }
+  }
+}
+.top-bar {
+  // non mobile menu
+  position: relative;
+  top: -20px;
+  @include breakpoint(small only) {
+    display: none;
+  }
+
+  height: 6rem;
+  .top-bar-title {
+    position: absolute;
+    top: 10px;
+    left: 2.5rem;
+    & a {
+      & img {
+        display: block;
+        width: 73.8px;
+        height: 55px;
+      }
+      & h1,
+      & p {
+        @include push-center;
+
+        position: relative;
+        top: 5px;
+        font-size: 1rem;
+        line-height: 1;
+        color: $white;
+      }
+    }
+
+    @include breakpoint(tablet) {
+      left: 1rem;
+    }
+  }
+  .menu {
+    &.desktop-menu {
+      // global menu
+      padding-bottom: 0;
+      margin-top: 40px;
+      font-weight: bold;
+      line-height: 1;
+      @include breakpoint(medium) {
+        font-size: 0.6rem;
+      }
+      @include breakpoint(xlarge) {
+        font-size: 1rem;
+      }
+      & li {
+        a {
+          &:not(.is-active) {
+            color: $white;
+            background-color: $topbar-background;
+          }
+          &:hover {
+            &:not(.button) {
+              background-color: #42525d;
+            }
+          }
+        }
+        a.is-active {
+          color: $white;
+          background-color: lighten($topbar-background, 10%);
+        }
+      }
+
+      // li a end
+      & > li {
+        &:not(.menu-text) > a {
+          padding: 1rem;
+        }
+        &:not(:first-of-type) {
+          border-left: $silver 1px solid;
+        }
+      }
+      // .menu end
+    }
+  }
+}
