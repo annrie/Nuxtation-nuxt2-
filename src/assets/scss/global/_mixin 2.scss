@@ -1,0 +1,25 @@
+@mixin push-center {
+  margin: {
+    right: auto;
+    left: auto;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+///////* リストの矢印 */
+@mixin link-icon($color: #333) {
+  position: relative;
+  &::before {
+    position: absolute;
+    top: 90%;
+    right: -100px;
+    box-sizing: border-box;
+    width: 10px;
+    height: 10px;
+    margin-top: -7px;
+    content: "";
+    border-top: 3px solid $color;
+    border-right: 3px solid $color;
+    transform: rotate (45deg);
+  }
+}
