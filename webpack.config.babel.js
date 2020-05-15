@@ -42,6 +42,7 @@ module.exports = (env) => {
       clientLogLevel: "none",
       // quiet: false,
       disableHostCheck: true,
+      hot: true,
     },
     stats: {
       children: false,
