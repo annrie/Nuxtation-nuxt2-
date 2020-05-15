@@ -4,6 +4,8 @@
 // import path from 'path'
 import webpack from "webpack";
 import StylelintPlugin from "stylelint-webpack-plugin";
+const TerserJSPlugin = require("terser-webpack-plugin");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 const imageminMozjpeg = require("imagemin-mozjpeg");
 const open = require("open");
@@ -374,114 +376,6 @@ export default {
     "@fortawesome/fontawesome-svg-core/styles.css",
   ],
 
-  /*
-   ** Plugins to load before mounting the App
-   */
-  plugins: [
-    { src: "~assets/js/app.js", mode: "client" }, // necessary！
-    { src: "~plugins/axios.js" },
-    { src: "~plugins/logger.js" },
-    { src: "~plugins/vue-scrollto" },
-    { src: "~plugins/nuxt-mq" },
-    // {src: '~plugins/vee-validate'},
-    { src: "~plugins/vue2-perfect-scrollbar" },
-    { src: "~plugins/vue-rellax" },
-    { src: "~plugins/aos", mode: "client" },
-    { src: "~plugins/font-awesome" },
-    { src: "~plugins/vue-lazyload", mode: "client" },
-    { src: "~plugins/localStorage", mode: "client" },
-    { src: "~plugins/cookie-storage", mode: "client" },
-    // {src: '~plugins/csvtojson'},
-    { src: "~plugins/foundation", mode: "client" },
-    { src: "~plugins/external", mode: "client" },
-    // { src: "~plugins/pageTop", mode: "client" },
-    { src: "~plugins/service-worker", mode: "client" },
-    { src: "~plugins/window" },
-    // { src: '~plugins/components' }
-  ],
-  /*
-   ** Nuxt.js dev-modules
-   */
-  buildModules: ["@nuxtjs/stylelint-module"],
-  stylelint: {
-    files: [
-      "src/assets/**/*.{s?(a|c)ss}",
-      "{components,layouts,pages}/**/*.vue",
-    ],
-    fix: true,
-  },
-  /*
-   ** Nuxt.js modules
-   */
-  modules: [
-    ["@nuxtjs/axios"],
-    ["@nuxtjs/style-resources"],
-    ["@nuxtjs/dotenv"],
-    // ['@nuxtjs/svg-sprite'],
-    ["vue-scrollto/nuxt"],
-    [
-      "nuxt-fontawesome",
-      {
-        component: "fa",
-      },
-    ],
-    [
-      "nuxt-mq",
-      {
-        defaultBreakpoint: "large",
-        breakpoints: {
-          small: 640,
-          medium: 768,
-          tablet: 1024,
-          large: 1200,
-          xlarge: 1440,
-          xxlarge: Infinity,
-        },
-      },
-    ],
-    ["@nuxtjs/pwa"],
-    // ['@nuxtjs/google-analytics', {id: ''}],
-    // ['@nuxtjs/google-tag-manager', {id: ''}],
-    ["@nuxtjs/sitemap"],
-    [
-      "nuxt-imagemin",
-      {
-        pngquant: { quality: "80" },
-        plugins: [imageminMozjpeg({ quality: "80" })],
-      },
-    ],
-  ],
-
-  sitemap: {
-    hostname: baseUrl,
-    cacheTime: 1000 * 60 * 15,
-    gzip: true,
-    // explude: [
-    //   The directory you don't want to include
-    // ],
-    // routes: [
-    //   If there is an auto-generated page
-    // ]
-  },
-  axios: {
-    browserBaseURL: basePath,
-    // baseURL:
-    //   process.env.BASE_URL === "production"
-    //     ? "https://phantomoon.com"
-    //     : "http://localhost:3000"
-  },
-
-  /*
-   ** FontAwesome
-   */
-  fontawesome: {
-    component: "fa",
-  },
-
-  styleResources: {
-    scss: ["~assets/scss/app.scss"],
-  },
-
   // pageTransition: {
   //   name: "fade-left",
   //   mode: "out-in",
@@ -502,6 +396,33 @@ export default {
     babel: {
       configFile: "./babel.config.js",
     },
+    collapseBooleanAttributes: true,
+    decodeEntities: true,
+    minifyCSS: true,
+    minifyJS: true,
+    processConditionalComments: true,
+    removeEmptyAttributes: true,
+    removeRedundantAttributes: true,
+    trimCustomFragments: true,
+    useShortDoctype: true,
+    minimize: true,
+    minimizer: [
+      new TerserJSPlugin({
+        extractComments: false,
+        parallel: true,
+        terserOptions: {
+          compress: {
+            drop_console: true,
+          },
+        },
+      }),
+      new OptimizeCssAssetsPlugin({
+        cssProcessor: require("cssnano"),
+        cssProcessorPluginOptions: {
+          preset: ["default", { discardComments: { removeAll: true } }],
+        },
+      }),
+    ],
     extractCSS: process.env.NODE_ENV === "production",
     optimization: {
       splitChunks: {
@@ -610,5 +531,112 @@ export default {
       delete vueRule.loader;
       delete vueRule.options;
     },
+  },
+  /*
+   ** Plugins to load before mounting the App
+   */
+  plugins: [
+    { src: "~assets/js/app.js", mode: "client" }, // necessary！
+    { src: "~plugins/axios.js" },
+    { src: "~plugins/logger.js" },
+    { src: "~plugins/vue-scrollto" },
+    { src: "~plugins/nuxt-mq" },
+    // {src: '~plugins/vee-validate'},
+    { src: "~plugins/vue2-perfect-scrollbar" },
+    { src: "~plugins/vue-rellax" },
+    { src: "~plugins/aos", mode: "client" },
+    { src: "~plugins/font-awesome" },
+    { src: "~plugins/vue-lazyload", mode: "client" },
+    { src: "~plugins/localStorage", mode: "client" },
+    { src: "~plugins/cookie-storage", mode: "client" },
+    // {src: '~plugins/csvtojson'},
+    { src: "~plugins/foundation", mode: "client" },
+    { src: "~plugins/external", mode: "client" },
+    // { src: "~plugins/pageTop", mode: "client" },
+    { src: "~plugins/service-worker", mode: "client" },
+    { src: "~plugins/window" },
+    { src: "~plugins/gtm" },
+    { src: "~plugins/ga", mode: "client" },
+  ],
+  /*
+   ** Nuxt.js dev-modules
+   */
+  stylelint: {
+    files: [
+      "src/assets/**/*.{s?(a|c)ss}",
+      "{components,layouts,pages}/**/*.vue",
+    ],
+    fix: true,
+  },
+  /*
+   ** Nuxt.js modules
+   */
+  buildModules: [
+    "@nuxtjs/axios",
+    "@nuxtjs/stylelint-module",
+    "@nuxtjs/style-resources",
+    "@nuxtjs/dotenv",
+    "vue-scrollto/nuxt",
+    [
+      "nuxt-fontawesome",
+      {
+        component: "fa",
+      },
+    ],
+    [
+      "nuxt-mq",
+      {
+        defaultBreakpoint: "large",
+        breakpoints: {
+          small: 640,
+          medium: 768,
+          tablet: 1024,
+          large: 1200,
+          xlarge: 1440,
+          xxlarge: Infinity,
+        },
+      },
+    ],
+    "@nuxtjs/pwa",
+    "@nuxtjs/gtm",
+    ["@nuxtjs/google-analytics", { id: "UA-xxxxxxxx-x" }],
+    "@nuxtjs/sitemap",
+    [
+      "nuxt-imagemin",
+      {
+        pngquant: { quality: "80" },
+        plugins: [imageminMozjpeg({ quality: "80" })],
+      },
+    ],
+  ],
+
+  sitemap: {
+    hostname: baseUrl,
+    cacheTime: 1000 * 60 * 15,
+    gzip: true,
+    // explude: [
+    //   The directory you don't want to include
+    // ],
+    // routes: [
+    //   If there is an auto-generated page
+    // ]
+  },
+  // axios: {
+  //   browserBaseURL: basePath,
+  //   // baseURL:
+  //   //   process.env.BASE_URL === "production"
+  //   //     ? "https://phantomoon.com"
+  //   //     : "http://localhost:3000"
+  // },
+
+  /*
+   ** FontAwesome
+   */
+  fontawesome: {
+    component: "fa",
+  },
+
+  styleResources: {
+    scss: ["~assets/scss/app.scss"],
   },
 };

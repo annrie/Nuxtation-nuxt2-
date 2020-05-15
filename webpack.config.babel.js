@@ -1,19 +1,17 @@
 const path = require("path");
 const { VueLoaderPlugin } = require("vue-loader");
 
-const TerserJSPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const ImageminPlugin = require("imagemin-webpack-plugin").default;
 const imageminMozjpeg = require("imagemin-mozjpeg");
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
+const SpriteLoaderPlugin = require("svg-sprite-loader/plugin");
 
 const srcpath = "./src/";
 const cssfile = "./app.scss";
 const outputpath = "./dist/";
 // const current = process.cwd()
-const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
-const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
-const SpriteLoaderPlugin = require("svg-sprite-loader/plugin");
 
 // function resolve(dir) {
 //   return path.join(__dirname, '..', dir)
@@ -164,24 +162,6 @@ module.exports = (env) => {
         Foundation: "foundation-sites/js",
         whatInput: "what-input",
       },
-    },
-    optimization: {
-      minimizer: [
-        new TerserJSPlugin({
-          terserOptions: {
-            compress: {
-              extractComments: false,
-              drop_console: true,
-            },
-          },
-        }),
-        new OptimizeCssAssetsPlugin({
-          cssProcessor: require("cssnano"),
-          cssProcessorPluginOptions: {
-            preset: ["default", { discardComments: { removeAll: true } }],
-          },
-        }),
-      ],
     },
     plugins: [
       new VueLoaderPlugin(),

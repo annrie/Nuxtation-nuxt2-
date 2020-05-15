@@ -1,9 +1,0 @@
-import Vue from 'vue'
-
-import { Foundation } from '~/plugins/foundation'
-
-Vue.mixin({
-  components: {
-    Foundation,
-  },
-})
