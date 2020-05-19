@@ -6,7 +6,6 @@ const ImageminPlugin = require("imagemin-webpack-plugin").default;
 const imageminMozjpeg = require("imagemin-mozjpeg");
 const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
-const SpriteLoaderPlugin = require("svg-sprite-loader/plugin");
 
 const srcpath = "./src/";
 const cssfile = "./app.scss";
@@ -107,21 +106,6 @@ module.exports = (env) => {
           ],
         },
         {
-          test: /\.svg$/,
-          use: [
-            {
-              loader: "svg-sprite-loader",
-              options: {
-                extract: true,
-                spriteFilename: "./assets/sprite/svg/up.svg",
-                runtimeCompat: true,
-              },
-            },
-            "svg-transform-loader",
-            "svgo-loader",
-          ],
-        },
-        {
           test: /\.(sa|sc|c)ss$/,
           use: [
             {
@@ -176,9 +160,6 @@ module.exports = (env) => {
         test: /\.(jpe?g|png|gif|svg)$/i,
         pngquant: { quality: "80" },
         plugins: [imageminMozjpeg({ quality: "80" })],
-      }),
-      new SpriteLoaderPlugin({
-        plainSprite: true,
       }),
       new HardSourceWebpackPlugin({
         cacheDirectory: "node_modules/.cache/hard-source/[confighash]",

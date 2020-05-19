@@ -1,8 +1,8 @@
 /* eslint-disable */
 // import Vue from 'vue'
-import jQuery from 'jquery'
-import whatInput from 'what-input'
-import Foundation from 'foundation-sites'
+import jQuery from "jquery";
+import whatInput from "what-input";
+import Foundation from "foundation-sites";
 
 // Vue.use( Foundation)
 // import VeeValidate, {Validator} from 'vee-validate'
@@ -15,7 +15,7 @@ import Foundation from 'foundation-sites'
 
 // Validator.localize('ja', ja)
 // Vue.use(VeeValidate, {locale:ja})
-const $ = jQuery
+const $ = jQuery;
 // import { updateSetAccessor } from 'typescript'
 
 // import  Vue  from 'vue';
@@ -25,16 +25,15 @@ const $ = jQuery
 // it would execute earlier than we have assigned the global variable.
 // This is why we have to use CommonJS require() here since it doesn't
 // have the hoisting behavior.
-window.jQuery = $
-window.$ = $
+window.jQuery = $;
+window.$ = $;
 
-$(document).foundation()
+$(document).foundation();
 // $('.is-submenu-item').on('click', function() {
 //   $(this)
 //     .parent('.parent')
 //     .addClass('is-active')
 // })
 function requireAll(r) {
-  r.keys().forEach(r)
+  r.keys().forEach(r);
 }
-requireAll(require.context('../sprite/svg/', true, /\.svg$/))
