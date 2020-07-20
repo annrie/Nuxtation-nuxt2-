@@ -8,7 +8,7 @@
     "dev": "nuxt",
     "build": "nuxt build --modern=server",
     "start": "nuxt start --modern=server",
-    "generate": "nuxt generate -w 4 -b",
+    "generate": "nuxt build && nuxt export -w 4 -b",
     "generate:production": "cross-env BASE_URL=https://nuxtation.phantomoon.com BASE_DIR=/ nuxt generate -w 4 -b",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint:fix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",

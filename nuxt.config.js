@@ -52,6 +52,7 @@ export default {
   },
   dev: process.env.NODE_ENV !== "production",
   mode: "universal",
+  target: "static",
   env: {
     baseUrl,
     baseDir,
