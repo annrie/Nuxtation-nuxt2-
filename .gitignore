@@ -17,6 +17,7 @@ dist
 .yarn/build-state*.yml
 .yarn/releases/
 !.yarn/releases/yarn-sources.js
+.yarnrc.yml
 .pnp.*
 
 # Service worker

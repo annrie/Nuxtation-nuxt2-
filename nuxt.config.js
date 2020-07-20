@@ -44,6 +44,7 @@ const splashscreens = baseUrl + "/img/splashscreens/";
   Settings
 -∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴- */
 export default {
+  telemetry: false,
   hooks: {
     listen(server, { host, port }) {
       open(`http://${host}:${port}`);
