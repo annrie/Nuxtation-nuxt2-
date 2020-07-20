@@ -1,11 +1,10 @@
 @charset 'utf-8';
 
-@import 'settings';
-@import 'global/colors';
-@import 'override';
-@import '~foundation-sites/scss/foundation';
-@import '~motion-ui/src/motion-ui';
-@import 'transition';
+@import "settings";
+@import "global/colors";
+@import "override";
+@import "~foundation-sites/scss/foundation";
+@import "~motion-ui/src/motion-ui";
 
 @include foundation-everything(true);
 
@@ -68,17 +67,17 @@
 @include motion-ui-transitions;
 @include motion-ui-animations;
 // Global
-@import 'global/accessibility';
-@import 'global/svg';
-@import 'global/mixin';
+@import "global/accessibility";
+@import "global/svg";
+@import "global/mixin";
 
 // contents
-@import 'components/modules/content';
-@import 'components/modules/footer';
-@import 'components/modules/navigation';
+@import "components/modules/content";
+@import "components/modules/footer";
+@import "components/modules/navigation";
 
 // customizer
-@import 'custom';
+@import "custom";
 
 // Print
-@import 'global/print';
+@import "global/print";
