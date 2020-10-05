@@ -1,4 +1,4 @@
-<template id="app">
+<template>
   <div
     id="offCanvas"
     class="mobile-off-canvas-menu off-canvas position-right"
@@ -24,7 +24,7 @@
     >
       <template v-for="menu in getAll">
         <li
-          v-if="menu.sub != null"
+          v-if="menu.sub"
           :key="menu.id"
           class="is-drilldown-submenu-parent"
           data-open
@@ -53,21 +53,21 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
-  name: 'App',
+  name: "App",
   computed: {
     ...mapGetters({
-      getAll: 'json/getAll',
+      getAll: "json/getAll",
     }),
   },
   mounted() {
-    this.offCanvas = new Foundation.OffCanvas($('#offCanvas'))
-    this.drillDown = new Foundation.Drilldown($('#drillDown'), {
+    this.offCanvas = new Foundation.OffCanvas($("#offCanvas"));
+    this.drillDown = new Foundation.Drilldown($("#drillDown"), {
       // These options can be declarative using the data attributes
       animationDuration: 1500,
-    })
+    });
   },
-}
+};
 </script>

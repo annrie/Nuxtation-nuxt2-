@@ -39,7 +39,7 @@
         <ul id="dropDown" class="dropdown menu desktop-menu" data-dropdown-menu>
           <template v-for="menu in getAll">
             <li
-              v-if="menu.sub != null"
+              v-if="menu.sub"
               :key="menu.id"
               class="is-dropdown-submenu-parent"
             >

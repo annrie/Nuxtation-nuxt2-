@@ -7,5 +7,6 @@ module.exports = {
   trailingComma: "es5",
   bracketSpacing: false,
   arrowParens: "always",
-  htmlWhitespaceSensitivity: "ignore"
+  htmlWhitespaceSensitivity: "ignore",
+  vueIndentScriptAndStyle: true,
 };
