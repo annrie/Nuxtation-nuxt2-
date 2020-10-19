@@ -47,7 +47,7 @@ rules:
   property-no-vendor-prefix: null
   # selector-attribute-quotes: never # '[type=text]'などのセレクタの属性はクオートで囲まない
   selector-no-vendor-prefix: true # セレクタのベンダープリフィックス禁止
-  string-quotes: single # 文字列はシングルクオートで囲む
+  string-quotes: [single, { "avoidEscape" : false },] # 文字列はシングルクオートで囲む
   value-no-vendor-prefix: null # 値のベンダープリフィックス禁止
   plugin/declaration-block-no-ignored-properties: true
   number-leading-zero: always

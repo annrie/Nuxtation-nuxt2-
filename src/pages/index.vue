@@ -68,10 +68,10 @@
 </template>
 
 <script>
-import VLogo from "../components/-AppLogo.vue";
-import { fas, faFileCode } from "@fortawesome/free-solid-svg-icons";
-import { faGithub, fab } from "@fortawesome/free-brands-svg-icons";
-import Meta from "~/assets/mixins/meta";
+import VLogo from '../components/-AppLogo.vue'
+import { fas, faFileCode } from '@fortawesome/free-solid-svg-icons'
+import { faGithub, fab } from '@fortawesome/free-brands-svg-icons'
+import Meta from '~/assets/mixins/meta'
 
 export default {
   components: {
@@ -80,36 +80,36 @@ export default {
   mixins: [Meta],
   computed: {
     fas() {
-      return fas;
+      return fas
     },
     fab() {
-      return fab;
+      return fab
     },
     faGithub() {
-      return faGithub;
+      return faGithub
     },
     faFileCode() {
-      return faFileCode;
+      return faFileCode
     },
   },
   watch: {
-    "$window.width"() {
-      console.log(`width: ${this.$window.width}`);
+    '$window.width'() {
+      console.log(`width: ${this.$window.width}`)
     },
-    "$window.height"() {
-      console.log(`height: ${this.$window.height}`);
+    '$window.height'() {
+      console.log(`height: ${this.$window.height}`)
     },
-    "$window.pageYOffset"() {
-      console.log(`pageYOffset: ${this.$window.pageYOffset}`);
+    '$window.pageYOffset'() {
+      console.log(`pageYOffset: ${this.$window.pageYOffset}`)
     },
   },
   head() {
     return {
       title: process.env.siteName,
       titleTemplate: false,
-    };
+    }
   },
-};
+}
 </script>
 
 <style lang="scss">

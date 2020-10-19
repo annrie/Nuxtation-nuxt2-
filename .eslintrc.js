@@ -7,8 +7,8 @@ module.exports = {
     es6: true,
   },
   globals: {
-    Atomics: "readonly",
-    SharedArrayBuffer: "readonly",
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
     $nuxt: true,
     Foundation: true,
     whatInput: true,
@@ -17,8 +17,8 @@ module.exports = {
   },
   // parser: "vue-eslint-parser",
   parserOptions: {
-    parser: "babel-eslint",
-    sourceType: "module",
+    parser: 'babel-eslint',
+    sourceType: 'module',
     ecmaVersion: 2020,
     ecmaFeatures: {
       globalReturn: true,
@@ -26,42 +26,42 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ["vue"],
+  plugins: ['vue'],
   extends: [
-    "plugin:nuxt/recommended",
-    "plugin:vue/recommended",
-    "eslint:recommended",
-    "prettier/vue",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:prettier/recommended",
+    'plugin:nuxt/recommended',
+    'plugin:vue/recommended',
+    'eslint:recommended',
+    'prettier/vue',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:prettier/recommended',
     // "prettier",
     // "@nuxtjs",
     // "standard",
   ],
   // required to lint *.vue files
   settings: {
-    "import/extensions": [".js", ".jsx"],
-    "import/ignore": [".(scss | less | css)$"],
+    'import/extensions': ['.js', '.jsx'],
+    'import/ignore': ['.(scss | less | css)$'],
   },
   // add your custom rules here
   rules: {
-    semi: [2, "never"],
-    "vue/component-name-in-template-casing": ["error", "PascalCase"],
-    "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
-    "import/no-unresolved": "off",
-    "prettier/prettier": [
-      "error",
+    semi: [2, 'never'],
+    'vue/component-name-in-template-casing': ['error', 'PascalCase'],
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'import/no-unresolved': 'off',
+    'prettier/prettier': [
+      'error',
       {
-        htmlWhitespaceSensitivity: "ignore",
+        htmlWhitespaceSensitivity: 'ignore',
         semi: false,
         singleQuote: true,
         // trailingComma: "all",
       },
     ],
-    "vue/max-attributes-per-line": [
-      "warn",
+    'vue/max-attributes-per-line': [
+      'warn',
       {
         singleline: 10,
         multiline: {
@@ -70,18 +70,18 @@ module.exports = {
         },
       },
     ],
-    "vue/html-indent": [
-      "error",
+    'vue/html-indent': [
+      'error',
       2,
       {
         baseIndent: 1,
       },
     ],
-    "vue/html-self-closing": [
-      "error",
+    'vue/html-self-closing': [
+      'error',
       {
         html: {
-          void: "always",
+          void: 'always',
         },
       },
     ],
@@ -133,4 +133,4 @@ module.exports = {
     // "space-before-function-paren": 1,
     // "comma-dangle": 1
   },
-};
+}
