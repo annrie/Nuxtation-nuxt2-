@@ -85,6 +85,7 @@ module.exports = {
         },
       },
     ],
+    quotes: [2, 'single', 'avoid-escape'],
     // // タグの最後で改行しないで
     // "vue/html-closing-bracket-newline": [
     //   0,
@@ -107,7 +108,6 @@ module.exports = {
     // // セミコロンは禁止
     // semi: [2, "never"],
     // // 文字列はシングルクオートのみ
-    // "quotes": [2, "single", "avoid-escape"],
     // // varは禁止
     // "no-var": 2,
     // // jsのインデントは２
