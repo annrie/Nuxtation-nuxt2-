@@ -4,11 +4,11 @@
 // import path from 'path'
 import webpack from "webpack";
 import StylelintPlugin from "stylelint-webpack-plugin";
-const TerserJSPlugin = require("terser-webpack-plugin");
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+import TerserJSPlugin from "terser-webpack-plugin";
+import OptimizeCssAssetsPlugin from "optimize-css-assets-webpack-plugin";
 
-const imageminMozjpeg = require("imagemin-mozjpeg");
-const open = require("open");
+import imageminMozjpeg from "imagemin-mozjpeg";
+import open from "open";
 
 /* -∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-
   Use Global Variables
@@ -51,8 +51,8 @@ export default {
     },
   },
   dev: process.env.NODE_ENV !== "production",
-  mode: "universal",
-  target: "static",
+  ssr: true,
+  // target: "static",
   env: {
     baseUrl,
     baseDir,
@@ -506,6 +506,9 @@ export default {
    ** Build configuration
    */
   build: {
+    parallel: true,
+    cache: true,
+    hardsource: true,
     babel: {
       configFile: "./babel.config.js",
     },
@@ -575,8 +578,7 @@ export default {
       },
     },
     // analyze: true,
-    // babelrc: true,
-    hardSource: true,
+    babelrc: true,
     fallback: false,
     publicPath: "/assets/",
     devtools: process.env.NODE_ENV === "production",

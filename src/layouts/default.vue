@@ -33,8 +33,8 @@
           </div>
         </div>
         <div class="cell shrink">
-          <div id="top"></div>
-          <div id="content-top"></div>
+          <div id="top" />
+          <div id="content-top" />
           <Footer />
         </div>
       </div>

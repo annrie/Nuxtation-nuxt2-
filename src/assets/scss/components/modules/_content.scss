@@ -15,16 +15,13 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
 */
-
-  @include breakpoint(medium) {
-
-    /*
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-*/
-  }
+  // @include breakpoint(medium) {
+  //  /*
+  //   padding-top: 3rem;
+  //   padding-bottom: 3rem;
+  // */
+  // }
   &.sidebar-left {
-
     // Place the sidebar below main content on small screens ...
     @include breakpoint(small) {
       .main-content {
@@ -49,7 +46,14 @@
   // Full width template
   .main-content-full-width {
     //     @include xy-cell();
-    @include xy-cell(full, $gutters: 0, $gutter-type: margin, $gutter-position: right left, $breakpoint: null, $vertical: false);
+    @include xy-cell(
+      full,
+      $gutters: 0,
+      $gutter-type: margin,
+      $gutter-position: right left,
+      $breakpoint: null,
+      $vertical: false
+    );
     //       @include xy-gutters(medium, margin, right left, true);
   }
 

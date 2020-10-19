@@ -35,27 +35,27 @@
         </a>
       </div>
       <div>
-        <div>{{ $mq }}サイズ</div>
+        <div>{{ $mq }} Size</div>
         <div v-if="small">
-          smallサイズ
+          small Size
         </div>
         <div v-else-if="medium">
-          mediumサイズ
+          medium Size
         </div>
         <div v-else-if="tablet">
-          tabletサイズ
+          tablet Size
         </div>
         <div v-else-if="largePlus">
-          desktop+サイズ
+          desktop+ Size
         </div>
         <div v-else-if="large">
-          desktopサイズ
+          desktop Size
         </div>
         <div v-else-if="xlarge">
-          desktop+サイズ
+          desktop+ Size
         </div>
         <div v-else>
-          desktop+サイズ
+          desktop+ Size
         </div>
         <client-only>
           <div>window width: {{ $window.width }} px</div>

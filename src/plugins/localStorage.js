@@ -1,10 +1,10 @@
-import createPersistedState from 'vuex-persistedstate'
+import createPersistedState from "vuex-persistedstate";
 
-export default ({store}) => {
+export default ({ store }) => {
   window.onNuxtReady(() => {
     createPersistedState({
-      key: 'cs',
+      key: "cs",
       storage: window.sessionStorage,
-    })(store)
-  })
-}
+    })(store);
+  });
+};
