@@ -53,37 +53,37 @@
 </template>
 
 <script>
-import Meta from "~/assets/mixins/meta";
+import Meta from '~/assets/mixins/meta';
 
 export default {
-  layout: "normal",
-  name: "Magellan",
+  layout: 'normal',
+  name: 'Magellan',
   mixins: [Meta],
   data() {
     return {
-      msg: "Magellan",
+      msg: 'Magellan',
       meta: {
-        title: "Magellan",
-        type: "article",
+        title: 'Magellan',
+        type: 'article',
       },
     };
   },
   watch: {
-    "$window.width"() {
+    '$window.width'() {
       console.log(`width: ${this.$window.width}`);
     },
-    "$window.height"() {
+    '$window.height'() {
       console.log(`height: ${this.$window.height}`);
     },
-    "$window.pageYOffset"() {
+    '$window.pageYOffset'() {
       console.log(`pageYOffset: ${this.$window.pageYOffset}`);
     },
   },
   mounted() {
-    this.sticky = new Foundation.Sticky($("#magellan"));
-    this.magellan = new Foundation.Magellan($("#magellan"), {
+    this.sticky = new Foundation.Sticky($('#magellan'));
+    this.magellan = new Foundation.Magellan($('#magellan'), {
       // These options can be declarative using the data attributes
-      animationEasing: "swing",
+      animationEasing: 'swing',
     });
   },
   destroyed() {

@@ -1,8 +1,5 @@
 module.exports = {
-  '*.(js|vue)': ['eslint', 'prettier --write'],
-  '*.(vue|htm|html|css|less|sass|scss|styl|stylus|md)': [
-    'eslint',
-    'prettier --write',
-  ],
+  '*.(js|vue)': ['eslint --fix --cache'],
+  '*.(css|less|sass|scss|styl|stylus|md)': ['stylelint --fix --cache'],
   '*.(htm|html)': ['htmlhint', 'prettier --write'],
-}
+};

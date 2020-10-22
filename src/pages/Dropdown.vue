@@ -50,26 +50,26 @@
 </template>
 
 <script>
-import Meta from "~/assets/mixins/meta";
+import Meta from '~/assets/mixins/meta';
 
 export default {
-  name: "Dropdown",
+  name: 'Dropdown',
   mixins: [Meta],
   data() {
     return {
-      msg: "Dropdown",
+      msg: 'Dropdown',
       meta: {
-        title: "Dropdown",
-        type: "article",
+        title: 'Dropdown',
+        type: 'article',
       },
     };
   },
   mounted() {
-    this.dropdown1 = new Foundation.Dropdown($("#dropdown1"), {
+    this.dropdown1 = new Foundation.Dropdown($('#dropdown1'), {
       // These options can be declarative using the data attributes
       vOffset: 20,
     });
-    this.dropdown2 = new Foundation.Dropdown($("#dropdown2"), {
+    this.dropdown2 = new Foundation.Dropdown($('#dropdown2'), {
       hover: true,
     });
   },

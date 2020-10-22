@@ -68,22 +68,22 @@
 </template>
 
 <script>
-import Meta from "~/assets/mixins/meta";
+import Meta from '~/assets/mixins/meta';
 
 export default {
-  name: "Orbit",
+  name: 'Orbit',
   mixins: [Meta],
   data() {
     return {
-      msg: "Orbit",
+      msg: 'Orbit',
       meta: {
-        title: "Orbit",
-        type: "article",
+        title: 'Orbit',
+        type: 'article',
       },
     };
   },
   mounted() {
-    this.orbit = new Foundation.Orbit($("#orbit"), {
+    this.orbit = new Foundation.Orbit($('#orbit'), {
       // These options can be declarative using the data attributes
       timerDelay: 2000,
     });

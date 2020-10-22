@@ -46,22 +46,22 @@
 </template>
 
 <script>
-import Meta from "~/assets/mixins/meta";
+import Meta from '~/assets/mixins/meta';
 
 export default {
-  name: "Tabs",
+  name: 'Tabs',
   mixins: [Meta],
   data() {
     return {
-      msg: "Tabs",
+      msg: 'Tabs',
       meta: {
-        title: "Tabs",
-        type: "article",
+        title: 'Tabs',
+        type: 'article',
       },
     };
   },
   mounted() {
-    this.tabs = new Foundation.Tabs($("#tabs"), {
+    this.tabs = new Foundation.Tabs($('#tabs'), {
       // These options can be declarative using the data attributes
       matchHeight: false,
     });

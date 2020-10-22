@@ -22,22 +22,22 @@
   </div>
 </template>
 <script>
-import Meta from "~/assets/mixins/meta";
+import Meta from '~/assets/mixins/meta';
 
 export default {
-  name: "DropdownMenu",
+  name: 'DropdownMenu',
   mixins: [Meta],
   data() {
     return {
-      msg: "Dropdown Menu",
+      msg: 'Dropdown Menu',
       meta: {
-        title: "Dropdown Menu",
-        type: "article",
+        title: 'Dropdown Menu',
+        type: 'article',
       },
     };
   },
   mounted() {
-    this.dropdownMenu = new Foundation.DropdownMenu($("#dropdown-menu"), {
+    this.dropdownMenu = new Foundation.DropdownMenu($('#dropdown-menu'), {
       // These options can be declarative using the data attributes
       hoverDelay: 300,
     });

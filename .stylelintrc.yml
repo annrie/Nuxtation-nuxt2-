@@ -1,20 +1,23 @@
+extends:
+  - stylelint-config-recommended-scss
+  # - stylelint-config-standard-scss
+  # - stylelint-config-recess-order
+  - stylelint-config-prettier
+  - stylelint-prettier/recommended
 plugins:
   - stylelint-scss
   - stylelint-declaration-block-no-ignored-properties
-extends:
-  - stylelint-config-standard-scss
-  - stylelint-config-recess-order
-  # - stylelint-prettier/recommended
 syntax:
   - scss
 rules:
-  indentation: [2, { baseIndentLevel: 0 }]
+  prettier/prettier: [true, { singleQuote: true }]
+  # indentation: [2, { baseIndentLevel: 0 }]
   # scss/dollar-variable-colon-space-after: always
   scss/dollar-variable-colon-space-before: never
   scss/operator-no-unspaced: true
   scss/at-rule-no-unknown: true
   # at-rule-no-unknown: null
-  at-rule-whitelist:
+  at-rule-allowed-list:
     [
       "extend",
       "keyframes",
@@ -47,29 +50,29 @@ rules:
   property-no-vendor-prefix: null
   # selector-attribute-quotes: never # '[type=text]'などのセレクタの属性はクオートで囲まない
   selector-no-vendor-prefix: true # セレクタのベンダープリフィックス禁止
-  string-quotes: [single, { "avoidEscape" : false },] # 文字列はシングルクオートで囲む
+  # string-quotes: [single, { "avoidEscape" : false },] # 文字列はシングルクオートで囲む
   value-no-vendor-prefix: null # 値のベンダープリフィックス禁止
   plugin/declaration-block-no-ignored-properties: true
-  number-leading-zero: always
+  # number-leading-zero: always
   length-zero-no-unit: true
   comment-empty-line-before: always
-  function-comma-space-after: always
-  function-parentheses-space-inside: never
-  declaration-colon-space-after: always-single-line
-  declaration-colon-space-before: never
-  declaration-colon-newline-after: always-multi-line # 複数行の時のコロン後には改行が必須
-  value-list-comma-newline-after: always-multi-line
-  value-list-comma-space-after: always-single-line
-  value-list-comma-space-before: never
-  at-rule-empty-line-before:
-    [
-      always,
-      {
-        except:
-          [first-nested, inside-block, blockless-after-same-name-blockless],
-        ignore: [first-nested, inside-block, after-comment],
-      },
-    ]
+  # function-comma-space-after: always
+  # function-parentheses-space-inside: never
+  # declaration-colon-space-after: always-single-line
+  # declaration-colon-space-before: never
+  # declaration-colon-newline-after: always-multi-line # 複数行の時のコロン後には改行が必須
+  # value-list-comma-newline-after: always-multi-line
+  # value-list-comma-space-after: always-single-line
+  # value-list-comma-space-before: never
+  # at-rule-empty-line-before:
+  #   [
+  #     always,
+  #     {
+  #       except:
+  #         [first-nested, inside-block, blockless-after-same-name-blockless],
+  #       ignore: [first-nested, inside-block, after-comment],
+  #     },
+  #   ]
   custom-property-empty-line-before:
     [always, { except: [after-comment, after-custom-property, first-nested] }]
   declaration-empty-line-before:
@@ -80,21 +83,21 @@ rules:
         ignore: [inside-single-line-block],
       },
     ]
-  block-opening-brace-space-before: always # 単一行で閉じ括弧前に空白を必須
-  block-opening-brace-space-after: always-single-line #単一行の時に閉じ括弧後に空白を必須
-  block-closing-brace-empty-line-before: never
-  rule-empty-line-before: never
-  function-max-empty-lines: 0
-  max-empty-lines: 1
-  selector-max-empty-lines: 0
-  at-rule-blacklist: ["debug"]
-  # declaration-property-value-blacklist: [{'/^border/': ['none']}]
-  declaration-property-value-blacklist: null
+  # block-opening-brace-space-before: always # 単一行で閉じ括弧前に空白を必須
+  # block-opening-brace-space-after: always-single-line #単一行の時に閉じ括弧後に空白を必須
+  # block-closing-brace-empty-line-before: never
+  # rule-empty-line-before: never
+  # function-max-empty-lines: 0
+  # max-empty-lines: 1
+  # selector-max-empty-lines: 0
+  at-rule-disallowed-list: ["debug"]
+  # declaration-property-value-disallowed-list: [{'/^border/': ['none']}]
+  declaration-property-value-disallowed-list: null
   color-named: null
   color-no-hex: null
   color-no-invalid-hex: true
-  # function-blacklist: ["/^rgb/", "/^hsl/"]
-  function-whitelist:
+  # function-disallowed-list: ["/^rgb/", "/^hsl/"]
+  function-allowed-list:
     [
       "my-color",
       "/^rem/",
@@ -122,14 +125,15 @@ rules:
       /map-merge/,
       /translate/,
     ]
-  unit-whitelist:
+  unit-allowed-list:
     ["em", "rem", "%", "s", "ms", "vh", "vw", "px", "deg", "dpi", "fr"]
   selector-pseudo-class-no-unknown: [true, { ignorePseudoClasses: [global] }]
+  selector-type-no-unknown: [true, {ignoreTypes: ['_','x']}]
   declaration-no-important: null
   font-family-no-duplicate-names: true
   function-calc-no-invalid: true
   max-nesting-depth: 10
-  unit-case: lower
+  # unit-case: lower
   unit-no-unknown:
     - true
     - ignoreUnits:

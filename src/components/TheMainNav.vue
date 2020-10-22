@@ -65,26 +65,26 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex';
 
 export default {
-  name: "MainNav",
+  name: 'MainNav',
   computed: {
     tagName() {
-      if (this.$route.name === "index") {
-        return "h1";
+      if (this.$route.name === 'index') {
+        return 'h1';
       }
-      return "p";
+      return 'p';
     },
     ...mapGetters({
-      getAll: "json/getAll",
+      getAll: 'json/getAll',
     }),
   },
   mounted() {
     // this.offCanvas = new Foundation.OffCanvas($("#offCanvas"));
     // this.smoothScroll = new Foundation.SmoothScroll($('#mainNav'))
-    this.sticky = new Foundation.Sticky($("#mainNav"));
-    this.dropDown = new Foundation.DropdownMenu($("#dropDown"));
+    this.sticky = new Foundation.Sticky($('#mainNav'));
+    this.dropDown = new Foundation.DropdownMenu($('#dropDown'));
   },
 };
 </script>

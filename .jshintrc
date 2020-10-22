@@ -1,5 +1,5 @@
 {
-  "esnext": true,
+  "esnext": false,
   "undef": true,
   "unused": true,
   "bitwise": true,

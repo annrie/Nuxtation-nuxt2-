@@ -28,17 +28,17 @@
 </template>
 
 <script>
-import Meta from "~/assets/mixins/meta";
+import Meta from '~/assets/mixins/meta';
 
 export default {
-  name: "Tooltip",
+  name: 'Tooltip',
   mixins: [Meta],
   data() {
     return {
-      msg: "Tooltip",
+      msg: 'Tooltip',
       meta: {
-        title: "Tooltip",
-        type: "article",
+        title: 'Tooltip',
+        type: 'article',
       },
     };
   },
@@ -52,7 +52,7 @@ export default {
     // });
 
     // Selector method
-    this.tooltip = $(".has-tip").foundation();
+    this.tooltip = $('.has-tip').foundation();
   },
   destroyed() {
     // Due to Selector Method destroy is disabled

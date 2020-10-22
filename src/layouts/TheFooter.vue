@@ -24,19 +24,19 @@
 </template>
 
 <script>
-import { fas, faArrowCircleUp } from "@fortawesome/free-solid-svg-icons";
+import { fas, faArrowCircleUp } from '@fortawesome/free-solid-svg-icons';
 let now = new Date();
 let year = now.getFullYear();
 export default {
-  name: "Footer",
+  name: 'Footer',
   props: {
     iconName: {
       type: String,
-      default: "box",
+      default: 'box',
     },
     iconColor: {
       type: String,
-      default: "currentColor",
+      default: 'currentColor',
     },
   },
   data() {

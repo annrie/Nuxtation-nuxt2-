@@ -21,22 +21,22 @@
 </template>
 
 <script>
-import Meta from "~/assets/mixins/meta";
+import Meta from '~/assets/mixins/meta';
 
 export default {
-  name: "AccordionMenu",
+  name: 'AccordionMenu',
   mixins: [Meta],
   data() {
     return {
-      msg: "Accordion Menu",
+      msg: 'Accordion Menu',
       meta: {
-        title: "Accordion Menu",
-        type: "article",
+        title: 'Accordion Menu',
+        type: 'article',
       },
     };
   },
   mounted() {
-    this.accordionMenu = new Foundation.AccordionMenu($("#accordion-menu"), {
+    this.accordionMenu = new Foundation.AccordionMenu($('#accordion-menu'), {
       // These options can be declarative using the data attributes
       slideSpeed: 500,
       multiOpen: true,

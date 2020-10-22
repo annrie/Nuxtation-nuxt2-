@@ -1,6 +1,6 @@
-import Vue from "vue";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import Vue from 'vue';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 /* eslint new-cap: 0 */
 
@@ -13,7 +13,7 @@ export default ({ app }) => {
 
 Vue.mixin({
   watch: {
-    "$route.path"() {
+    '$route.path'() {
       setTimeout(() => {
         AOS.refresh();
       }, 500);

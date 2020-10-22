@@ -53,18 +53,18 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex';
 
 export default {
-  name: "App",
+  name: 'App',
   computed: {
     ...mapGetters({
-      getAll: "json/getAll",
+      getAll: 'json/getAll',
     }),
   },
   mounted() {
-    this.offCanvas = new Foundation.OffCanvas($("#offCanvas"));
-    this.drillDown = new Foundation.Drilldown($("#drillDown"), {
+    this.offCanvas = new Foundation.OffCanvas($('#offCanvas'));
+    this.drillDown = new Foundation.Drilldown($('#drillDown'), {
       // These options can be declarative using the data attributes
       animationDuration: 1500,
     });

@@ -30,25 +30,25 @@
 </template>
 
 <script>
-import Meta from "~/assets/mixins/meta";
+import Meta from '~/assets/mixins/meta';
 
 export default {
-  name: "Reveal",
+  name: 'Reveal',
   mixins: [Meta],
   data() {
     return {
-      msg: "Reveal",
+      msg: 'Reveal',
       meta: {
-        title: "Reveal",
-        type: "article",
+        title: 'Reveal',
+        type: 'article',
       },
     };
   },
   mounted() {
-    this.reveal = new Foundation.Reveal($("#reveal-dialog"), {
+    this.reveal = new Foundation.Reveal($('#reveal-dialog'), {
       // These options can be declarative using the data attributes
-      animationIn: "spin-in",
-      animationOut: "spin-out",
+      animationIn: 'spin-in',
+      animationOut: 'spin-out',
     });
   },
   destroyed() {

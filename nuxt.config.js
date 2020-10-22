@@ -499,7 +499,7 @@ export default {
   },
 
   styleResources: {
-    scss: ['~assets/scss/app.scss'],
+    scss: ['~/assets/scss/app.scss'],
   },
 
   /*
@@ -566,7 +566,7 @@ export default {
     ],
     postcss: {
       plugins: {
-        'postcss-url': {},
+        'postcss-url': false,
         'postcss-nested': {},
         'postcss-responsive-type': {},
         'postcss-hexrgba': {},
