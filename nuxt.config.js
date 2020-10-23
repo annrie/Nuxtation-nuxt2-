@@ -47,7 +47,7 @@ export default {
   telemetry: false,
   hooks: {
     listen(server, { host, port }) {
-      open(`http://${host}:${port}`)
+      open(`http://${host}:${port}`);
     },
   },
   dev: process.env.NODE_ENV !== 'production',
@@ -121,8 +121,7 @@ export default {
     ],
     script: [
       {
-        src:
-          '//polyfill.io/v2/polyfill.min.js?features=WebAnimations,IntersectionObserver',
+        src: '//polyfill.io/v2/polyfill.min.js?features=WebAnimations,IntersectionObserver',
       },
     ],
     link: [
@@ -420,10 +419,7 @@ export default {
    ** Nuxt.js dev-modules
    */
   stylelint: {
-    files: [
-      'src/assets/**/*.{s?(a|c)ss}',
-      '{components,layouts,pages}/**/*.vue',
-    ],
+    files: ['src/assets/**/*.{s?(a|c)ss}', '{components,layouts,pages}/**/*.vue'],
     fix: true,
   },
   /*
@@ -432,7 +428,7 @@ export default {
   buildModules: [
     '@nuxtjs/pwa',
     '@nuxtjs/gtm',
-    ['@nuxtjs/google-analytics', { id: 'UA-50443508-2' }],
+    // ['@nuxtjs/google-analytics', { id: 'UA-XXXXXXXX-X' }],
     ['@nuxtjs/moment', ['ja']],
     '@nuxtjs/stylelint-module',
   ],
@@ -597,7 +593,7 @@ export default {
     extend(config, ctx) {
       // if (process.server && process.browser) {
       if (ctx.isDev && ctx.isClient) {
-        config.devtool = 'source-map'
+        config.devtool = 'source-map';
         // if (isDev && process.isClient) {
         config.plugins.push(
           new StylelintPlugin({
@@ -612,26 +608,26 @@ export default {
             options: {
               formatter: require('eslint-friendly-formatter'),
             },
-          })
+          });
         if (ctx.isDev) {
-          config.mode = 'development'
+          config.mode = 'development';
         }
       }
       for (const rule of config.module.rules) {
         if (rule.use) {
           for (const use of rule.use) {
             if (use.loader === 'sass-loader') {
-              use.options = use.options || {}
+              use.options = use.options || {};
               use.options.includePaths = [
                 'node_modules/foundation-sites/scss',
                 'node_modules/motion-ui/src',
-              ]
+              ];
             }
           }
         }
       }
       // vue-svg-inline-loader
-      const vueRule = config.module.rules.find((rule) => rule.test.test('.vue'))
+      const vueRule = config.module.rules.find((rule) => rule.test.test('.vue'));
       vueRule.use = [
         {
           loader: vueRule.loader,
@@ -640,9 +636,9 @@ export default {
         {
           loader: 'vue-svg-inline-loader',
         },
-      ]
-      delete vueRule.loader
-      delete vueRule.options
+      ];
+      delete vueRule.loader;
+      delete vueRule.options;
     },
   },
-}
+};

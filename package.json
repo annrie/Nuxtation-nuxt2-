@@ -1,6 +1,6 @@
 {
   "name": "nuxtation",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Nuxt.js Demo with Foundation on Babel7,Webpack4",
   "author": "annrie <annrie@users.noreply.github.com>",
   "private": true,
