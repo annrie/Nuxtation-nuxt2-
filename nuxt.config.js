@@ -13,7 +13,7 @@ import open from 'open'
 /* -∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-
   Use Global Variables
 -∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴- */
-require('dotenv').config() // from .env
+// require('dotenv').config() // from .env
 
 // path
 const baseUrl = process.env.BASE_URL || 'http://localhost:3000'
@@ -68,6 +68,10 @@ export default {
     middleware: 'pages',
     linkActiveClass: 'is-active',
     linkExactActiveClass: 'is-exact-active',
+  },
+  publicRuntimeConfig: {
+  },
+  privateRuntimeConfig: {
   },
   generate: {
     dir: 'dist',
@@ -376,6 +380,7 @@ export default {
     '~/assets/scss/transition.scss',
     '@fortawesome/fontawesome-svg-core/styles.css',
   ],
+  components: true,
 
   // pageTransition: {
   //   name: "fade-left",
@@ -435,7 +440,6 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
-    '@nuxtjs/dotenv',
     '@nuxtjs/svg',
     '@nuxtjs/sitemap',
     'vue-scrollto/nuxt',

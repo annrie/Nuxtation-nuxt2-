@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <VLogo />
+      <app-logo />
       <h2 class="title">
         Nuxtation
       </h2>
@@ -68,15 +68,11 @@
 </template>
 
 <script>
-import VLogo from '../components/-AppLogo.vue'
 import { fas, faFileCode } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, fab } from '@fortawesome/free-brands-svg-icons'
 import Meta from '~/assets/mixins/meta'
 
 export default {
-  components: {
-    VLogo,
-  },
   mixins: [Meta],
   computed: {
     fas() {
