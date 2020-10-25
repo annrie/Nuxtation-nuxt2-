@@ -84,7 +84,7 @@
     "vue-server-renderer": "2.6.11",
     "vue-template-compiler": "^2.6.12",
     "vue2-perfect-scrollbar": "^1.5.0",
-    "vuex-persistedstate": "^3.0.1",
+    "vuex-persistedstate": "^4.0.0-beta.1",
     "what-input": "^5.2.10"
   },
   "devDependencies": {
