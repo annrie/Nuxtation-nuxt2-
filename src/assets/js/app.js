@@ -3,6 +3,10 @@
 import jQuery from "jquery";
 import whatInput from "what-input";
 import Foundation from "foundation-sites";
+import MotionUi from "motion-ui";
+import $ from "jquery";
+
+Vue.prototype.$motionUi = MotionUi;
 
 // Vue.use( Foundation)
 // import VeeValidate, {Validator} from 'vee-validate'
@@ -15,7 +19,7 @@ import Foundation from "foundation-sites";
 
 // Validator.localize('ja', ja)
 // Vue.use(VeeValidate, {locale:ja})
-const $ = jQuery;
+// const $ = jQuery;
 // import { updateSetAccessor } from 'typescript'
 
 // import  Vue  from 'vue';

@@ -152,7 +152,7 @@
     "prettier": "^2.0.5",
     "pug": "^3.0.0",
     "pug-plain-loader": "^1.0.0",
-    "sass-loader": "^9.0.2",
+    "sass-loader": "^10.0.4",
     "sentencer": "^0.2.1",
     "serve": "^11.3.2",
     "standard-version": "^8.0.2",
