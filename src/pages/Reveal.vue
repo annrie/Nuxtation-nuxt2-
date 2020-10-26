@@ -45,15 +45,16 @@ export default {
     };
   },
   mounted() {
+   $(document).foundation();
     this.reveal = new Foundation.Reveal($('#reveal-dialog'), {
       // These options can be declarative using the data attributes
       animationIn: 'spin-in',
       animationOut: 'spin-out',
     });
   },
-  destroyed() {
-    this.reveal.destroy();
-  },
+  // destroyed() {
+  //   this.reveal.destroy();
+  // },
   methods: {
     // Added the below openReveal method for two reasons:
     // 1) There was a bug preventing the reveal from working once

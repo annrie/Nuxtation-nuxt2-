@@ -36,15 +36,16 @@ export default {
     };
   },
   mounted() {
-    this.accordionMenu = new Foundation.AccordionMenu($('#accordion-menu'), {
-      // These options can be declarative using the data attributes
-      slideSpeed: 500,
-      multiOpen: true,
-    });
+   $(document).foundation();
+    // this.accordionMenu = new Foundation.AccordionMenu($('#accordion-menu'), {
+    //   // These options can be declarative using the data attributes
+    //   slideSpeed: 500,
+    //   multiOpen: true,
+    // });
   },
-  destroyed() {
-    this.accordionMenu.destroy();
-  },
+  // destroyed() {
+  //   this.accordionMenu.destroy();
+  // },
 };
 </script>
 <style lang="scss">

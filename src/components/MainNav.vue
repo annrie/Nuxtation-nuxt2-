@@ -81,10 +81,11 @@ export default {
     }),
   },
   mounted() {
+   $(document).foundation();
     // this.offCanvas = new Foundation.OffCanvas($("#offCanvas"));
     // this.smoothScroll = new Foundation.SmoothScroll($('#mainNav'))
-    this.sticky = new Foundation.Sticky($('#mainNav'));
-    this.dropDown = new Foundation.DropdownMenu($('#dropDown'));
+    // this.sticky = new Foundation.Sticky($('#mainNav'));
+    // this.dropDown = new Foundation.DropdownMenu($('#dropDown'));
   },
 };
 </script>

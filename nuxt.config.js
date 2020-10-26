@@ -412,7 +412,6 @@ export default {
     { src: '~plugins/localStorage', mode: 'client' },
     { src: '~plugins/cookie-storage', mode: 'client' },
     // {src: '~plugins/csvtojson'},
-    { src: '~plugins/foundation', mode: 'client' },
     { src: '~plugins/external', mode: 'client' },
     // { src: "~plugins/pageTop", mode: "client" },
     { src: '~plugins/service-worker', mode: 'client' },

@@ -9,10 +9,10 @@
       <a class="screen-reader-text" href="#main">Skip to content</a>
       <a class="screen-reader-text" href="#menu">Skip to navigation</a>
     </nav>
-    <OffCanvas />
+    <off-canvas />
     <div class="off-canvas-content" data-off-canvas-content>
       <div class="grid-container full" data-sticky-container>
-        <MainNav />
+        <main-nav />
       </div>
       <div class="main-container">
         <div class="main-grid">
@@ -31,19 +31,17 @@
 </template>
 
 <script>
-/* eslint-disable */
-import Footer from "./TheFooter";
-import OffCanvas from "@/components/TheOffCanvas";
-import MainNav from "@/components/TheMainNav";
+// import Footer from "./TheFooter";
+// import OffCanvas from "@/components/TheOffCanvas";
+// import MainNav from "@/components/TheMainNav";
 
 export default {
   components: {
-    OffCanvas,
-    MainNav,
-    Footer,
+
   },
   mounted() {
-    this.sticky = new Foundation.Sticky($("#mainNav"));
+   $(document).foundation();
+    // this.sticky = new Foundation.Sticky($('#mainNav'));
   },
 };
 </script>

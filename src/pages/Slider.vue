@@ -45,6 +45,7 @@ export default {
     }
   },
   mounted() {
+   $(document).foundation();
     this.slider = new Foundation.Slider($('#slider'), {
       // These options can be declarative using the data attributes
       step: 10,
@@ -53,8 +54,8 @@ export default {
       this.dataValue = this.slider.inputs.val()
     })
   },
-  destroyed() {
-    this.slider.destroy()
-  },
+  // destroyed() {
+  //   this.slider.destroy()
+  // },
 }
 </script>

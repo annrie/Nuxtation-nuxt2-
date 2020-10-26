@@ -1,10 +1,9 @@
-/* eslint-disable */
-// import Vue from 'vue'
-import jQuery from "jquery";
-import whatInput from "what-input";
-import Foundation from "foundation-sites";
-import MotionUi from "motion-ui";
-import $ from "jquery";
+import Vue from 'vue'
+import jQuery from 'jquery';
+import whatInput from 'what-input';
+import 'foundation-sites';
+import MotionUi from 'motion-ui';
+import $ from 'jquery';
 
 Vue.prototype.$motionUi = MotionUi;
 
@@ -38,6 +37,6 @@ $(document).foundation();
 //     .parent('.parent')
 //     .addClass('is-active')
 // })
-function requireAll(r) {
-  r.keys().forEach(r);
-}
+// function requireAll(r) {
+//   r.keys().forEach(r);
+// }

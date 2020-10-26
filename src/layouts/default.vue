@@ -9,12 +9,12 @@
       <a class="screen-reader-text" href="#main">Skip to content</a>
       <a class="screen-reader-text" href="#menu">Skip to navigation</a>
     </nav>
-    <OffCanvas />
+    <off-canvas />
     <div class="off-canvas-content" data-off-canvas-content>
       <div class="grid-y grid-frame">
         <div class="cell">
           <div class="grid-container full" data-sticky-container>
-            <MainNav />
+            <main-nav />
           </div>
         </div>
         <div class="cell auto skip">
@@ -43,23 +43,21 @@
 </template>
 
 <script>
-/* eslint-disable */
-import Footer from "./TheFooter";
-import OffCanvas from "@/components/TheOffCanvas";
-import MainNav from "@/components/TheMainNav";
+// import Footer from "./TheFooter";
+// import OffCanvas from "@/components/TheOffCanvas";
+// import MainNav from "@/components/TheMainNav";
 
 export default {
   components: {
-    OffCanvas,
-    MainNav,
-    Footer,
+
   },
   mounted() {
-    this.smoothScroll = new Foundation.SmoothScroll($("#app"));
+    $(document).foundation();
+    // this.smoothScroll = new Foundation.SmoothScroll($('#app'));
   },
-  destroyed() {
-    this.smoothScroll.destroy();
-  },
+  // destroyed() {
+  //   this.smoothScroll.destroy();
+  // },
 };
 </script>
 <style lang="scss">

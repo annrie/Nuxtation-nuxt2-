@@ -45,14 +45,15 @@ export default {
     },
   },
   mounted() {
-    this.accordion = new Foundation.Accordion($('#accordion'), {
-      // These options can be declarative using the data attributes
-      slideSpeed: 500,
-      multiExpand: true,
-    });
+   $(document).foundation();
+    // this.accordion = new Foundation.Accordion($('#accordion'), {
+    //   // These options can be declarative using the data attributes
+    //   slideSpeed: 500,
+    //   multiExpand: true,
+    // });
   },
-  destroyed() {
-    this.accordion.destroy();
-  },
+  // destroyed() {
+  //   this.accordion.destroy();
+  // },
 };
 </script>

@@ -37,10 +37,11 @@ export default {
     };
   },
   mounted() {
-    this.dropdownMenu = new Foundation.DropdownMenu($('#dropdown-menu'), {
-      // These options can be declarative using the data attributes
-      hoverDelay: 300,
-    });
+   $(document).foundation();
+    // this.dropdownMenu = new Foundation.DropdownMenu($('#dropdown-menu'), {
+    //   // These options can be declarative using the data attributes
+    //   hoverDelay: 300,
+    // });
   },
   // destroyed() {
   //   this.dropdownMenu.destroy()

@@ -65,17 +65,18 @@ export default {
     };
   },
   mounted() {
-    this.dropdown1 = new Foundation.Dropdown($('#dropdown1'), {
-      // These options can be declarative using the data attributes
-      vOffset: 20,
-    });
-    this.dropdown2 = new Foundation.Dropdown($('#dropdown2'), {
-      hover: true,
-    });
+   $(document).foundation();
+    // this.dropdown1 = new Foundation.Dropdown($('#dropdown1'), {
+    //   // These options can be declarative using the data attributes
+    //   vOffset: 20,
+    // });
+    // this.dropdown2 = new Foundation.Dropdown($('#dropdown2'), {
+    //   hover: true,
+    // });
   },
-  destroyed() {
-    this.dropdown1.destroy();
-    this.dropdown2.destroy();
-  },
+  // destroyed() {
+  //   this.dropdown1.destroy();
+  //   this.dropdown2.destroy();
+  // },
 };
 </script>
