@@ -1,0 +1,110 @@
+// motion-ui
+
+/*
+  .fade-in  { @include mui-animation(fade); animation-duration: 20s; }
+  .fade-out { @include mui-animation(fade); animation-duration: 10s; }
+*/
+
+/*
+.slide-in-right {
+  @include mui-slide($direction:right,  $duration:5s,$delay:10s);
+  }
+*/
+
+/*
+.hinge-in { @include mui-hinge( $state: in, $from: top, $fade: true, $timing: map-get($motion-ui-easings, bounceInOut) ); }
+
+.hinge-out { @include mui-hinge( $state: out, $from: top, $fade: true, $timing: map-get($motion-ui-easings, bounceInOut) ); }
+*/
+
+@mixin welcome {
+  @include mui-animation(fade);
+
+  animation-duration: 10s;
+}
+
+@mixin welcome2 {
+  @include mui-animation(fade, slide($direction: down));
+
+  animation-duration: 10s;
+}
+
+@mixin welcome3 {
+  @include mui-animation(fade, slide($direction: up));
+
+  animation-duration: 10s;
+}
+
+@mixin welcome4 {
+  @include mui-animation(fade, spin, slide($direction: up));
+
+  animation-duration: 10s;
+}
+
+// @include mui-series {
+//   @mixin column-1 { @include mui-queue(1.5s, 0.5s, fade, slide); }
+//   @mixin column-2 { @include mui-queue(1.5s, 0.5s, fade, shake); }
+//   @mixin column-3 { @include mui-queue(1.5s, 0.5s, fade, spin); }
+//   @mixin column-4 { @include mui-queue(1.5s, 0.5s, fade, fade); }
+//   @mixin column-5 { @include mui-queue(1.5s, 0.5s, fade, zoom); }
+// }
+
+// @include mui-series {
+//   // 2 second shake
+//   @mixin shake { @include mui-queue(2s, 0s, shake); }
+//   // 1 second spin with a 2 second pause
+//   @mixin spin { @include mui-queue(1s, 2s, spin); }
+//   // 1 second zoom and fade
+//   @mixin fade-zoom { @include mui-queue(1s, 0s, fade, zoom); }
+// }
+
+@mixin slide-and-fade-and-spin {
+  @include mui-animation(slide, fade, spin(120deg));
+}
+
+@mixin custom1 {
+  @include mui-hinge(
+    $state: in,
+    $from: top,
+    $fade: true,
+    $turn-origin: from-back,
+    $duration: 2s,
+    $timing: map-get($motion-ui-easings, bounceInOut)
+  );
+}
+
+/*
+.animate-fade-in {
+  @include mui-animation(fade);
+}
+*/
+
+// @include mui-series {
+//   @mixin zoom-first { @include mui-queue(2s, 1s, fade, zoom($from:2)); }
+//   @mixin zoom-second { @include mui-queue(2s, 1s, zoom); }
+//   @mixin zoom-third { @include mui-queue(1s, 0s, fade, zoom); }
+// }
+
+@mixin puffIn-1 {
+  @include mui-animation(fade, zoom($from: 2));
+
+  animation-duration: 5s;
+}
+
+@mixin puffIn-2 {
+  @include mui-animation(fade, zoom($from: 2));
+
+  animation-duration: 10s;
+}
+
+@mixin puffIn-3 {
+  @include mui-animation(fade, zoom($from: 2));
+
+  animation-duration: 35s;
+}
+
+@mixin fadeInUp {
+  @include mui-animation(fade, slide($direction: up));
+
+  animation-duration: 25s;
+}

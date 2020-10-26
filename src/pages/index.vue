@@ -114,6 +114,8 @@ export default {
 }
 .title {
   display: block;
+  @include welcome;
+
   font-weight: 300;
   color: #35495e;
   letter-spacing: 1px;

@@ -69,10 +69,8 @@ export default {
     linkActiveClass: 'is-active',
     linkExactActiveClass: 'is-exact-active',
   },
-  publicRuntimeConfig: {
-  },
-  privateRuntimeConfig: {
-  },
+  publicRuntimeConfig: {},
+  privateRuntimeConfig: {},
   generate: {
     dir: 'dist',
     fallback: true,
@@ -370,26 +368,57 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#333' },
+  loading: '~/components/loading.vue',
 
   /*
    ** Global CSS
    */
   css: [
     '~/assets/scss/app.scss',
-    '~/assets/scss/transition.scss',
+    '~/assets/scss/transitions.scss',
     '@fortawesome/fontawesome-svg-core/styles.css',
   ],
   components: true,
 
-  // pageTransition: {
-  //   name: "fade-left",
-  //   mode: "out-in",
+  // by CSS
+  pageTransition: {
+    name: 'fade',
+    mode: 'out-in',
+  },
+  // pageTransition: 'bounce',
+  // by JS
+  // transition: {
+  //   mode: 'out-in',
+  //   css: false,
+  //   beforeEnter: el => {
+  //     console.log('about: before enter')
+  //     $(el).hide()
+  //   },
+  //   enter: (el, done) => {
+  //     console.log('about: enter')
+  //     $(el).fadeTo(3000, 1)
+  //     done()
+  //   },
+  //   afterEnter: el => {
+  //     console.log('about:after enter')
+  //   },
+  //   leave: (el, done) => {
+  //     console.log('about: leave')
+  //     $(el).fadeTo(3000, 0, () => {
+  //       $(el).hide()
+  //     })
+  //     done()
+  //   },
+  //   afterLeave: el => {
+  //     console.log('about: after leave')
+  //     $(el).hide()
+  //   }
   // },
-  // layoutTransition: {
-  //   name: "fade-right",
-  //   mode: "out-in",
-  // },
+
+  layoutTransition: {
+    name: 'fade-layout',
+    mode: 'out-in',
+  },
   /*
    ** Source Directory
    */
