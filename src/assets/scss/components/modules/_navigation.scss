@@ -68,7 +68,7 @@
 }
 .title-bar {
   // mobile menu
-  margin-top: -20px;
+  margin-top: 0;
   text-align: left;
   background-color: $primary-color;
   opacity: 0.9;
@@ -101,6 +101,7 @@
   }
   .title-bar-right {
     margin-right: 20px;
+    margin-top: -5px;
     .menu-icon {
       @include hamburger($color: rgba($white, 0.8));
     }
