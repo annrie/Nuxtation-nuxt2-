@@ -69,7 +69,11 @@ export default {
     linkActiveClass: 'is-active',
     linkExactActiveClass: 'is-exact-active',
   },
-  publicRuntimeConfig: {},
+  publicRuntimeConfig: {
+    googleAnalytics: {
+      id: process.env.GOOGLE_ANALYTICS_ID,
+    },
+  },
   privateRuntimeConfig: {},
   generate: {
     dir: 'dist',
@@ -365,6 +369,11 @@ export default {
     },
   },
 
+  // features: {
+  //   transitions: false
+  // },
+  vueMeta: { refreshOnceOnNavigation: true },
+
   /*
    ** Customize the progress-bar color
    */
@@ -461,10 +470,26 @@ export default {
   buildModules: [
     '@nuxtjs/pwa',
     '@nuxtjs/gtm',
-    // ['@nuxtjs/google-analytics', { id: 'UA-XXXXXXXX-X' }],
+    '@nuxtjs/google-analytics',
     ['@nuxtjs/moment', ['ja']],
     '@nuxtjs/stylelint-module',
   ],
+  googleAnalytics: {
+    id: process.env.GOOGLE_ANALYTICS_ID, // Use as fallback if no runtime config is provided
+    debug: {
+      enabled: true,
+      sendHitTask: true,
+    },
+    autoTracking: {
+      pageviewTemplate: (route) => {
+        return {
+          page: route.path,
+          title: window.document.title,
+          location: window.location.href,
+        };
+      },
+    },
+  },
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',

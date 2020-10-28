@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue from 'vue';
 import jQuery from 'jquery';
 import whatInput from 'what-input';
 import 'foundation-sites';
