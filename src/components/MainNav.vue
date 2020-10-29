@@ -81,7 +81,7 @@ export default {
     }),
   },
   mounted() {
-   $(document).foundation();
+  //  $(document).foundation();
     // this.offCanvas = new Foundation.OffCanvas($("#offCanvas"));
     // this.smoothScroll = new Foundation.SmoothScroll($('#mainNav'))
     // this.sticky = new Foundation.Sticky($('#mainNav'));
