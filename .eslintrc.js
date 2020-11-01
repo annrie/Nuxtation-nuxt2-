@@ -18,12 +18,14 @@ module.exports = {
   parser: 'vue-eslint-parser',
   parserOptions: {
     parser: 'babel-eslint',
-    sourceType: 'module',
-    ecmaVersion: 2020,
-    ecmaFeatures: {
-      globalReturn: true,
-      impliedStrict: true,
-      jsx: true,
+    parserOptions: {
+      ecmaVersion: 2020,
+      sourceType: 'module',
+      ecmaFeatures: {
+        jsx: true,
+        module: true,
+        experimentalObjectRestSpread: true,
+      },
     },
   },
   plugins: ['vue'],
