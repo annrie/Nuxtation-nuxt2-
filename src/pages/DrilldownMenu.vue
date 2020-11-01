@@ -36,14 +36,10 @@ export default {
     };
   },
   mounted() {
-   $(document).foundation();
-    // this.drilldown = new Foundation.Drilldown($('#drilldown'), {
-    //   // These options can be declarative using the data attributes
-    //   animationDuration: 500,
-    // });
+    this.drilldown = new Foundation.Drilldown($('#drilldown'), {
+      // These options can be declarative using the data attributes
+      animationDuration: 500,
+    });
   },
-  // destroyed() {
-  //   this.drilldown.destroy();
-  // },
 };
 </script>

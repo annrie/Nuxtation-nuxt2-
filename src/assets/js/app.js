@@ -31,7 +31,6 @@ Vue.prototype.$motionUi = MotionUi;
 window.jQuery = $;
 window.$ = $;
 
-$(document).foundation();
 // $('.is-submenu-item').on('click', function() {
 //   $(this)
 //     .parent('.parent')

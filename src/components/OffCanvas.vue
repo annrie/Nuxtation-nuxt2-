@@ -63,8 +63,7 @@ export default {
     }),
   },
   mounted() {
-  //  $(document).foundation();
-    // this.offCanvas = new Foundation.OffCanvas($('#offCanvas'));
+   this.offCanvas = new Foundation.OffCanvas($('#offCanvas'));
    this.drillDown = new Foundation.Drilldown($('#drillDown'), {
       // These options can be declarative using the data attributes
       animationDuration: 1500,

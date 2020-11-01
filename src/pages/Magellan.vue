@@ -80,16 +80,12 @@ export default {
     },
   },
   mounted() {
-   $(document).foundation();
-    // this.sticky = new Foundation.Sticky($('#magellan'));
-    // this.magellan = new Foundation.Magellan($('#magellan'), {
-    //   // These options can be declarative using the data attributes
-    //   animationEasing: 'swing',
-    // });
+    this.sticky = new Foundation.Sticky($('#magellan'));
+    this.magellan = new Foundation.Magellan($('#magellan'), {
+      // These options can be declarative using the data attributes
+      animationEasing: 'swing',
+    });
   },
-  // destroyed() {
-  //   this.magellan.destroy();
-  // },
 };
 </script>
 

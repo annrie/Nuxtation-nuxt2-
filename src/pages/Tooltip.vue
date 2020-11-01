@@ -43,21 +43,16 @@ export default {
     };
   },
   mounted() {
-   $(document).foundation();
     // The following code works however only if showOn: 'all' is set.
     // This is a known bug: https://github.com/zurb/foundation-sites/issues/7554
     // Until this bug is fixed, Use the selector method
-    // this.tooltip = new Foundation.Tooltip($('.has-tip'), {
-    //   // These options can be declarative using the data attributes
-    //   showOn: 'all',
-    // });
+    this.tooltip = new Foundation.Tooltip($('.has-tip'), {
+      // These options can be declarative using the data attributes
+      showOn: 'all',
+    });
 
     // Selector method
-    // this.tooltip = $('.has-tip').foundation();
+    this.tooltip = $('.has-tip').foundation();
   },
-  // destroyed() {
-  //   // Due to Selector Method destroy is disabled
-  //   // this.tooltip.destroy();
-  // },
 };
 </script>

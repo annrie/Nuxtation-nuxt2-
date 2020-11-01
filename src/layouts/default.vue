@@ -53,11 +53,7 @@ export default {
   },
   mounted() {
     $(document).foundation();
-    // this.smoothScroll = new Foundation.SmoothScroll($('#app'));
   },
-  // destroyed() {
-  //   this.smoothScroll.destroy();
-  // },
 };
 </script>
 <style lang="scss">

@@ -41,7 +41,6 @@ export default {
   },
   mounted() {
    $(document).foundation();
-    // this.sticky = new Foundation.Sticky($('#mainNav'));
   },
 };
 </script>

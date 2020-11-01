@@ -83,14 +83,10 @@ export default {
     };
   },
   mounted() {
-   $(document).foundation();
-    // this.orbit = new Foundation.Orbit($('#orbit'), {
-    //   // These options can be declarative using the data attributes
-    //   timerDelay: 2000,
-    // });
+    this.orbit = new Foundation.Orbit($('#orbit'), {
+      // These options can be declarative using the data attributes
+      timerDelay: 2000,
+    });
   },
-  // destroyed() {
-  //   this.orbit.destroy();
-  // },
 };
 </script>

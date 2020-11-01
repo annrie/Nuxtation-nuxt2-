@@ -61,14 +61,10 @@ export default {
     };
   },
   mounted() {
-   $(document).foundation();
-    // this.tabs = new Foundation.Tabs($('#tabs'), {
-    //   // These options can be declarative using the data attributes
-    //   matchHeight: false,
-    // });
+    this.tabs = new Foundation.Tabs($('#tabs'), {
+      // These options can be declarative using the data attributes
+      matchHeight: false,
+    });
   },
-  // destroyed() {
-  //   this.tabs.destroy();
-  // },
 };
 </script>

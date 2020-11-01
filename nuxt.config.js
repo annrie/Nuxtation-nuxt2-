@@ -134,12 +134,12 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
 
       // icons
-      {
-        rel: 'icon',
-        sizes: '16x16',
-        type: 'image/png',
-        href: iconImages + 'favicon-16x16.png',
-      },
+      // {
+      //   rel: 'icon',
+      //   sizes: '16x16',
+      //   type: 'image/png',
+      //   href: iconImages + 'favicon-16x16.png',
+      // },
       {
         rel: 'icon',
         sizes: '32x32',
