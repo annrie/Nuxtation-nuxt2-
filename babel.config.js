@@ -10,15 +10,19 @@ module.exports = function (api) {
             browsers: ['> 1%', 'last 2 versions', 'not ie <= 8'],
           },
           useBuiltIns: 'entry',
-          corejs: 3, // ← バージョンを追加
+          corejs: 3,
+          proposals: true,
         },
       ],
     ],
     plugins: [
+      ['@babel/plugin-transform-runtime', { corejs: 3 }],
+      ['@babel/plugin-syntax-dynamic-import'],
       [
         '@babel/plugin-proposal-object-rest-spread',
         {
           loose: true,
+          useBuiltIns: true,
         },
       ],
       [
@@ -27,7 +31,6 @@ module.exports = function (api) {
           legacy: true,
         },
       ],
-      // クラス属性の構文の処理法
       [
         '@babel/plugin-proposal-class-properties',
         {
@@ -38,5 +41,5 @@ module.exports = function (api) {
       '@babel/plugin-proposal-export-namespace-from',
       '@babel/plugin-proposal-numeric-separator',
     ],
-  }
+  };
 }

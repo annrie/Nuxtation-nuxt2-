@@ -43,14 +43,7 @@
 </template>
 
 <script>
-// import Footer from "./TheFooter";
-// import OffCanvas from "@/components/TheOffCanvas";
-// import MainNav from "@/components/TheMainNav";
-
 export default {
-  components: {
-
-  },
   mounted() {
     $(document).foundation();
   },
