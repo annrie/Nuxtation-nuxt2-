@@ -1,8 +1,8 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-/* jshint esversion: 6 */
 
-import '@babel/polyfill'
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 import Vue from 'vue'
 import './foundation'
 // import './styles/app'
@@ -12,7 +12,6 @@ import './foundation'
 
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
 // new Vue({
 //   el: '#app',
 //   router,

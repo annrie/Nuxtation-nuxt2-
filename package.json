@@ -16,11 +16,6 @@
     "lint-staged": "lint-staged",
     "clear-hard-source-cache": "rm -rf node_modules/.cache/hard-source/"
   },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
-  },
   "browserslist": [
     "last 2 versions",
     "android >= 4.4",
