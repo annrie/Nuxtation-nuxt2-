@@ -52,7 +52,7 @@ export default {
   },
   dev: process.env.NODE_ENV !== 'production',
   ssr: true,
-  // target: "static",
+  // target: 'static',
   env: {
     baseUrl,
     baseDir,
@@ -633,7 +633,6 @@ export default {
     // analyze: true,
     babelrc: true,
     fallback: false,
-    publicPath: '/assets/',
     devtools: process.env.NODE_ENV === 'production',
     // extractCSS: process.env.NODE_ENV === 'production',
     // subFolders: false,
