@@ -552,7 +552,7 @@ export default {
   },
 
   styleResources: {
-    scss: ['~/assets/scss/app.scss'],
+    scss: ['assets/scss/app.scss'],
   },
 
   /*
@@ -592,7 +592,6 @@ export default {
         },
       }),
     ],
-    extractCSS: process.env.NODE_ENV === 'production',
     optimization: {
       splitChunks: {
         cacheGroups: {
@@ -634,7 +633,9 @@ export default {
     babelrc: true,
     fallback: false,
     devtools: process.env.NODE_ENV === 'production',
-    // extractCSS: process.env.NODE_ENV === 'production',
+    extractCSS: {
+      ignoreOrder: true,
+    },
     // subFolders: false,
     filenames: {
       app: () => 'js/[name].js',
