@@ -521,7 +521,7 @@ export default {
     "@nuxtjs/pwa",
     "@nuxtjs/gtm",
     // '@nuxtjs/google-analytics',
-    ["@nuxtjs/moment", ["en"]],
+    ["@nuxtjs/moment", ["ja"]],
     // Doc: https://github.com/nuxt-community/eslint-module
     ["@nuxtjs/eslint-module", { ignorePath: ".eslintignore" }],
     // Doc: https://github.com/nuxt-community/stylelint-module
