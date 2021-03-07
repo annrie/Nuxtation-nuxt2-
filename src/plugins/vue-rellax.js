@@ -1,4 +1,4 @@
-import Vue from 'vue'
-import VueRellax from 'vue-rellax'
+import Vue from "vue";
+import VueRellax from "vue-rellax";
 
-Vue.use(VueRellax)
+Vue.use(VueRellax);

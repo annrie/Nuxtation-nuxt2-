@@ -1,18 +1,18 @@
 function externalLinks() {
   if (!document.getElementsByTagName) {
-    return
+    return;
   }
-  const anchors = document.getElementsByTagName('a')
+  const anchors = document.getElementsByTagName("a");
   for (let i = 0; i < anchors.length; i++) {
-    const anchor = anchors[i]
+    const anchor = anchors[i];
     if (
-      anchor.getAttribute('href') &&
-      (anchor.getAttribute('rel') === 'external nofollow' ||
-        anchor.getAttribute('rel') === 'nofollow external' ||
-        anchor.getAttribute('rel') === 'external')
+      anchor.getAttribute("href") &&
+      (anchor.getAttribute("rel") === "external nofollow" ||
+        anchor.getAttribute("rel") === "nofollow external" ||
+        anchor.getAttribute("rel") === "external")
     ) {
-      anchor.target = '_blank'
+      anchor.target = "_blank";
     }
   }
 }
-window.onload = externalLinks
+window.onload = externalLinks;

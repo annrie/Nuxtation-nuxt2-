@@ -25,17 +25,17 @@
 </template>
 
 <script>
-import Meta from '~/assets/mixins/meta';
+import Meta from "~/assets/mixins/meta";
 
 export default {
-  name: 'Accordion',
+  name: "Accordion",
   mixins: [Meta],
   data() {
     return {
-      msg: 'Accordion',
+      msg: "Accordion",
       meta: {
-        title: 'Accordion',
-        type: 'article',
+        title: "Accordion",
+        type: "article",
       },
     };
   },
@@ -45,7 +45,7 @@ export default {
     },
   },
   mounted() {
-    this.accordion = new Foundation.Accordion($('#accordion'), {
+    this.accordion = new Foundation.Accordion($("#accordion"), {
       // These options can be declarative using the data attributes
       slideSpeed: 500,
       multiExpand: true,

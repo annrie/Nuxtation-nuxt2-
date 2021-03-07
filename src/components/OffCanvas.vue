@@ -5,12 +5,7 @@
     data-off-canvas
     data-close-on-click="true"
   >
-    <button
-      class="close-button"
-      aria-label="Close menu"
-      type="button"
-      data-close
-    >
+    <button class="close-button" aria-label="Close menu" type="button" data-close>
       <span aria-hidden="true">&times;</span>
     </button>
     <ul
@@ -23,20 +18,11 @@
       data-scroll-top="true"
     >
       <template v-for="menu in getAll">
-        <li
-          v-if="menu.sub"
-          :key="menu.id"
-          class="is-drilldown-submenu-parent"
-          data-open
-        >
+        <li v-if="menu.sub" :key="menu.id" class="is-drilldown-submenu-parent" data-open>
           <a>{{ menu.category }}</a>
           <ul class="vertical dropdown menu">
-            <li v-for="submenu in menu.sub" :key="submenu.id">
-              <nuxt-link
-                :to="submenu.link"
-                :exact="submenu.link == '/'"
-                data-close
-              >
+            <li v-for="submenu in menu.sub" :key="submenu.index">
+              <nuxt-link :to="submenu.link" :exact="submenu.link == '/'" data-close>
                 {{ submenu.category }}
               </nuxt-link>
             </li>
@@ -53,18 +39,18 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 
 export default {
-  name: 'App',
+  name: "App",
   computed: {
     ...mapGetters({
-      getAll: 'json/getAll',
+      getAll: "json/getAll",
     }),
   },
   mounted() {
-   this.offCanvas = new Foundation.OffCanvas($('#offCanvas'));
-   this.drillDown = new Foundation.Drilldown($('#drillDown'), {
+    this.offCanvas = new Foundation.OffCanvas($("#offCanvas"));
+    this.drillDown = new Foundation.Drilldown($("#drillDown"), {
       // These options can be declarative using the data attributes
       animationDuration: 1500,
     });

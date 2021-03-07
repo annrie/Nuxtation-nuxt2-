@@ -1,7 +1,5 @@
 extends:
   - stylelint-config-recommended-scss
-  # - stylelint-config-standard-scss
-  # - stylelint-config-recess-order
   - stylelint-config-prettier
   - stylelint-prettier/recommended
 plugins:
@@ -124,6 +122,9 @@ rules:
       /calc/,
       /map-merge/,
       /translate/,
+      /invert/,
+      /repeat/,
+      /minmax/,
     ]
   unit-allowed-list:
     ["em", "rem", "%", "s", "ms", "vh", "vw", "px", "deg", "dpi", "fr"]
@@ -139,3 +140,10 @@ rules:
     - ignoreUnits:
         - /^[-+][\d$(]/
   # value-keyword-case: lower
+ignoreFiles:
+  - node_modules/**
+  - src/assets/fonts/**
+  - src/assets/less/**
+  - src/**/*.json
+  - src/assets/images/**
+  - src/assets/img/**

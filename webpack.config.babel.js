@@ -1,15 +1,15 @@
-const path = require('path')
-const { VueLoaderPlugin } = require('vue-loader')
+const path = require("path");
+const { VueLoaderPlugin } = require("vue-loader");
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const ImageminPlugin = require('imagemin-webpack-plugin').default
-const imageminMozjpeg = require('imagemin-mozjpeg')
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ImageminPlugin = require("imagemin-webpack-plugin").default;
+const imageminMozjpeg = require("imagemin-mozjpeg");
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 
-const srcpath = './src/'
-const cssfile = './app.scss'
-const outputpath = './dist/'
+const srcpath = "./src/";
+const cssfile = "./app.scss";
+const outputpath = "./dist/";
 // const current = process.cwd()
 
 // function resolve(dir) {
@@ -17,19 +17,19 @@ const outputpath = './dist/'
 // }
 
 module.exports = (env) => {
-  const mode = env && env.production ? 'production' : 'development'
+  const mode = env && env.production ? "production" : "development";
   return {
     mode,
     entry: {
-      main: path.resolve(__dirname, srcpath + 'plugins/main.js'),
-      css: path.resolve(__dirname, srcpath + 'assets/scss' + cssfile),
+      main: path.resolve(__dirname, srcpath + "plugins/main.js"),
+      css: path.resolve(__dirname, srcpath + "assets/scss" + cssfile),
     },
     context: srcpath,
     output: {
-      chunkFilename: '[id].[hash].js',
+      chunkFilename: "[id].[hash].js",
       // https://reactjs.org/docs/cross-origin-errors.html
-      crossOriginLoading: 'anonymous',
-      filename: '[name].[hash].js',
+      crossOriginLoading: "anonymous",
+      filename: "[name].[hash].js",
       // path: path.resolve(__dirname, 'dist'),
       path: path.resolve(__dirname, outputpath),
       // filename: 'main.js',
@@ -37,8 +37,8 @@ module.exports = (env) => {
     // ローカル開発用環境を立ち上げる
     // 実行時にブラウザが自動的に localhost を開く
     devServer: {
-      contentBase: path.resolve(__dirname, 'dist'),
-      clientLogLevel: 'none',
+      contentBase: path.resolve(__dirname, "dist"),
+      clientLogLevel: "none",
       // quiet: false,
       disableHostCheck: true,
       hot: true,
@@ -55,10 +55,10 @@ module.exports = (env) => {
         {
           test: /\.js$/,
           exclude: /node_modules/,
-          include: path.resolve('src'),
+          include: path.resolve("src"),
           use: [
             {
-              loader: 'thread-loader',
+              loader: "thread-loader",
               // loaders with equal options will share worker pools
               options: {
                 // the number of spawned workers, defaults to (number of cpus - 1) or
@@ -70,7 +70,7 @@ module.exports = (env) => {
                 workerParallelJobs: 50,
 
                 // additional node.js arguments
-                workerNodeArgs: ['--max-old-space-size=1024'],
+                workerNodeArgs: ["--max-old-space-size=1024"],
 
                 // Allow to respawn a dead worker pool
                 // respawning slows down the entire compilation
@@ -89,13 +89,13 @@ module.exports = (env) => {
 
                 // name of the pool
                 // can be used to create different pools with elsewise identical options
-                name: 'my-pool',
+                name: "my-pool",
               },
             },
             {
-              loader: 'babel-loader',
+              loader: "babel-loader",
               query: {
-                presets: ['@babel/preset-env'],
+                presets: ["@babel/preset-env"],
               },
             },
           ],
@@ -104,14 +104,14 @@ module.exports = (env) => {
           test: /\.vue$/,
           use: [
             {
-              loader: 'vue-loader',
+              loader: "vue-loader",
               options: {
                 prettify: true,
                 transformAssetUrls: {
-                  video: ['src', 'poster'],
-                  source: 'src',
-                  img: 'src',
-                  image: 'xlink:href',
+                  video: ["src", "poster"],
+                  source: "src",
+                  img: "src",
+                  image: "xlink:href",
                 },
               },
             },
@@ -121,10 +121,10 @@ module.exports = (env) => {
           test: /\.(png|jpe?g|gif|svg|webp)$/,
           use: [
             {
-              loader: 'url-loader',
+              loader: "url-loader",
               query: {
                 limit: 1000, // 1kB
-                name: 'img/[name].[hash:7].[ext]',
+                name: "img/[name].[hash:7].[ext]",
               },
             },
           ],
@@ -133,10 +133,10 @@ module.exports = (env) => {
           test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
           use: [
             {
-              loader: 'url-loader',
+              loader: "url-loader",
               query: {
                 limit: 1000, // 1kB
-                name: 'fonts/[name].[hash:7].[ext]',
+                name: "fonts/[name].[hash:7].[ext]",
               },
             },
           ],
@@ -147,26 +147,26 @@ module.exports = (env) => {
             {
               loader: MiniCssExtractPlugin.loader,
               options: {
-                hmr: process.env.NODE_ENV === 'development',
+                hmr: process.env.NODE_ENV === "development",
               },
             },
             {
-              loader: 'css-loader',
+              loader: "css-loader",
               options: {
                 importLoaders: 1,
                 url: true,
                 sourceMap: !!(env && env.production),
               },
             },
+            // {
+            //   loader: 'postcss-loader',
+            //   options: {
+            //     ident: 'postcss',
+            //     sourceMap: !!(env && env.production),
+            //   },
+            // },
             {
-              loader: 'postcss-loader',
-              options: {
-                ident: 'postcss',
-                sourceMap: !!(env && env.production),
-              },
-            },
-            {
-              loader: 'sass-loader',
+              loader: "sass-loader",
               options: {
                 sourceMap: !!(env && env.production),
               },
@@ -176,12 +176,12 @@ module.exports = (env) => {
       ],
     },
     resolve: {
-      extensions: ['*', '.js', '.jsx', '.vue', '.json'],
-      modules: [srcpath, 'node_modules'],
+      extensions: ["*", ".js", ".jsx", ".vue", ".json"],
+      modules: [srcpath, "node_modules"],
       alias: {
-        vue$: 'vue/dist/vue.esm.js',
-        Foundation: 'foundation-sites/js',
-        whatInput: 'what-input',
+        vue$: "vue/dist/vue.esm.js",
+        Foundation: "foundation-sites/js",
+        whatInput: "what-input",
       },
     },
     plugins: [
@@ -194,27 +194,27 @@ module.exports = (env) => {
       new ImageminPlugin({
         disable: !env.production,
         test: /\.(jpe?g|png|gif|svg)$/i,
-        pngquant: { quality: '80' },
-        plugins: [imageminMozjpeg({ quality: '80' })],
+        pngquant: { quality: "80" },
+        plugins: [imageminMozjpeg({ quality: "80" })],
       }),
       new HardSourceWebpackPlugin({
-        cacheDirectory: 'node_modules/.cache/hard-source/[confighash]',
-        configHash: function (webpackConfig) {
+        cacheDirectory: "node_modules/.cache/hard-source/[confighash]",
+        configHash(webpackConfig) {
           // node-object-hash on npm can be used to build this.
-          return require('node-object-hash')({ sort: false }).hash(webpackConfig);
+          return require("node-object-hash")({ sort: false }).hash(webpackConfig);
         },
         // Either false, a string, an object, or a project hashing function.
         environmentHash: {
           root: process.cwd(),
           directories: [],
-          files: ['package-lock.json', 'yarn.lock'],
+          files: ["package-lock.json", "yarn.lock"],
         },
         // An object.
         info: {
           // 'none' or 'test'.
-          mode: 'none',
+          mode: "none",
           // 'debug', 'log', 'info', 'warn', or 'error'.
-          level: 'debug',
+          level: "debug",
         },
         // Clean up large, old caches automatically.
         cachePrune: {
@@ -233,8 +233,8 @@ module.exports = (env) => {
       maxEntrypointSize: 50000000,
       maxAssetsSize: 30000000,
       assetFilter(assetFilename) {
-        return assetFilename.endWith('.js');
+        return assetFilename.endWith(".js");
       },
     },
   };
-}
+};

@@ -1,11 +1,6 @@
 <template>
   <div id="app">
-    <nav
-      id="skip-links"
-      class="skip-links"
-      aria-label="Skip links"
-      data-smooth-scroll
-    >
+    <nav id="skip-links" class="skip-links" aria-label="Skip links" data-smooth-scroll>
       <a class="screen-reader-text" href="#main">Skip to content</a>
       <a class="screen-reader-text" href="#menu">Skip to navigation</a>
     </nav>
@@ -25,7 +20,7 @@
       </div>
       <div id="top" />
       <div id="content-top" />
-      <Footer />
+      <LazyTheFooter />
     </div>
   </div>
 </template>
@@ -33,7 +28,7 @@
 <script>
 export default {
   mounted() {
-   $(document).foundation();
+    $(document).foundation();
   },
 };
 </script>

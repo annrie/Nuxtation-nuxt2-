@@ -1,11 +1,11 @@
 .no-js {
-  @include breakpoint(small only) {
+  @include breakpoint(small) {
     .desktop-menu {
       display: none;
     }
   }
 
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     .mobile-menu {
       display: none;
     }
@@ -13,14 +13,15 @@
 }
 .mobile-menu,
 .site-title-bar {
-  @include hide-for(medium);
+  @include hide-for(large);
 }
 .desktop-menu,
 .site-navigation {
   opacity: 0.8;
-  .top-bar-left {
-    @include show-for(medium);
-  }
+  @include show-for(large);
+
+  // .top-bar-left {
+  // }
 }
 .vertical {
   &.nested {
@@ -68,7 +69,7 @@
 }
 .title-bar {
   // mobile menu
-  margin-top: 0;
+  margin-top: -1rem;
   text-align: left;
   background-color: $primary-color;
   opacity: 0.9;
@@ -81,11 +82,11 @@
       @media screen and (max-width: 23em) {
         font-size: rem-calc(13);
       }
-      @include breakpoint(small only) {
+      @include breakpoint(small) {
         font-size: rem-calc(16);
       }
-      @include breakpoint(medium down) {
-        font-size: rem-calc(18);
+      @include breakpoint(tablet down) {
+        font-size: rem-calc(20);
       }
     }
   }
@@ -102,6 +103,9 @@
   .title-bar-right {
     margin-right: 20px;
     margin-top: -5px;
+    @include breakpoint(tablet) {
+      display: inline-block !important;
+    }
     .menu-icon {
       @include hamburger($color: rgba($white, 0.8));
     }
@@ -111,7 +115,7 @@
   // non mobile menu
   position: relative;
   top: -20px;
-  @include breakpoint(small only) {
+  @include breakpoint(small) {
     display: none;
   }
 
@@ -138,9 +142,9 @@
       }
     }
 
-    @include breakpoint(tablet) {
-      left: 1rem;
-    }
+    // @include breakpoint(tablet) {
+    //   left: 1rem;
+    // }
   }
   .menu {
     &.desktop-menu {
@@ -149,7 +153,7 @@
       margin-top: 40px;
       font-weight: bold;
       line-height: 1;
-      @include breakpoint(medium) {
+      @include breakpoint(large) {
         font-size: 0.6rem;
       }
       @include breakpoint(xlarge) {

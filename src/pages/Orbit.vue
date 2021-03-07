@@ -5,13 +5,7 @@
         <h1>{{ msg }}</h1>
       </div>
       <div class="cell">
-        <div
-          id="orbit"
-          class="orbit"
-          role="region"
-          aria-label="Favorite Space Pictures"
-          data-orbit
-        >
+        <div id="orbit" class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
           <ul class="orbit-container">
             <button class="orbit-previous">
               <span class="show-for-sr">Previous Slide</span>
@@ -23,27 +17,19 @@
             </button>
             <li class="is-active orbit-slide">
               <img class="orbit-image" src="/img/orbit/01.jpg" alt="Space" />
-              <figcaption class="orbit-caption">
-                Space, the final frontier.
-              </figcaption>
+              <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
             </li>
             <li class="orbit-slide">
               <img class="orbit-image" src="/img/orbit/02.jpg" alt="Space" />
-              <figcaption class="orbit-caption">
-                Lets Rocket!
-              </figcaption>
+              <figcaption class="orbit-caption">Lets Rocket!</figcaption>
             </li>
             <li class="orbit-slide">
               <img class="orbit-image" src="/img/orbit/03.jpg" alt="Space" />
-              <figcaption class="orbit-caption">
-                Encapsulating
-              </figcaption>
+              <figcaption class="orbit-caption">Encapsulating</figcaption>
             </li>
             <li class="orbit-slide">
               <img class="orbit-image" src="/img/orbit/04.jpg" alt="Space" />
-              <figcaption class="orbit-caption">
-                Outta This World
-              </figcaption>
+              <figcaption class="orbit-caption">Outta This World</figcaption>
             </li>
           </ul>
           <nav class="orbit-bullets">
@@ -68,22 +54,22 @@
 </template>
 
 <script>
-import Meta from '~/assets/mixins/meta';
+import Meta from "~/assets/mixins/meta";
 
 export default {
-  name: 'Orbit',
+  name: "Orbit",
   mixins: [Meta],
   data() {
     return {
-      msg: 'Orbit',
+      msg: "Orbit",
       meta: {
-        title: 'Orbit',
-        type: 'article',
+        title: "Orbit",
+        type: "article",
       },
     };
   },
   mounted() {
-    this.orbit = new Foundation.Orbit($('#orbit'), {
+    this.orbit = new Foundation.Orbit($("#orbit"), {
       // These options can be declarative using the data attributes
       timerDelay: 2000,
     });

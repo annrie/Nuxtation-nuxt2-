@@ -1,74 +1,64 @@
 [
   {
-    "id": 1,
     "category": "Home",
     "link": "/"
   },
   {
-    "id": 2,
     "category": "Reveal",
-    "link": "reveal"
+    "link": "/reveal"
   },
   {
-    "id": 3,
     "category": "Slider",
-    "link": "slider"
+    "link": "/slider"
   },
   {
-    "id": 4,
     "category": "Tooltip",
-    "link": "tooltip"
+    "link": "/tooltip"
   },
   {
-    "id": 5,
     "category": "Various Menus",
     "link": "",
     "sub": [
       {
-        "id": 5.1,
         "category": "Dropdown Menu",
-        "link": "dropdownmenu"
+        "link": "/dropdownmenu"
       },
       {
-        "id": 5.2,
         "category": "Drilldown Menu",
-        "link": "drilldownmenu"
+        "link": "/drilldownmenu"
       },
       {
-        "id": 5.3,
         "category": "Accordion Menu",
-        "link": "accordionmenu"
+        "link": "/accordionmenu"
       }
     ]
   },
   {
-    "id": 6,
     "category": "Magellan",
-    "link": "magellan"
+    "link": "/magellan"
   },
   {
-    "id": 7,
     "category": "Accordion",
-    "link": "accordion"
+    "link": "/accordion"
   },
   {
-    "id": 8,
     "category": "Dropdown",
-    "link": "dropdown"
+    "link": "/dropdown"
   },
   {
-    "id": 9,
     "category": "Tabs",
-    "link": "tabs"
+    "link": "/tabs"
   },
   {
-    "id": 10,
     "category": "Orbit",
-    "link": "orbit"
+    "link": "/orbit"
   },
   {
-    "id": 11,
     "category": "Form",
-    "link": "form"
+    "link": "/form"
+  },
+  {
+    "category": "Blog",
+    "link": "/blog"
   }
 ]

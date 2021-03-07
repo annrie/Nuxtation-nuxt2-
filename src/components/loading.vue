@@ -1,33 +1,33 @@
 <template>
   <div v-if="loading" class="loading-page">
-    <p>Loading...</p>
+    <p>
+      <i class="fa fa-spinner fa-spin fa-3x fa-fw" aria-hidden="true" />
+      <span class="sr-only">Loading...</span>
+    </p>
   </div>
 </template>
 
 <script>
 export default {
-  // data: () => ({
-  //   loading: false
-  // }),
-  // Same as:
-  data () {
+  data() {
     return {
-      loading: false
-    }
+      loading: false,
+    };
   },
   methods: {
-    start () {
-      this.loading = true
+    start() {
+      this.loading = true;
     },
-    finish () {
-      this.loading = false
-    }
-  }
-}
+    finish() {
+      this.loading = false;
+    },
+  },
+};
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .loading-page {
+  // @include absolute-center;
   position: fixed;
   top: 0;
   left: 0;
@@ -36,7 +36,10 @@ export default {
   background: rgba(255, 255, 255, 0.8);
   text-align: center;
   padding-top: 200px;
-  font-size: 30px;
-  font-family: sans-serif;
+  font-size: 5rem;
+  z-index: 50;
+  & i.fa {
+    color: $grey-dark;
+  }
 }
 </style>

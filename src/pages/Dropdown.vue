@@ -5,15 +5,8 @@
         <h1>{{ msg }}</h1>
       </div>
       <div class="cell">
-        <button class="button" type="button" data-toggle="dropdown1">
-          Toggle Dropdown
-        </button>
-        <div
-          id="dropdown1"
-          class="dropdown-pane"
-          data-dropdown
-          data-auto-focus="true"
-        >
+        <button class="button" type="button" data-toggle="dropdown1">Toggle Dropdown</button>
+        <div id="dropdown1" class="dropdown-pane" data-dropdown data-auto-focus="true">
           Example form in a dropdown.
           <form>
             <div class="row">
@@ -32,9 +25,7 @@
             </div>
           </form>
         </div>
-        <button class="button" type="button" data-toggle="dropdown2">
-          Hoverable Dropdown
-        </button>
+        <button class="button" type="button" data-toggle="dropdown2">Hoverable Dropdown</button>
         <div
           id="dropdown2"
           class="dropdown-pane"
@@ -50,21 +41,20 @@
 </template>
 
 <script>
-import Meta from '~/assets/mixins/meta';
+import Meta from "~/assets/mixins/meta";
 
 export default {
-  name: 'Dropdown',
+  name: "Dropdown",
   mixins: [Meta],
   data() {
     return {
-      msg: 'Dropdown',
+      msg: "Dropdown",
       meta: {
-        title: 'Dropdown',
-        type: 'article',
+        title: "Dropdown",
+        type: "article",
       },
     };
   },
-  mounted() {
-  },
+  mounted() {},
 };
 </script>

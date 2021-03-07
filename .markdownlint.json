@@ -1,0 +1,9 @@
+{
+  "default": true,
+  "MD013": false,
+  "MD003": { "style": "atx" },
+  "MD007": { "indent": 4 },
+  "MD033": false,
+  "MD046": { "style": "fenced"},
+  "no-hard-tabs": false
+}

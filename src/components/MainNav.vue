@@ -4,7 +4,7 @@
     class="site-header sticky"
     data-sticky
     data-options="marginTop:0;"
-    style="width: 100%;"
+    style="width: 100%"
     data-sticky-on="small"
   >
     <section
@@ -14,18 +14,16 @@
       tabindex="-1"
     >
       <div class="title-bar-left">
-        <div class="title-bar-title"><a href="/">Nuxtation</a></div>
+        <div class="title-bar-title">
+          <a href="/">Nuxtation</a>
+        </div>
       </div>
       <div class="title-bar-right" data-responsive-toggle="offCanvas">
         <button class="menu-icon" type="button" data-toggle="offCanvas" />
       </div>
     </section>
 
-    <section
-      class="site-navigation top-bar"
-      aria-label="Site navigation"
-      tabindex="-1"
-    >
+    <section class="site-navigation top-bar" aria-label="Site navigation" tabindex="-1">
       <div class="top-bar-left">
         <div class="site-desktop-title top-bar-title">
           <a href="/" rel="home" data-smooth-scroll>
@@ -38,14 +36,10 @@
       <nav class="top-bar-left" aria-label="Main menu" tabindex="-1">
         <ul id="dropDown" class="dropdown menu desktop-menu" data-dropdown-menu>
           <template v-for="menu in getAll">
-            <li
-              v-if="menu.sub"
-              :key="menu.id"
-              class="is-dropdown-submenu-parent"
-            >
+            <li v-if="menu.sub" :key="menu.id" class="is-dropdown-submenu-parent">
               <a>{{ menu.category }}</a>
               <ul class="vertical dropdown menu">
-                <li v-for="submenu in menu.sub" :key="submenu.id">
+                <li v-for="submenu in menu.sub" :key="submenu.index">
                   <nuxt-link :to="submenu.link" :exact="submenu.link == '/'">
                     {{ submenu.category }}
                   </nuxt-link>
@@ -65,26 +59,26 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 
 export default {
-  name: 'MainNav',
+  name: "MainNav",
   computed: {
     tagName() {
-      if (this.$route.name === 'index') {
-        return 'h1';
+      if (this.$route.name === "index") {
+        return "h1";
       }
-      return 'p';
+      return "p";
     },
     ...mapGetters({
-      getAll: 'json/getAll',
+      getAll: "json/getAll",
     }),
   },
   mounted() {
     // this.offCanvas = new Foundation.OffCanvas($('#offCanvas'));
-    this.smoothScroll = new Foundation.SmoothScroll($('#mainNav'))
-    this.sticky = new Foundation.Sticky($('#mainNav'));
-    this.dropDown = new Foundation.DropdownMenu($('#dropDown'));
+    this.smoothScroll = new Foundation.SmoothScroll($("#mainNav"));
+    this.sticky = new Foundation.Sticky($("#mainNav"));
+    this.dropDown = new Foundation.DropdownMenu($("#dropDown"));
   },
 };
 </script>

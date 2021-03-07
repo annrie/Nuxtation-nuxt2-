@@ -1,13 +1,13 @@
-import $ from 'jquery'
+import $ from "jquery";
 
 $(function () {
-  const pageTop = $('.back_to_top')
-  pageTop.hide()
+  const pageTop = $(".back_to_top");
+  pageTop.hide();
   $(window).scroll(function () {
     if ($(this).scrollTop() > 400) {
-      pageTop.fadeIn()
+      pageTop.fadeIn();
     } else {
-      pageTop.fadeOut()
+      pageTop.fadeOut();
     }
-  })
-})
+  });
+});

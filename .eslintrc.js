@@ -7,20 +7,20 @@ module.exports = {
     es6: true,
   },
   globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
+    Atomics: "readonly",
+    SharedArrayBuffer: "readonly",
     $nuxt: true,
     Foundation: true,
     whatInput: true,
     _: true,
     $: true,
   },
-  parser: 'vue-eslint-parser',
+  parser: "vue-eslint-parser",
   parserOptions: {
-    parser: 'babel-eslint',
+    parser: "babel-eslint",
     parserOptions: {
       ecmaVersion: 2020,
-      sourceType: 'module',
+      sourceType: "module",
       ecmaFeatures: {
         jsx: true,
         module: true,
@@ -28,34 +28,30 @@ module.exports = {
       },
     },
   },
-  plugins: ['vue'],
+  plugins: ["prettier"],
   extends: [
-    'eslint:recommended',
-    'plugin:vue/recommended',
-    'prettier',
-    // 'plugin:prettier/recommended',
-    'prettier/vue',
-    // "plugin:nuxt/recommended",
-    // "plugin:vue/recommended",
-    // "plugin:import/errors",
-    // "plugin:import/warnings",
-    // 'plugin:import/errors',
-    // 'plugin:import/warnings',
+    "@nuxtjs",
+    "prettier",
+    "prettier/vue",
+    "plugin:prettier/recommended",
+    // 'eslint:recommended',
+    "plugin:nuxt/recommended",
   ],
   // required to lint *.vue files
   settings: {
-    'import/extensions': ['.js', '.jsx'],
-    'import/ignore': ['.(scss | less | css)$'],
+    "import/extensions": [".js", ".jsx"],
+    "import/ignore": [".(scss | less | css)$"],
   },
   // add your custom rules here
   rules: {
     // semi: [2, 'never'],
-    'vue/component-name-in-template-casing': ['error', 'PascalCase'],
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'import/no-unresolved': 'off',
-    'vue/no-v-html': 'off',
-    'no-unused-vars': 'off', //使っていない変数を許可
+    "vue/component-name-in-template-casing": ["error", "PascalCase"],
+    "no-console": ["warn", { allow: ["clear", "info", "error", "dir", "trace", "log"] }],
+    // 'no-console': process.env.NODE_ENV === 'production' ? 2 : 0,
+    "no-debugger": process.env.NODE_ENV === "production" ? 2 : 0,
+    "import/no-unresolved": "off",
+    "vue/no-v-html": "off",
+    "no-unused-vars": "off", // 使っていない変数を許可
     // 'prettier/prettier': [
     //   'error',
     //   {
@@ -65,8 +61,8 @@ module.exports = {
     //     // trailingComma: 'all',
     //   },
     // ],
-    'vue/max-attributes-per-line': [
-      'warn',
+    "vue/max-attributes-per-line": [
+      "warn",
       {
         singleline: 10,
         multiline: {
@@ -75,22 +71,29 @@ module.exports = {
         },
       },
     ],
-    'vue/html-indent': [
-      'error',
+    "vue/html-indent": [
+      "error",
       2,
       {
         baseIndent: 1,
       },
     ],
-    'vue/html-self-closing': [
-      'error',
+    "vue/html-self-closing": [
+      "error",
       {
         html: {
-          void: 'any',
+          void: "any",
         },
       },
     ],
-    quotes: ['error', 'single', { avoidEscape: true, allowTemplateLiterals: false }],
+    // quotes: [
+    //   0,
+    //   "single",
+    //   {
+    //     avoidEscape: true,
+    //     allowTemplateLiterals: true,
+    //   },
+    // ],
     // // タグの最後で改行しないで
     // 'vue/html-closing-bracket-newline': [
     //   0,

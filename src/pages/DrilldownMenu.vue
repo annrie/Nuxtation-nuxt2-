@@ -21,22 +21,22 @@
 </template>
 
 <script>
-import Meta from '~/assets/mixins/meta';
+import Meta from "~/assets/mixins/meta";
 
 export default {
-  name: 'Drilldown',
+  name: "Drilldown",
   mixins: [Meta],
   data() {
     return {
-      msg: 'Drilldown Menu',
+      msg: "Drilldown Menu",
       meta: {
-        title: 'Drilldown Menu',
-        type: 'article',
+        title: "Drilldown Menu",
+        type: "article",
       },
     };
   },
   mounted() {
-    this.drilldown = new Foundation.Drilldown($('#drilldown'), {
+    this.drilldown = new Foundation.Drilldown($("#drilldown"), {
       // These options can be declarative using the data attributes
       animationDuration: 500,
     });

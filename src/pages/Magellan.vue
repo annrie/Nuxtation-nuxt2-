@@ -19,15 +19,9 @@
                 <li><a href="#second">Second Section</a></li>
                 <li><a href="#third">Third Section</a></li>
                 <client-only>
-                  <li class="menu-text">
-                    window width: {{ $window.width }} px
-                  </li>
-                  <li class="menu-text">
-                    window height: {{ $window.height }} px
-                  </li>
-                  <li class="menu-text">
-                    amount of scrolling: {{ $window.pageYOffset }} px
-                  </li>
+                  <li class="menu-text">window width: {{ $window.width }} px</li>
+                  <li class="menu-text">window height: {{ $window.height }} px</li>
+                  <li class="menu-text">amount of scrolling: {{ $window.pageYOffset }} px</li>
                 </client-only>
               </ul>
             </div>
@@ -53,37 +47,37 @@
 </template>
 
 <script>
-import Meta from '~/assets/mixins/meta';
+import Meta from "~/assets/mixins/meta";
 
 export default {
-  layout: 'normal',
-  name: 'Magellan',
+  name: "Magellan",
   mixins: [Meta],
+  layout: "normal",
   data() {
     return {
-      msg: 'Magellan',
+      msg: "Magellan",
       meta: {
-        title: 'Magellan',
-        type: 'article',
+        title: "Magellan",
+        type: "article",
       },
     };
   },
   watch: {
-    '$window.width'() {
+    "$window.width"() {
       console.log(`width: ${this.$window.width}`);
     },
-    '$window.height'() {
+    "$window.height"() {
       console.log(`height: ${this.$window.height}`);
     },
-    '$window.pageYOffset'() {
+    "$window.pageYOffset"() {
       console.log(`pageYOffset: ${this.$window.pageYOffset}`);
     },
   },
   mounted() {
-    this.sticky = new Foundation.Sticky($('#magellan'));
-    this.magellan = new Foundation.Magellan($('#magellan'), {
+    this.sticky = new Foundation.Sticky($("#magellan"));
+    this.magellan = new Foundation.Magellan($("#magellan"), {
       // These options can be declarative using the data attributes
-      animationEasing: 'swing',
+      animationEasing: "swing",
     });
   },
 };

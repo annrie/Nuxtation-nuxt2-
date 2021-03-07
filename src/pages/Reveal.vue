@@ -7,19 +7,9 @@
       <div class="cell">
         <div id="reveal-dialog" class="reveal" data-reveal>
           <h1>Awesome. I Have It.</h1>
-          <p class="lead">
-            Your couch. It is mine.
-          </p>
-          <p>
-            I'm a cool paragraph that lives inside of an even cooler modal.
-            Wins!
-          </p>
-          <button
-            class="close-button"
-            data-close
-            aria-label="Close modal"
-            type="button"
-          >
+          <p class="lead">Your couch. It is mine.</p>
+          <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+          <button class="close-button" data-close aria-label="Close modal" type="button">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -30,28 +20,28 @@
 </template>
 
 <script>
-import Meta from '~/assets/mixins/meta';
+import Meta from "~/assets/mixins/meta";
 
 export default {
-  name: 'Reveal',
+  name: "Reveal",
   mixins: [Meta],
   data() {
     return {
-      msg: 'Reveal',
+      msg: "Reveal",
       meta: {
-        title: 'Reveal',
-        type: 'article',
+        title: "Reveal",
+        type: "article",
       },
     };
   },
   mounted() {
-    this.reveal = new Foundation.Reveal($('#reveal-dialog'), {
+    this.reveal = new Foundation.Reveal($("#reveal-dialog"), {
       // These options can be declarative using the data attributes
-      animationIn: 'spin-in',
-      animationOut: 'spin-out',
+      animationIn: "spin-in",
+      animationOut: "spin-out",
     });
   },
-   methods: {
+  methods: {
     // Added the below openReveal method for two reasons:
     // 1) There was a bug preventing the reveal from working once
     // you navigated away and back to the reveal component.
