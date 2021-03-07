@@ -139,7 +139,7 @@ export default {
         {
           hid: "canonical",
           rel: "canonical",
-          href: `https://example.com/blog/${this.$route.params.slug}`,
+          href: `${this.$config.baseUrl}/blog/${this.$route.params.slug}`,
         },
       ],
     };
