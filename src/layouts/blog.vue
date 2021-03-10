@@ -11,7 +11,7 @@
       </div>
       <div class="main-container full">
         <div class="main-grid">
-          <main class="main-content-full-width" role="main" tabindex="-1">
+          <main class="main-content-full-width blog" role="main" tabindex="-1">
             <transition name="fade-up">
               <nuxt />
             </transition>

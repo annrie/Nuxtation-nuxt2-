@@ -86,8 +86,9 @@
 </template>
 
 <script>
+import global from "../../../utils/global";
 import getSiteMeta from "../../../utils/getSiteMeta";
-const meta = getSiteMeta();
+// const meta = getSiteMeta();
 
 export default {
   layout: "noFooter",
@@ -128,7 +129,7 @@ export default {
           content: this.article.tags ? this.article.tags.toString() : "",
         },
         { name: "twitter:label1", content: "Written by" },
-        { name: "twitter:data1", content: "Nuxtation" },
+        { name: "twitter:data1", content: global.author || "" },
         { name: "twitter:label2", content: "Filed under" },
         {
           name: "twitter:data2",
