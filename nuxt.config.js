@@ -23,7 +23,7 @@ const baseDir = process.env.BASE_DIR || "/";
 const basePath = baseUrl + baseDir;
 
 // meta
-const lang = "ja";
+const lang = "en";
 const siteName = "Nuxtation";
 const siteDesc = "This is a sample site that applies Foundation to Nuxt.js.";
 const siteKeywords = "Foundation, Nuxt, Vue";
@@ -72,6 +72,7 @@ export default {
     siteKeywords,
     ogpImages,
     shortName,
+    lang,
   },
   router: {
     base: baseDir,
@@ -102,7 +103,7 @@ export default {
   head: {
     htmlAttrs: {
       prefix: "og: http://ogp.me/ns#",
-      lang: "en",
+      lang,
     },
     // bodyAttrs: {},
     titleTemplate: `%s｜ ${siteName}`,
@@ -339,7 +340,7 @@ export default {
     //   iconFileName: manifestIcon,
     // },
     manifest: {
-      lang: "en",
+      lang,
       name: siteName,
       short_name: shortName,
       description: siteDesc,
@@ -430,19 +431,6 @@ export default {
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {
     markdown: {
-      // remarkPlugins: [
-      //   'remark-squeeze-paragraphs',
-      //   'remark-slug',
-      //   'remark-autolink-headings',
-      //   'remark-external-links',
-      //   'remark-footnotes'
-      // ],
-      // rehypePlugins: [
-      //   // 'rehype-minify-whitespace',
-      //   'rehype-sort-attribute-values',
-      //   'rehype-sort-attributes',
-      //   'rehype-raw'
-      // ],
       prism: {
         theme: "prism-themes/themes/prism-material-oceanic.css",
       },
