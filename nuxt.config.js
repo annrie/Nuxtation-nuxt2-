@@ -61,8 +61,8 @@ export default {
   },
   dev: process.env.NODE_ENV !== "production",
   ssr: true,
-  target: "server",
-  // target: 'static',
+  // target: "server",
+  target: "static",
   env: {
     baseUrl,
     baseDir,
@@ -421,13 +421,18 @@ export default {
     "~/assets/scss/app.scss",
     "~/assets/scss/transitions.scss",
     // LESS files in the project.
-    "~assets/less/main.less",
+    // "~assets/less/main.less",
   ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
    */
-  components: true,
+  components: [
+    {
+      path: "~/components",
+      pathPrefix: false,
+    },
+  ],
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {
     markdown: {
@@ -485,7 +490,7 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    "~/assets/js/app.client", // necessary！
+    // "~/assets/js/app.client", // necessary！
     "~/plugins/client-only/foundation.client",
     "~/plugins/client-only/aos.client",
     "~/plugins/client-only/vue-lazyload.client",
@@ -617,7 +622,7 @@ export default {
     // },
     parallel: false,
     cache: true,
-    hardsource: true,
+    hardsource: false,
     // babel: {
     //   presets({ isServer }) {
     //     return [
@@ -682,19 +687,19 @@ export default {
         "window.jQuery": "jquery",
       }),
     ],
-    // postcss: {
-    //   plugins: {
-    //     'postcss-url': false,
-    //     'postcss-nested': {},
-    //     'postcss-responsive-type': {},
-    //     'postcss-hexrgba': {},
-    //   },
-    //   presets: {
-    //     autoprefixer: {
-    //       grid: 'autoplace',
-    //     },
-    //   },
-    // },
+    postcss: {
+      plugins: {
+        "postcss-url": false,
+        "postcss-nested": {},
+        "postcss-responsive-type": {},
+        "postcss-hexrgba": {},
+      },
+      presets: {
+        autoprefixer: {
+          grid: "autoplace",
+        },
+      },
+    },
     // analyze: true,
     devtools: process.env.NODE_ENV === "production",
     // subFolders: false,
@@ -735,19 +740,19 @@ export default {
           config.mode = "development";
         }
       }
-      // for (const rule of config.module.rules) {
-      //   if (rule.use) {
-      //     for (const use of rule.use) {
-      //       if (use.loader === 'sass-loader') {
-      //         use.options = use.options || {};
-      //         use.options.includePaths = [
-      //           'node_modules/foundation-sites/scss',
-      //           'node_modules/motion-ui/src',
-      //         ];
-      //       }
-      //     }
-      //   }
-      // }
+      for (const rule of config.module.rules) {
+        if (rule.use) {
+          for (const use of rule.use) {
+            if (use.loader === "sass-loader") {
+              use.options = use.options || {};
+              use.options.includePaths = [
+                "node_modules/foundation-sites/scss",
+                "node_modules/motion-ui/src",
+              ];
+            }
+          }
+        }
+      }
       // vue-svg-inline-loader
       const vueRule = config.module.rules.find((rule) => rule.test.test(".vue"));
       vueRule.use = [

@@ -4,7 +4,7 @@ module.exports = {
     browser: true,
     node: true,
     jquery: true,
-    es6: true,
+    es2020: true,
   },
   globals: {
     Atomics: "readonly",
@@ -19,7 +19,7 @@ module.exports = {
   parserOptions: {
     parser: "babel-eslint",
     parserOptions: {
-      ecmaVersion: 2020,
+      ecmaVersion: 11,
       sourceType: "module",
       ecmaFeatures: {
         jsx: true,

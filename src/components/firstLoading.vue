@@ -1,7 +1,7 @@
-<template lang="pug">
-div
-  .loading(:class="{ 'is-finish': dataLoadFinish }")
-    p loading...
+<template>
+  <div class="loading" :class="{ 'is-finish': dataLoadFinish }">
+    <p>loading...</p>
+  </div>
 </template>
 
 <script>
@@ -22,13 +22,13 @@ export default {
 <style lang="scss" scoped>
 .loading {
   position: fixed;
-  // font-size: rem-calc(52);
   z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100vw;
   height: 100vh;
+  font-size: rem-calc(52);
   color: $white;
   background: $primary-color;
   &.is-finish {
