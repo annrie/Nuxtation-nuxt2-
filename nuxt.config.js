@@ -126,7 +126,6 @@ export default {
 
       // SEO-related
       { hid: "description", name: "description", content: siteDesc },
-      { hid: "keywords", name: "keywords", content: siteKeywords },
 
       // ogp-related
       { hid: "og:site_name", property: "og:site_name", content: siteName },

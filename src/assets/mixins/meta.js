@@ -56,15 +56,6 @@ export default {
       });
     }
 
-    // keywords
-    // if (keywords) {
-    //   head.meta.push({
-    //     hid: 'keywords',
-    //     property: 'keywords',
-    //     content: keywords,
-    //   });
-    // }
-
     // pagetype
     if (type) {
       head.meta.push({
