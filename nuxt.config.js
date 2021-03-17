@@ -61,8 +61,8 @@ export default {
   },
   dev: process.env.NODE_ENV !== "production",
   ssr: true,
-  // target: "server",
-  target: "static",
+  target: "server",
+  // target: "static",
   env: {
     baseUrl,
     baseDir,
@@ -610,15 +610,28 @@ export default {
    ** Build configuration
    */
   build: {
+    postcss: {
+      plugins: {
+        "postcss-url": {},
+        "postcss-nested": {},
+        "postcss-responsive-type": {},
+        "postcss-hexrgba": {},
+      },
+      presets: {
+        autoprefixer: {
+          grid: "autoplace",
+        },
+      },
+    },
     // babel: {
     //   configFile: "./babel.config.js",
     // },
     babelrc: true,
     fallback: false,
     // extractCSS: true,
-    // extractCSS: {
-    //   ignoreOrder: true,
-    // },
+    extractCSS: {
+      ignoreOrder: true,
+    },
     parallel: false,
     cache: true,
     hardsource: false,
@@ -686,19 +699,6 @@ export default {
         "window.jQuery": "jquery",
       }),
     ],
-    postcss: {
-      plugins: {
-        "postcss-url": false,
-        "postcss-nested": {},
-        "postcss-responsive-type": {},
-        "postcss-hexrgba": {},
-      },
-      presets: {
-        autoprefixer: {
-          grid: "autoplace",
-        },
-      },
-    },
     // analyze: true,
     devtools: process.env.NODE_ENV === "production",
     // subFolders: false,
@@ -712,6 +712,23 @@ export default {
     /*
      ** Run ESLint on save
      */
+    //   extend(config, { isDev, isClient }) {
+    //     if (isDev && isClient) {
+    //       config.module.rules.push({
+    //         enforce: "pre",
+    //         test: /\.(js|vue)$/,
+    //         loader: "eslint-loader",
+    //         exclude: /(node_modules)/,
+    //       });
+
+    //       // Add postcss loader for CSS files
+    //       const cssLoader = config.module.rules.find(
+    //         (loader) => loader.test.toString() === "/\\.css$/"
+    //       );
+    //       cssLoader.use.push("postcss-loader");
+    //     }
+    //   },
+    // },
     extend(config, { isClient, loaders: { vue } }) {
       if (isClient) {
         config.node = {
