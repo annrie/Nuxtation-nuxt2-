@@ -51,7 +51,7 @@
           </h1>
           <span v-for="(tag, id) in article.tags" :key="id">
             <NuxtLink :to="`/blog/tag/${tags[tag].slug}`">
-              <span class="hollow button white font-bold text-uppercase text-truncate t-shadow">
+              <span class="hollow button tab font-bold text-uppercase text-truncate t-shadow">
                 {{ tags[tag].name }}
               </span>
             </NuxtLink>
@@ -60,7 +60,7 @@
       </div>
     </div>
     <div class="cell small-12 large-6 second" data-aos="fade-up">
-      <h1 class="">
+      <h1>
         {{ article.title }}
       </h1>
       <p>{{ article.description }}</p>

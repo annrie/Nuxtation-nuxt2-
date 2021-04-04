@@ -1,5 +1,7 @@
 extends:
   - stylelint-config-recommended-scss
+  # - stylelint-config-standard-scss
+  # - stylelint-config-recess-order
   - stylelint-config-prettier
   - stylelint-prettier/recommended
 plugins:
@@ -38,10 +40,10 @@ rules:
       "scale-color",
       "each",
     ]
-  at-rule-no-unknown: null
+  # at-rule-no-unknown: null
   at-rule-no-vendor-prefix: true # @ルールのベンタープリフィックス禁止
   font-family-name-quotes: always-where-recommended # 'font-family'はスペースで区切られたフォント名の場合クオートで囲む
-  font-weight-notation: named-where-possible # 'font-weight'はnormalなどのキーワードが使える場合はそちらを使う（400はNG）
+  # font-weight-notation: [ numeric, { ignore: ["relative"]}] # 'font-weight'はnormalなどのキーワードが使える場合はそちらを使う（400はNG）
   function-url-quotes: always # 'url()'の引数はクオートで囲む
   media-feature-name-no-vendor-prefix: true # '@media'内のベンダープリフィックス禁止
   no-descending-specificity: null # 詳細度の高いセレクタより後に詳細度の低いセレクタを定義するのを許容
@@ -122,13 +124,15 @@ rules:
       /calc/,
       /map-merge/,
       /translate/,
+      /ratio-to-percentage/,
       /invert/,
       /repeat/,
       /minmax/,
     ]
   unit-allowed-list:
     ["em", "rem", "%", "s", "ms", "vh", "vw", "px", "deg", "dpi", "fr"]
-  selector-pseudo-class-no-unknown: [true, { ignorePseudoClasses: [global] }]
+  # selector-pseudo-class-no-unknown: null
+  selector-pseudo-class-no-unknown: [true, { ignorePseudoClasses: [global,v-deep] }]
   selector-type-no-unknown: [true, {ignoreTypes: ['_','x']}]
   declaration-no-important: null
   font-family-no-duplicate-names: true
@@ -142,8 +146,8 @@ rules:
   # value-keyword-case: lower
 ignoreFiles:
   - node_modules/**
-  - src/assets/fonts/**
-  - src/assets/less/**
-  - src/**/*.json
-  - src/assets/images/**
-  - src/assets/img/**
+  - client/assets/fonts/**
+  # - client/assets/less/**
+  - client/**/*.json
+  - client/assets/images/**
+  - client/assets/img/**

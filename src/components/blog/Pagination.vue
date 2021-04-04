@@ -1,17 +1,17 @@
 <template>
   <div class="expanded button-group align-center">
     <div v-if="currentPage === 1" :class="disabledStyle">
-      <span class="hidden sm:inline">First</span>
+      <span class="hidden inline">First</span>
       <SingleBack />
     </div>
 
     <nuxt-link v-else :to="{ name: 'blog-page-page', params: { page: 1 } }" :class="buttonStyles">
       <DoubleBack />
-      <span class="hidden sm:inline">First</span>
+      <span class="hidden inline">First</span>
     </nuxt-link>
 
     <div v-if="currentPage === 1" :class="disabledStyle">
-      <span class="hidden sm:inline">Prev</span>
+      <span class="hidden inline">Prev</span>
       <SingleBack />
     </div>
 
@@ -21,11 +21,11 @@
       :class="buttonStyles"
     >
       <SingleBack />
-      <span class="hidden sm:inline">Prev</span>
+      <span class="hidden inline">Prev</span>
     </nuxt-link>
 
     <div v-if="currentPage === totalPages" :class="disabledStyle">
-      <span class="hidden sm:inline">Next</span>
+      <span class="hidden inline">Next</span>
       <SingleFwd />
     </div>
 
@@ -34,12 +34,12 @@
       :to="{ name: 'blog-page-page', params: { page: nextPage } }"
       :class="buttonStyles"
     >
-      <span class="hidden sm:inline">Next</span>
+      <span class="hidden inline">Next</span>
       <SingleFwd />
     </nuxt-link>
 
     <div v-if="currentPage === totalPages" :class="disabledStyle">
-      <span class="hidden sm:inline">Last</span>
+      <span class="hidden inline">Last</span>
       <DoubleFwd />
     </div>
 
@@ -48,7 +48,7 @@
       :to="{ name: 'blog-page-page', params: { page: totalPages } }"
       :class="buttonStyles"
     >
-      <span class="hidden sm:inline">Last</span>
+      <span class="hidden inline">Last</span>
       <DoubleFwd />
     </nuxt-link>
   </div>
@@ -69,10 +69,10 @@ export default {
   },
   computed: {
     buttonStyles() {
-      return "button white sm:uppercase";
+      return "button arrow uppercase";
     },
     disabledStyle() {
-      return "button white disabled";
+      return "button arrow disabled";
     },
     totalPages() {
       return Math.ceil(this.total / this.perPage);
@@ -91,10 +91,10 @@ export default {
 </script>
 
 <style lang="scss">
-.sm\:inline {
+.inline {
   display: inline;
 }
-.sm\:uppercase {
+.uppercase {
   text-transform: uppercase;
 }
 .w-5 {

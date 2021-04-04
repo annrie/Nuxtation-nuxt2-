@@ -10,13 +10,11 @@
     <section
       class="site-title-bar title-bar"
       aria-label="Mobile navigation"
-      data-hide-for="medium"
+      data-hide-for="large"
       tabindex="-1"
     >
       <div class="title-bar-left">
-        <div class="title-bar-title">
-          <a href="/">Nuxtation</a>
-        </div>
+        <div class="title-bar-title"><a href="/">Nuxtation</a></div>
       </div>
       <div class="title-bar-right" data-responsive-toggle="offCanvas">
         <button class="menu-icon" type="button" data-toggle="offCanvas" />
@@ -36,10 +34,10 @@
       <nav class="top-bar-left" aria-label="Main menu" tabindex="-1">
         <ul id="dropDown" class="dropdown menu desktop-menu" data-dropdown-menu>
           <template v-for="menu in getAll">
-            <li v-if="menu.sub" :key="menu.id" class="is-dropdown-submenu-parent">
+            <li v-if="menu.sub" :key="menu.index" class="is-dropdown-submenu-parent">
               <a>{{ menu.category }}</a>
               <ul class="vertical dropdown menu">
-                <li v-for="submenu in menu.sub" :key="submenu.index">
+                <li v-for="submenu in menu.sub" :key="submenu.id">
                   <nuxt-link :to="submenu.link" :exact="submenu.link == '/'">
                     {{ submenu.category }}
                   </nuxt-link>

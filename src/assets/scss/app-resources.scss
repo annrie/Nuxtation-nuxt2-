@@ -9,7 +9,7 @@
 // // @import 'components/font-face';
 // @import 'components/mixins/font-family';
 
-// @include foundation-everything(true);
+// @include foundation-everything($prototype: true);
 
 // Global styles
 @include foundation-global-styles;

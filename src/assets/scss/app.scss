@@ -6,7 +6,7 @@
 @import '~foundation-sites/scss/foundation';
 @import '~motion-ui/src/motion-ui';
 
-@include foundation-everything(true);
+@include foundation-everything($prototype: true);
 
 // // Global styles
 // @include foundation-global-styles;

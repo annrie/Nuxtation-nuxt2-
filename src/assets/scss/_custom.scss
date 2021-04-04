@@ -197,25 +197,26 @@ footer a {
     color: #c792ea;
     font-style: italic;
   }
-  .button.white,
-  .button.white.disabled,
-  .button.white[disabled],
-  .button.white.disabled:hover,
-  .button.white[disabled]:hover,
-  .button.white.disabled:focus,
-  .button.white[disabled]:focus {
+  .button.arrow {
+    // .button.arrow.disabled
+    // .button.arrow[disabled],
+    // .button.arrow.disabled:hover,
+    // .button.arrow[disabled]:hover,
+    // .button.arrow.disabled:focus,
+    // .button.arrow[disabled]:focus {
     border: 1px solid #1779ba;
     color: #1779ba;
+    background-color: $white;
     border-radius: 0.25rem;
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
     margin-left: 1rem;
     margin-right: 1rem;
     font-size: 0.875rem;
-  }
-  .button.white:hover {
-    background-color: rgba(66, 153, 225, 1);
-    color: $white;
+    &:hover {
+      background-color: rgba(66, 153, 225, 1);
+      color: $white;
+    }
   }
   .icon.icon-left {
     background-image: url('~assets/svg/icon_left.svg');

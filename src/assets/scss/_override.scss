@@ -81,6 +81,7 @@ $topbar-submenu-background: $topbar-background;
 $button-palette: map-merge(
   $foundation-palette,
   (
-    white: #fefefe,
+    arrow: $white,
+    tab: $smoke,
   )
-);
+) !default;

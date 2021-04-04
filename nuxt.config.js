@@ -489,7 +489,6 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    // "~/assets/js/app.client", // necessary！
     "~/plugins/client-only/foundation.client",
     "~/plugins/client-only/aos.client",
     "~/plugins/client-only/vue-lazyload.client",
@@ -603,7 +602,7 @@ export default {
   // },
 
   styleResources: {
-    scss: ["@/assets/scss/app-resources.scss"],
+    scss: ["~assets/scss/app-resources.scss"],
   },
 
   /*
