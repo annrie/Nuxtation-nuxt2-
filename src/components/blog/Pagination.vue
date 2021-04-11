@@ -1,17 +1,17 @@
 <template>
   <div class="expanded button-group align-center">
     <div v-if="currentPage === 1" :class="disabledStyle">
-      <span class="hidden inline">First</span>
+      <span class="hidden text-inline">First</span>
       <SingleBack />
     </div>
 
     <nuxt-link v-else :to="{ name: 'blog-page-page', params: { page: 1 } }" :class="buttonStyles">
       <DoubleBack />
-      <span class="hidden inline">First</span>
+      <span class="hidden text-inline">First</span>
     </nuxt-link>
 
     <div v-if="currentPage === 1" :class="disabledStyle">
-      <span class="hidden inline">Prev</span>
+      <span class="hidden text-inline">Prev</span>
       <SingleBack />
     </div>
 
@@ -21,11 +21,11 @@
       :class="buttonStyles"
     >
       <SingleBack />
-      <span class="hidden inline">Prev</span>
+      <span class="hidden text-inline">Prev</span>
     </nuxt-link>
 
     <div v-if="currentPage === totalPages" :class="disabledStyle">
-      <span class="hidden inline">Next</span>
+      <span class="hidden text-inline">Next</span>
       <SingleFwd />
     </div>
 
@@ -34,12 +34,12 @@
       :to="{ name: 'blog-page-page', params: { page: nextPage } }"
       :class="buttonStyles"
     >
-      <span class="hidden inline">Next</span>
+      <span class="hidden text-inline">Next</span>
       <SingleFwd />
     </nuxt-link>
 
     <div v-if="currentPage === totalPages" :class="disabledStyle">
-      <span class="hidden inline">Last</span>
+      <span class="hidden text-inline">Last</span>
       <DoubleFwd />
     </div>
 
@@ -48,7 +48,7 @@
       :to="{ name: 'blog-page-page', params: { page: totalPages } }"
       :class="buttonStyles"
     >
-      <span class="hidden inline">Last</span>
+      <span class="hidden text-inline">Last</span>
       <DoubleFwd />
     </nuxt-link>
   </div>
@@ -69,7 +69,7 @@ export default {
   },
   computed: {
     buttonStyles() {
-      return "button arrow uppercase";
+      return "button arrow text-uppercase";
     },
     disabledStyle() {
       return "button arrow disabled";
@@ -89,18 +89,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-.inline {
-  display: inline;
-}
-.uppercase {
-  text-transform: uppercase;
-}
-.w-5 {
-  width: 1.25rem;
-}
-.h-5 {
-  height: 1.25rem;
-}
-</style>
