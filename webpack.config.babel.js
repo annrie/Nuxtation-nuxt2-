@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const { VueLoaderPlugin } = require("vue-loader");
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -12,9 +13,9 @@ const cssfile = "./app.scss";
 const outputpath = "./dist/";
 // const current = process.cwd()
 
-// function resolve(dir) {
-//   return path.join(__dirname, '..', dir)
-// }
+function resolve(dir) {
+  return path.join(__dirname, "..", dir);
+}
 
 module.exports = (env) => {
   const mode = env && env.production ? "production" : "development";
@@ -158,13 +159,13 @@ module.exports = (env) => {
                 sourceMap: !!(env && env.production),
               },
             },
-            // {
-            //   loader: 'postcss-loader',
-            //   options: {
-            //     ident: 'postcss',
-            //     sourceMap: !!(env && env.production),
-            //   },
-            // },
+            {
+              loader: "postcss-loader",
+              options: {
+                ident: "postcss",
+                sourceMap: !!(env && env.production),
+              },
+            },
             {
               loader: "sass-loader",
               options: {
@@ -191,6 +192,15 @@ module.exports = (env) => {
         filename: cssfile,
       }),
       new FriendlyErrorsWebpackPlugin(),
+      new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery",
+        _: "lodash",
+        "window.jQuery": "jquery",
+        // Foundation: 'foundation',
+        // WhatInput: 'what-input',
+        // zf: 'node_modules/foundation-sites/js',
+      }),
       new ImageminPlugin({
         disable: !env.production,
         test: /\.(jpe?g|png|gif|svg)$/i,

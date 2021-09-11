@@ -23,8 +23,8 @@ footer a {
 .blog {
   .hero {
     @include breakpoint(small) {
-      height: 22rem;
       width: 100%;
+      height: 22rem;
       margin-top: -32px;
     }
     @include breakpoint(large) {
@@ -39,10 +39,10 @@ footer a {
       .article-img {
         position: static;
         display: block;
+        width: 100%;
+        max-width: 100%;
         height: 22rem;
         object-fit: cover;
-        max-width: 100%;
-        width: 100%;
       }
     }
     @include breakpoint(large) {
@@ -51,20 +51,20 @@ footer a {
       .article-img {
         position: fixed;
         display: block;
-        object-fit: cover;
-        height: 100vh;
-        max-width: 100%;
         width: 48%;
+        max-width: 100%;
+        height: 100vh;
+        object-fit: cover;
       }
     }
   }
   .bloglogo {
-    width: 55px;
     display: inline-block;
+    width: 55px;
   }
   h1 {
-    font-size: rem-calc(48);
     margin-top: -10px;
+    font-size: rem-calc(48);
   }
   h2 {
     font-size: $h5-font-size;
@@ -74,15 +74,15 @@ footer a {
       position: absolute;
       top: 1rem;
       left: 2em;
-      color: $white;
       width: 100%;
+      color: $white;
     }
     @include breakpoint(large) {
       position: fixed;
       top: 8rem;
       left: 1em;
-      color: $white;
       width: 48%;
+      color: $white;
     }
     a {
       color: $white;
@@ -101,37 +101,37 @@ footer a {
       position: absolute;
       top: 6rem;
       left: 2em;
-      color: $white;
-      width: 100%;
       z-index: 10;
+      width: 100%;
+      color: $white;
     }
     @include breakpoint(large) {
       position: fixed;
       top: 15rem;
       left: 1em;
-      color: $white;
-      width: 45%;
       z-index: 10;
+      width: 45%;
+      color: $white;
     }
   }
   .hollow {
-    border-radius: 20px;
     margin-right: 6px;
-    border-width: 6px;
     //  padding: 5px inherit;
     font-size: $h6-font-size;
+    border-width: 6px;
+    border-radius: 20px;
   }
   .second {
     @include breakpoint(small) {
-      overflow: scroll;
-      margin-top: 3rem;
       padding: 0 30px;
+      margin-top: 3rem;
+      overflow: scroll;
     }
     @include breakpoint(large) {
-      // overflow: scroll;
-      margin-top: 10rem;
       // margin-right: 30px;
       padding: 0;
+      // overflow: scroll;
+      margin-top: 10rem;
     }
   }
   // .nuxt-content p {
@@ -146,10 +146,10 @@ footer a {
   //   font-size: 22px;
   // }
   .icon.icon-link {
-    background-image: url('~assets/svg/icon-hashtag.svg');
     display: inline-block;
     width: 20px;
     height: 20px;
+    background-image: url('~assets/svg/icon-hashtag.svg');
     background-size: 20px 20px;
   }
   .bg-blue-500 {
@@ -163,15 +163,15 @@ footer a {
   }
   .content-img {
     display: block;
-    height: 12rem;
     width: 100%;
     max-width: 100%;
-    object-fit: cover;
+    height: 12rem;
     margin-bottom: 10px;
+    object-fit: cover;
   }
   .article-card {
-    border-radius: 8px;
     margin-bottom: 20px;
+    border-radius: 8px;
   }
   .article-card a {
     background-color: #fff;
@@ -186,43 +186,43 @@ footer a {
   .nuxt-content-highlight .filename {
     position: absolute;
     right: 0;
-    color: rgba(113, 128, 150, 1);
-    font-weight: 300;
     z-index: 10;
-    margin-right: 0.5rem;
     margin-top: 0.25rem;
+    margin-right: 0.5rem;
     font-size: 0.875rem;
+    font-weight: 300;
+    color: rgba(113, 128, 150, 1);
   }
   .token.keyword {
-    color: #c792ea;
     font-style: italic;
+    color: #c792ea;
   }
   .icon.icon-left {
-    background-image: url('~assets/svg/icon_left.svg');
     display: inline-block;
     width: 15px;
     height: 15px;
-    background-size: 15px 15px;
+    background-image: url('~assets/svg/icon_left.svg');
     background-position: top left -30px;
+    background-size: 15px 15px;
   }
   .icon.icon-right {
-    background-image: url('~assets/svg/icon_right.svg');
     display: inline-block;
     width: 15px;
     height: 15px;
-    background-size: 15px 15px;
+    background-image: url('~assets/svg/icon_right.svg');
     background-position: top right 0;
+    background-size: 15px 15px;
   }
   .code-inline,
   code {
-    border: 0 solid #cacaca;
-    background-color: transparent;
+    display: inline;
+    padding: 0.125rem 0.3125rem 0.0625rem;
     font-family: consolas, 'Liberation Mono', courier, monospace;
     font-weight: normal;
     color: #fefefe;
-    display: inline;
     word-wrap: break-word;
-    padding: 0.125rem 0.3125rem 0.0625rem;
+    background-color: transparent;
+    border: 0 solid #cacaca;
   }
   .articleSize {
     display: block;
@@ -236,23 +236,23 @@ footer a {
     max-width: 1280px;
 
     .button.arrow {
-      border: 1px solid #1779ba;
-      color: #1779ba;
-      background-color: $white;
-      border-radius: 0.25rem;
       padding-top: 0.25rem;
       padding-bottom: 0.25rem;
-      margin-left: 1rem;
       margin-right: 1rem;
+      margin-left: 1rem;
       font-size: 0.875rem;
+      color: #1779ba;
+      background-color: $white;
+      border: 1px solid #1779ba;
+      border-radius: 0.25rem;
       &:hover {
-        background-color: rgba(66, 153, 225, 1);
         color: $white;
+        background-color: rgba(66, 153, 225, 1);
       }
     }
     &.mx-auto {
-      margin-left: auto;
       margin-right: auto;
+      margin-left: auto;
     }
     .my-5 {
       margin-top: 1.25rem;
@@ -264,8 +264,8 @@ footer a {
     .w-5 {
       width: 1.25rem;
       &:hover {
-        background-color: rgba(66, 153, 225, 1);
         color: $white;
+        background-color: rgba(66, 153, 225, 1);
       }
     }
     .h-5 {
@@ -274,8 +274,8 @@ footer a {
   }
 
   .nuxt-content .placeholder500 {
-    color: rgba(160, 174, 192, 0.8);
     padding-left: 20px;
+    color: rgba(160, 174, 192, 0.8);
   }
   .nuxt-content .border-gray-500 {
     border-color: rgba(160, 174, 192, 1);

@@ -1,7 +1,7 @@
 extends:
   - stylelint-config-recommended-scss
   # - stylelint-config-standard-scss
-  # - stylelint-config-recess-order
+  - stylelint-config-recess-order
   - stylelint-config-prettier
   - stylelint-prettier/recommended
 plugins:
@@ -146,8 +146,9 @@ rules:
   # value-keyword-case: lower
 ignoreFiles:
   - node_modules/**
-  - client/assets/fonts/**
-  # - client/assets/less/**
-  - client/**/*.json
-  - client/assets/images/**
-  - client/assets/img/**
+  - src/assets/fonts/**
+  # - src/assets/less/**
+  - src/**/*.json
+  - src/assets/images/**
+  - src/assets/img/**
+  # - .nuxt/**

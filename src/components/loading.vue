@@ -31,13 +31,13 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 50;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.8);
-  text-align: center;
   padding-top: 200px;
   font-size: 5rem;
-  z-index: 50;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
   & i.fa {
     color: $grey-dark;
   }

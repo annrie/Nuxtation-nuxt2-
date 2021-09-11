@@ -4,7 +4,7 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import Vue from "vue";
-import "./foundation";
+// import "./foundation";
 // import './styles/app'
 // import './styles/global'
 // import App from '../App'

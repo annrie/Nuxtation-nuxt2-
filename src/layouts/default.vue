@@ -17,7 +17,7 @@
             <div class="cell medium-cell-block-y">
               <div class="main-container">
                 <div class="main-grid">
-                  <main id="main" class="main-content-full-width">
+                  <main id="main" class="main-content-full-width" tabindex="-1">
                     <transition name="fade-up">
                       <nuxt />
                     </transition>

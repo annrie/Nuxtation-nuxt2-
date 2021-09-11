@@ -9,7 +9,7 @@
 
 <style>
 .bloglogo {
-  width: 60px;
   display: inline-block;
+  width: 60px;
 }
 </style>

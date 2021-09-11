@@ -699,6 +699,7 @@ export default {
       }),
     ],
     // analyze: true,
+    hardSource: false,
     devtools: process.env.NODE_ENV === "production",
     // subFolders: false,
     filenames: {
