@@ -22,7 +22,7 @@
     "@nuxtjs/axios": "^5.12.5",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "@nuxtjs/sitemap": "^2.4.0",
-    "@nuxtjs/style-resources": "^1.0.0",
+    "@nuxtjs/style-resources": "^1.2.1",
     "@nuxtjs/svg": "^0.1.12",
     "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
     "ajv": "^6.12.3",
