@@ -13909,10 +13909,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.npmjs.org/number-is-nan/-/number-is-nan-1.0.1.tgz"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nuxt-client-init-module@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.npmjs.org/nuxt-client-init-module/-/nuxt-client-init-module-0.2.0.tgz"
-  integrity sha512-aYM5TKmYOAFQnshCZ4xlhTkNKxuGhPv7Xhbpwa/UAkKsydTZDaObpeQIFdvSYLxcgfZd1fdXRml5iNcaFK1U0g==
+nuxt-client-init-module@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/nuxt-client-init-module/-/nuxt-client-init-module-0.3.0.tgz#e11cb2c4a0dc103a45af33fc8a0d520693c43b44"
+  integrity sha512-blPr3zPRdu89WQVt/B38nhFAcNkxL68mM0POmmg6u5s3wUVmwKM1ARMl3xcQSGS//6JbGFV7fgBSQfj0t+cdPw==
 
 nuxt-generate-cluster@^2.7.0:
   version "2.7.0"
