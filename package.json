@@ -40,7 +40,7 @@
     "lodash.clonedeep": "^4.5.0",
     "motion-ui": "git+https://github.com/annrie/motion-ui.git#main",
     "node-fetch": "^3.1.0",
-    "npm": "^6.14.6",
+    "npm": "^8.1.3",
     "nuxt": "^2.15.8",
     "nuxt-client-init-module": "^0.3.0",
     "nuxt-generate-cluster": "^2.7.0",
