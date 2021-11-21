@@ -147,7 +147,7 @@
     "sentencer": "^0.2.1",
     "serve": "^11.3.2",
     "standard-version": "^9.1.1",
-    "std-env": "^2.2.1",
+    "std-env": "^3.0.1",
     "string-width": "^4.2.0",
     "style-loader": "^3.2.1",
     "stylelint": "^13.12.0",
