@@ -45,7 +45,7 @@
     "nuxt-client-init-module": "^0.3.0",
     "nuxt-generate-cluster": "^2.7.0",
     "nuxt-imagemin": "^1.0.0",
-    "nuxt-mq": "^2.0.1",
+    "nuxt-mq": "^2.0.2",
     "nuxt-svg-loader": "^1.2.0",
     "open": "^7.1.0",
     "prism-themes": "^1.5.0",
