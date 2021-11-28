@@ -78,7 +78,7 @@
     "@babel/register": "^7.10.5",
     "@babel/runtime": "^7.10.5",
     "@babel/runtime-corejs3": "^7.16.3",
-    "@commitlint/cli": "^14.1.0",
+    "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@nuxt/babel-preset-app": "^2.13.3",
     "@nuxt/webpack": "^2.15.3",
