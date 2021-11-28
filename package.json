@@ -98,7 +98,7 @@
     "chalk": "^4.1.0",
     "consola": "^2.15.3",
     "cross-env": "^7.0.2",
-    "css-loader": "^5.0.0",
+    "css-loader": "^5.2.7",
     "dayjs": "^1.8.29",
     "eslint": "^7.21.0",
     "eslint-config-prettier": "^7.2.0",
