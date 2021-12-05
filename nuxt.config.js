@@ -521,6 +521,13 @@ export default {
    ** Nuxt.js modules
    */
   buildModules: [
+    [
+      "@nuxt/typescript-build",
+      {
+        typeCheck: true,
+        ignoreNotFoundWarnings: true,
+      },
+    ],
     "@nuxtjs/pwa",
     "@nuxtjs/gtm",
     // '@nuxtjs/google-analytics',
@@ -530,6 +537,14 @@ export default {
     // Doc: https://github.com/nuxt-community/stylelint-module
     "@nuxtjs/stylelint-module",
   ],
+  loaders: {
+    ts: {
+      silent: true,
+    },
+    tsx: {
+      silent: true,
+    },
+  },
   // googleAnalytics: {
   //   id: process.env.GOOGLE_ANALYTICS_ID, // Use as fallback if no runtime config is provided
   //   debug: {
@@ -609,6 +624,7 @@ export default {
    ** Build configuration
    */
   build: {
+    // standalone: true,
     postcss: {
       plugins: {
         "postcss-url": {},
