@@ -26,7 +26,7 @@
           GitHub
         </a>
       </div>
-      <div>
+      <!-- <div>
         <div>{{ $mq }} Size</div>
         <div v-if="small">small Size</div>
         <div v-else-if="medium">medium Size</div>
@@ -40,13 +40,15 @@
           <div>window height: {{ $window.height }} px</div>
           <div>amount of scrolling: {{ $window.pageYOffset }} px</div>
         </client-only>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script>
-import Meta from "~/assets/mixins/meta";
+import Meta from "../assets/mixins/meta";
+// import { useMeta } from "#app";
+// import { defineComponent } from "#app";
 
 export default {
   mixins: [Meta],
@@ -56,17 +58,26 @@ export default {
       titleTemplate: false,
     };
   },
-  watch: {
-    "$window.width"() {
-      console.log(`width: ${this.$window.width}`);
-    },
-    "$window.height"() {
-      console.log(`height: ${this.$window.height}`);
-    },
-    "$window.pageYOffset"() {
-      console.log(`pageYOffset: ${this.$window.pageYOffset}`);
-    },
-  },
+  // useMeta({
+  //   title: process.env.siteName,
+  // }),
+  // head() {
+  //   return {
+  //     title: process.env.siteName,
+  //     titleTemplate: false,
+  //   };
+  // },
+  // watch: {
+  //   "$window.width"() {
+  //     console.log(`width: ${this.$window.width}`);
+  //   },
+  //   "$window.height"() {
+  //     console.log(`height: ${this.$window.height}`);
+  //   },
+  //   "$window.pageYOffset"() {
+  //     console.log(`pageYOffset: ${this.$window.pageYOffset}`);
+  //   },
+  // },
 };
 </script>
 

@@ -16,7 +16,7 @@ import Meta from "~/assets/mixins/meta";
 export default {
   mixins: [Meta],
   layout: "blog",
-  async asyncData({ $content, app, params, error }) {
+  async asyncData({ $content, params, error }) {
     const content = await getContent($content, params, error);
     return {
       allArticles: content.allArticles,

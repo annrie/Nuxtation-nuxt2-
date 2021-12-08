@@ -2,6 +2,8 @@
   Import
 -∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴- */
 // import path from 'path'
+import { resolve } from "path";
+import { defineNuxtConfig } from "@nuxt/bridge";
 import webpack from "webpack";
 import StylelintPlugin from "stylelint-webpack-plugin";
 import TerserJSPlugin from "terser-webpack-plugin";
@@ -11,7 +13,7 @@ import imageminMozjpeg from "imagemin-mozjpeg";
 import open from "open";
 import global from "./utils/global";
 import getRoutes from "./utils/getRoutes";
-import getSiteMeta from "./utils/getSiteMeta";
+// import getSiteMeta from "./utils/getSiteMeta";
 /* -∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-
   Use Global Variables
 -∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴- */
@@ -36,7 +38,7 @@ const ogpImages = basePath + "assets/img/ogp/";
 const shortName = "Nuxtation";
 // const manifestIcon = "/logo.png";
 const splashscreens = baseUrl + "/img/splashscreens/";
-const meta = getSiteMeta();
+// const meta = getSiteMeta();
 
 // etc
 // const apiUrl = process.env.API_URL || 'https://example.com'
@@ -46,7 +48,7 @@ const meta = getSiteMeta();
 /* -∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-
   Settings
 -∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴- */
-export default {
+export default defineNuxtConfig({
   telemetry: false,
   server: {
     // rethinkdb and socket.io
@@ -55,7 +57,7 @@ export default {
     host: "0",
   },
   hooks: {
-    listen(server, { host, port }) {
+    listen({ host, port }) {
       open(`http://${host}:${port}`);
     },
   },
@@ -90,6 +92,7 @@ export default {
   generate: {
     dir: "dist",
     fallback: true,
+    interval: 2000,
   },
   vue: {
     config: {
@@ -406,7 +409,14 @@ export default {
   // features: {
   //   transitions: false
   // },
-  vueMeta: { refreshOnceOnNavigation: true },
+  // vueMeta: { refreshOnceOnNavigation: true },
+  bridge: {
+    meta: true,
+  },
+  alias: {
+    "~/*": resolve(__dirname, "src/*"),
+    "@/*": resolve(__dirname, "src/*"),
+  },
 
   /*
    ** Customize the progress-bar color
@@ -545,6 +555,13 @@ export default {
       silent: true,
     },
   },
+  typescript: {
+    typeCheck: {
+      eslint: {
+        files: "./**/*,{ts,vue}",
+      },
+    },
+  },
   // googleAnalytics: {
   //   id: process.env.GOOGLE_ANALYTICS_ID, // Use as fallback if no runtime config is provided
   //   debug: {
@@ -562,7 +579,6 @@ export default {
   //   },
   // },
   modules: [
-    "@nuxt/content",
     "@nuxtjs/axios",
     "@nuxtjs/style-resources",
     "nuxt-svg-loader",
@@ -801,4 +817,4 @@ export default {
       config.performance.maxAssetSize = 50000000;
     },
   },
-};
+});

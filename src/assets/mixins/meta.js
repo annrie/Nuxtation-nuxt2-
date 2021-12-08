@@ -18,7 +18,7 @@ export default {
     const desc = this.meta.desc;
     const type = this.meta.type;
     const image = this.meta.image;
-    const keywords = this.meta.keywords;
+    // const keywords = this.meta.keywords;
 
     // title/ogpTitle
     if (title) {

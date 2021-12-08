@@ -6,4 +6,4 @@
 import "foundation-sites";
 import "motion-ui";
 import "what-input";
-import $ from "jquery";
+// import $ from "jquery";

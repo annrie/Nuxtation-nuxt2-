@@ -17,7 +17,7 @@ module.exports = {
   },
   parser: "vue-eslint-parser",
   parserOptions: {
-    parser: "babel-eslint",
+    parser: "@typescript-eslint/parser",
     parserOptions: {
       ecmaVersion: 11,
       sourceType: "module",
@@ -30,11 +30,10 @@ module.exports = {
   },
   plugins: ["prettier"],
   extends: [
-    "@nuxtjs",
+    "@nuxtjs/eslint-config-typescript",
     "prettier",
     "prettier/vue",
     "plugin:prettier/recommended",
-    // 'eslint:recommended',
     "plugin:nuxt/recommended",
   ],
   // required to lint *.vue files
@@ -44,6 +43,7 @@ module.exports = {
   },
   // add your custom rules here
   rules: {
+    "@typescript-eslint/no-unused-vars": "warn", // TypeScript用に追加
     // semi: [2, 'never'],
     "vue/component-name-in-template-casing": ["error", "PascalCase"],
     "no-console": ["warn", { allow: ["clear", "info", "error", "dir", "trace", "log"] }],
@@ -59,6 +59,14 @@ module.exports = {
     //     semi: false,
     //     singleQuote: true,
     //     // trailingComma: 'all',
+    //   },
+    // ],
+    "vue/singleline-html-element-content-newline": "off",
+    //   "error",
+    //   {
+    //     ignoreWhenNoAttributes: true,
+    //     ignoreWhenEmpty: true,
+    //     ignores: ["pre", "textarea"],
     //   },
     // ],
     "vue/max-attributes-per-line": [
