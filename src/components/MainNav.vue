@@ -34,7 +34,7 @@
       <nav class="top-bar-left" aria-label="Main menu" tabindex="-1">
         <ul id="dropDown" class="dropdown menu desktop-menu" data-dropdown-menu>
           <template v-for="menu in getAll">
-            <li v-if="menu.sub" :key="menu.index" class="is-dropdown-submenu-parent">
+            <li v-if="menu.sub" :key="menu.id" class="is-dropdown-submenu-parent">
               <a>{{ menu.category }}</a>
               <ul class="vertical dropdown menu">
                 <li v-for="submenu in menu.sub" :key="submenu.id">
@@ -44,7 +44,7 @@
                 </li>
               </ul>
             </li>
-            <li v-else :key="menu.id">
+            <li v-else :key="menu.link">
               <nuxt-link :to="menu.link" :exact="menu.link == '/'">
                 {{ menu.category }}
               </nuxt-link>
@@ -58,6 +58,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import $ from "jquery";
 
 export default {
   name: "MainNav",
@@ -73,10 +74,13 @@ export default {
     }),
   },
   mounted() {
+    // this.$getCurrentScreenSize();
+    $(document).foundation();
+    // this.smoothScroll = new Foundation.SmoothScroll($('#app'));
     // this.offCanvas = new Foundation.OffCanvas($('#offCanvas'));
-    this.smoothScroll = new Foundation.SmoothScroll($("#mainNav"));
-    this.sticky = new Foundation.Sticky($("#mainNav"));
-    this.dropDown = new Foundation.DropdownMenu($("#dropDown"));
+    // this.smoothScroll = new Foundation.SmoothScroll($("#mainNav"));
+    // this.sticky = new Foundation.Sticky($("#mainNav"));
+    // this.dropDown = new Foundation.DropdownMenu($("#dropDown"));
   },
 };
 </script>

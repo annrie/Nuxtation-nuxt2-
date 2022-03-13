@@ -1,8 +1,6 @@
 //  Foundation for Sites Settings
 //  -----------------------------
-//
 //  Table of Contents:
-//
 //   1. Global
 //   2. Breakpoints
 //   3. The Grid
@@ -60,6 +58,7 @@
 //  55. Top Bar
 //  56. Xy Grid
 
+// @import '../../../node_modules/foundation-sites/scss/util/util'; // vite
 @import '~foundation-sites/scss/util/util';
 
 // 1. Global
@@ -82,7 +81,7 @@ $black: #0a0a0a;
 $white: #fefefe;
 $body-background: $white;
 $body-font-color: $black;
-$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-font-family: 'Helvetica Neue', helvetica, roboto, arial, sans-serif;
 $body-safe-padding: false;
 $body-antialiased: true;
 $global-margin: 1rem;
@@ -142,7 +141,7 @@ $block-grid-max: 8;
 $header-font-family: $body-font-family;
 $header-font-weight: $global-weight-normal;
 $header-font-style: normal;
-$font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
+$font-family-monospace: consolas, 'Liberation Mono', courier, monospace;
 $header-color: inherit;
 $header-lineheight: 1.4;
 $header-margin-bottom: 0.5rem;
@@ -188,12 +187,12 @@ $header-styles: (
     ),
   ),
 );
-$header-text-rendering: optimizeLegibility;
+$header-text-rendering: optimizelegibility;
 $small-font-size: 80%;
 $header-small-font-color: $medium-gray;
 $paragraph-lineheight: 1.6;
 $paragraph-margin-bottom: 1rem;
-$paragraph-text-rendering: optimizeLegibility;
+$paragraph-text-rendering: optimizelegibility;
 $enable-code-inline: true;
 $anchor-color: $primary-color;
 $anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
@@ -692,7 +691,7 @@ $prototype-separator-margin-top: $global-margin;
 // --------------------
 
 $prototype-shadow-breakpoints: $global-prototype-breakpoints;
-$prototype-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+$prototype-box-shadow: 0 2px 5px 0 rgba(0 0 0 / 16%), 0 2px 10px 0 rgba(0 0 0 / 12%);
 
 // 41. Prototype Sizing
 // --------------------

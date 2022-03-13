@@ -5,6 +5,11 @@
 @import 'override';
 @import '~foundation-sites/scss/foundation';
 @import '~motion-ui/src/motion-ui';
+// @import 'components/variables';
+// // @import 'components/font-face';
+// @import 'components/mixins/font-family';
+@import 'components/mixins/mixin';
+// @import 'components/font-face';
 
 @include foundation-everything($prototype: true);
 
@@ -66,19 +71,75 @@
 // Motion UI
 @include motion-ui-transitions;
 @include motion-ui-animations;
+
 // Global
+@import 'icons';
 @import 'global/accessibility';
 @import 'global/svg';
 @import 'global/mixin';
+// @import 'global/headers';
+// @import 'global/helper-classes';
+// @import 'global/url-friendly-color'; // used for colors in SVGs in background-image
+// @import 'global/general';
+// @import 'global/typography';
+
+// mixins
+// @import 'components/mixins/container-border';
+// @import 'components/mixins/flex';
+// @import 'components/mixins/avatar';
+// @import 'components/mixins/helpers';
+// @import 'components/mixins/pseudo';
+// @import 'components/mixins/push-center';
+// @import 'components/mixins/sidelines';
+// @import 'components/mixins/zindex';
+// // @import 'components/modules/hamburgers';
 
 // contents
 @import 'components/modules/content';
 @import 'components/modules/footer';
 @import 'components/modules/navigation';
+// @import 'components/modules/side-navigation';
+// @import 'components/modules/buttons';
+// @import 'components/modules/cards';
+// @import 'components/modules/dividers';
+// @import 'components/modules/links';
+// @import 'components/modules/gravity-forms';
+// @import 'components/modules/reversed';
+// @import 'components/modules/back-to-top';
 @import 'animate-mui';
-
 // customizer
 @import 'custom';
 
 // Print
 @import 'global/print';
+
+// Global customisations:
+// Customise the padding gutter size.
+// $grid-padding-gutters: 20px;
+// $grid-margin-gutters: 20px;
+
+// Customise the padding gutter size on different breakpoints.
+$grid-padding-gutters: (
+  small: 30px,
+  medium: 30px,
+  large: 20px,
+);
+
+$grid-margin-gutters: (
+  small: 0,
+  medium: 20px,
+  large: 20px,
+);
+
+// Local customisations:
+// Add grid gutters to specific elements.
+// Must use 'grid-x' without 'grid-padding-x'.
+.card-item {
+  @include xy-gutters(
+    $gutters: (
+      small: 0,
+      medium: 20px,
+      large: 20px,
+    )
+  );
+}

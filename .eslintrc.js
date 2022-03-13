@@ -5,6 +5,7 @@ module.exports = {
     node: true,
     jquery: true,
     es2020: true,
+    // es6: true,
   },
   globals: {
     Atomics: "readonly",
@@ -15,13 +16,14 @@ module.exports = {
     _: true,
     $: true,
   },
-  parser: "vue-eslint-parser",
+  // parser: "vue-eslint-parser",
   parserOptions: {
     parser: "@typescript-eslint/parser",
     parserOptions: {
       ecmaVersion: 11,
-      sourceType: "module",
+      sourceType: "module", // Modules の指定だけは分離
       ecmaFeatures: {
+        // ECMAScript に含まれない仕様はここ
         jsx: true,
         module: true,
         experimentalObjectRestSpread: true,
@@ -30,11 +32,13 @@ module.exports = {
   },
   plugins: ["prettier"],
   extends: [
-    "@nuxtjs/eslint-config-typescript",
-    "prettier",
-    "prettier/vue",
-    "plugin:prettier/recommended",
+    // "@nuxtjs",
+    // "prettier/vue", // prettierにマージされた in eslint-config-prettier 8.0.0
+    // 'eslint:recommended',
     "plugin:nuxt/recommended",
+    "@nuxtjs/eslint-config-typescript", // 追加
+    "prettier",
+    "plugin:prettier/recommended",
   ],
   // required to lint *.vue files
   settings: {
@@ -43,15 +47,19 @@ module.exports = {
   },
   // add your custom rules here
   rules: {
-    "@typescript-eslint/no-unused-vars": "warn", // TypeScript用に追加
-    // semi: [2, 'never'],
+    "prettier/prettier": "error",
+    "arrow-body-style": "off",
+    "prefer-arrow-callback": "off",
+    semi: [0, "never"],
     "vue/component-name-in-template-casing": ["error", "PascalCase"],
     "no-console": ["warn", { allow: ["clear", "info", "error", "dir", "trace", "log"] }],
     // 'no-console': process.env.NODE_ENV === 'production' ? 2 : 0,
     "no-debugger": process.env.NODE_ENV === "production" ? 2 : 0,
     "import/no-unresolved": "off",
     "vue/no-v-html": "off",
-    "no-unused-vars": "off", // 使っていない変数を許可
+    "vue/no-unused-vars": "off", // 使っていない変数を許可
+    "vue/no-template-shadow": "off",
+    "@typescript-eslint/no-unused-vars": "off",
     // 'prettier/prettier': [
     //   'error',
     //   {
@@ -61,31 +69,23 @@ module.exports = {
     //     // trailingComma: 'all',
     //   },
     // ],
-    "vue/singleline-html-element-content-newline": "off",
-    //   "error",
-    //   {
-    //     ignoreWhenNoAttributes: true,
-    //     ignoreWhenEmpty: true,
-    //     ignores: ["pre", "textarea"],
-    //   },
-    // ],
     "vue/max-attributes-per-line": [
       "warn",
       {
-        singleline: 10,
+        singleline: 200,
         multiline: {
-          max: 1,
-          allowFirstLine: false,
+          max: 5,
+          allowFirstLine: true,
         },
       },
     ],
-    "vue/html-indent": [
-      "error",
-      2,
-      {
-        baseIndent: 1,
-      },
-    ],
+    // "vue/html-indent": [
+    //   "error",
+    //   2,
+    //   {
+    //     baseIndent: 1,
+    //   },
+    // ],
     "vue/html-self-closing": [
       "error",
       {
@@ -94,14 +94,10 @@ module.exports = {
         },
       },
     ],
-    // quotes: [
-    //   0,
-    //   "single",
-    //   {
-    //     avoidEscape: true,
-    //     allowTemplateLiterals: true,
-    //   },
-    // ],
+    "vue/comment-directive": 0,
+    "no-unused-vars": "off", // 使っていない変数を許可
+    "import/no-named-as-default-member": 0,
+    // quotes: ['error', 'single', { avoidEscape: true, allowTemplateLiterals: false }]
     // // タグの最後で改行しないで
     // 'vue/html-closing-bracket-newline': [
     //   0,

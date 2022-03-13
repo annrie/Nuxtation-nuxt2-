@@ -26,7 +26,10 @@
 </template>
 
 <script>
+import $ from "jquery";
+
 export default {
+  name: "NormalLayout",
   mounted() {
     $(document).foundation();
   },

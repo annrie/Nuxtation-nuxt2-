@@ -1,5 +1,6 @@
 const path = require("path");
-const webpack = require("webpack");
+// const webpack = require("webpack");
+// const { ProvidePlugin } = require("webpack");
 const { VueLoaderPlugin } = require("vue-loader");
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -13,9 +14,9 @@ const cssfile = "./app.scss";
 const outputpath = "./dist/";
 // const current = process.cwd()
 
-function resolve(dir) {
-  return path.join(__dirname, "..", dir);
-}
+// function resolve(dir) {
+//   return path.join(__dirname, "..", dir);
+// }
 
 module.exports = (env) => {
   const mode = env && env.production ? "production" : "development";
@@ -24,17 +25,29 @@ module.exports = (env) => {
     entry: {
       main: path.resolve(__dirname, srcpath + "plugins/main.js"),
       css: path.resolve(__dirname, srcpath + "assets/scss" + cssfile),
-    },
-    context: srcpath,
-    output: {
       chunkFilename: "[id].[hash].js",
       // https://reactjs.org/docs/cross-origin-errors.html
-      crossOriginLoading: "anonymous",
-      filename: "[name].[hash].js",
+      filename: "bundle.js",
       // path: path.resolve(__dirname, 'dist'),
-      path: path.resolve(__dirname, outputpath),
+      path: resolve(outputpath),
       // filename: 'main.js',
+      // Add the client which connects to our middleware
+      // You can use full urls like 'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr'
+      // useful if you run your app from another point like django
+      client: "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000",
+      // And then the actual application
+      hot: "./client.js",
     },
+    context: srcpath,
+    // output: {
+    //   chunkFilename: "[id].[hash].js",
+    //   // https://reactjs.org/docs/cross-origin-errors.html
+    //   crossOriginLoading: "anonymous",
+    //   filename: "[name].[hash].js",
+    //   // path: path.resolve(__dirname, 'dist'),
+    //   path: path.resolve(__dirname, outputpath),
+    //   // filename: 'main.js',
+    // },
     // ローカル開発用環境を立ち上げる
     // 実行時にブラウザが自動的に localhost を開く
     devServer: {
@@ -119,6 +132,30 @@ module.exports = (env) => {
           ],
         },
         {
+          test: /\.ts$/,
+          exclude: /node_modules/,
+          loader: "ts-loader",
+          options: {
+            appendTsSuffixTo: [/\.vue$/],
+          },
+        },
+        {
+          test: /\.js$/,
+          loader: "babel-loader",
+          options: {
+            presets: [
+              // プリセットを指定することで、ES2020 を ES5 に変換
+              "@babel/preset-env",
+            ],
+          },
+          include: [
+            resolve("src"),
+            resolve("test"),
+            resolve("node_modules/foundation-sites/js"),
+            resolve("node_modules/webpack-dev-server/client"),
+          ],
+        },
+        {
           test: /\.(png|jpe?g|gif|svg|webp)$/,
           use: [
             {
@@ -155,7 +192,7 @@ module.exports = (env) => {
               loader: "css-loader",
               options: {
                 importLoaders: 1,
-                url: true,
+                url: false,
                 sourceMap: !!(env && env.production),
               },
             },
@@ -172,24 +209,45 @@ module.exports = (env) => {
                 sourceMap: !!(env && env.production),
               },
             },
+            {
+              test: /\.less$/i,
+              loader: [
+                // compiles Less to CSS
+                "style-loader",
+                "css-loader",
+                "less-loader",
+              ],
+            },
           ],
         },
       ],
     },
     resolve: {
-      extensions: ["*", ".js", ".jsx", ".vue", ".json"],
+      extensions: ["*", ".js", ".jsx", ".vue", ".json", ".css", ".tsx", ".ts"],
       modules: [srcpath, "node_modules"],
       alias: {
-        vue$: "vue/dist/vue.esm.js",
+        vue$: "vue/dist/vue.esm-bundler.js",
         Foundation: "foundation-sites/js",
         whatInput: "what-input",
       },
     },
     plugins: [
+      new ESLintPlugin({
+        extensions: [".ts", ".js"],
+        formatter: "stylish",
+        exclude: "node_modules",
+      }),
+      new webpack.HotModuleReplacementPlugin(),
       new VueLoaderPlugin(),
       new HardSourceWebpackPlugin(),
       new MiniCssExtractPlugin({
-        filename: cssfile,
+        // Options similar to the same options in webpackOptions.output
+        // both options are optional
+        // filename: 'css/[name].css',
+        filename: devMode ? "css/[name].css" : "css/[name].[contenthash].css",
+        // chunkFilename: 'css/[id].css',
+        chunkFilename: devMode ? "css/[id].css" : "css/[id].[contenthash].css",
+        ignoreOrder: false, // Enable to remove warnings about conflicting order
       }),
       new FriendlyErrorsWebpackPlugin(),
       new webpack.ProvidePlugin({
@@ -238,13 +296,13 @@ module.exports = (env) => {
         },
       }),
     ],
+    watchOptions: {
+      ignored: /node_modules/,
+    },
     performance: {
       hints: false,
-      maxEntrypointSize: 50000000,
-      maxAssetsSize: 30000000,
-      assetFilter(assetFilename) {
-        return assetFilename.endWith(".js");
-      },
+      maxEntrypointSize: 512000,
+      maxAssetSize: 512000,
     },
   };
 };

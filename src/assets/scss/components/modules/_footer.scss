@@ -15,29 +15,23 @@ footer {
   background: $primary-color;
   opacity: 0.9;
 }
-
 .footer {
   font-family: 'Rounded Mgen+ 1m regular', monospace;
   color: $white;
   background: $primary-color;
-  a i {
-    color: $white;
-    &:hover {
-      color: $grey-dark;
-      transition: all 0.5s;
-    }
-  }
-  a,
-  i {
-    transition: all 0.5s;
-  }
-  .transition {
-    transition: all 0.5s;
-  }
 }
 .footer-container {
   @include xy-grid-container;
+
+  // margin-top: rem-calc ( 10 );
+  // margin-top: auto;
 }
+// .footer-grid {
+//   @include xy-grid;
+//   @include xy-cell(12);
+
+//   padding: 0;
+// }
 #footer {
   padding: 0;
   a.font-bold {
@@ -47,7 +41,6 @@ footer {
       color: $silver !important;
     }
   }
-
   .nav-social {
     @include breakpoint(small) {
       font-size: 2rem;
@@ -55,9 +48,16 @@ footer {
     @include breakpoint(medium) {
       font-size: 3rem;
     }
+    @include breakpoint(small) {
+      // margin-top: 0;
+      // margin-bottom: 0;
+    }
+    @include breakpoint(medium) {
+      // margin-top: 1rem;
+      // margin-bottom: 1rem;
+    }
     i {
       color: $white;
-
       &:hover {
         color: $grey-dark;
       }
@@ -98,9 +98,10 @@ footer {
   z-index: 99;
   & a {
     display: block;
-    color: rgba(0, 0, 0, 0.5);
+    font-style: normal !important;
+    color: rgba(0 0 0 / 50%);
     &:hover {
-      color: rgba(0, 0, 0, 0.7);
+      color: rgba(0 0 0 / 70%);
     }
   }
 }

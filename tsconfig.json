@@ -1,50 +1,30 @@
 {
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
     "target": "ES2018",
     "module": "ESNext",
     "moduleResolution": "Node",
-    "lib": [
-      "ESNext",
-      "ESNext.AsyncIterable",
-      "DOM"
-    ],
+    "lib": ["ESNext", "ESNext.AsyncIterable", "DOM"],
     "esModuleInterop": true,
     "allowJs": true,
     "sourceMap": true,
     "strict": true,
     "noEmit": true,
+    "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": [
-        "src/*"
-      ],
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["./*"]
     },
-    "types": [
-      "@types/node",
-      "@nuxt/types",
-      "@types/webpack",
-      "node"
-    ]
+    "types": []
   },
-  // "files": ["shims-vue.d.ts"],
+  "vueCompilerOptions": {
+    "experimentalCompatMode": 2
+  },
   "include": [
     "src/**/*.ts",
-    "src/**/*.vue"
-    // "components/**/*.ts",
-    // "components/**/*.vue",
-    // "layouts/**/*.ts",
-    // "layouts/**/*.vue",
-    // "pages/**/*.ts",
-    // "pages/**/*.vue"
+    ".eslintrc.js",
   ],
-  "exclude": [
-    "node_modules",
-    ".nuxt",
-    "dist",
-    "coverage"
-  ]
+  "exclude": ["node_modules", ".nuxt", "dist"]
 }

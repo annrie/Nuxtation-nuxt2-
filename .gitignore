@@ -12,6 +12,7 @@ report.\s+.json
 # Nuxt generate
 dist
 .env
+.output
 
 # Yarn2
 .yarn/cache
