@@ -18,11 +18,11 @@
                 <li><a href="#first">First Section</a></li>
                 <li><a href="#second">Second Section</a></li>
                 <li><a href="#third">Third Section</a></li>
-                <client-only>
+                <!-- <client-only>
                   <li class="menu-text">window width: {{ $window.width }} px</li>
                   <li class="menu-text">window height: {{ $window.height }} px</li>
                   <li class="menu-text">amount of scrolling: {{ $window.pageYOffset }} px</li>
-                </client-only>
+                </client-only> -->
               </ul>
             </div>
           </div>
@@ -62,17 +62,17 @@ export default {
       },
     };
   },
-  watch: {
-    "$window.width"() {
-      console.log(`width: ${this.$window.width}`);
-    },
-    "$window.height"() {
-      console.log(`height: ${this.$window.height}`);
-    },
-    "$window.pageYOffset"() {
-      console.log(`pageYOffset: ${this.$window.pageYOffset}`);
-    },
-  },
+  // watch: {
+  //   "$window.width"() {
+  //     console.log(`width: ${this.$window.width}`);
+  //   },
+  //   "$window.height"() {
+  //     console.log(`height: ${this.$window.height}`);
+  //   },
+  //   "$window.pageYOffset"() {
+  //     console.log(`pageYOffset: ${this.$window.pageYOffset}`);
+  //   },
+  // },
   mounted() {
     this.sticky = new Foundation.Sticky($("#magellan"));
     this.magellan = new Foundation.Magellan($("#magellan"), {
