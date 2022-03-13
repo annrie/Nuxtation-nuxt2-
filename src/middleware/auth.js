@@ -1,4 +1,3 @@
-/* jshint esversion: 6 */
 import Cookies from "universal-cookie";
 
 export default ({ req, route, redirect }) => {

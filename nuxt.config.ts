@@ -1,23 +1,23 @@
 /* -∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-
   Import
 -∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴- */
-// import path from 'path'
-import webpack from "webpack";
+import { resolve } from "path";
+import { defineNuxtConfig } from "@nuxt/bridge";
+import webpack, { ProvidePlugin, HotModuleReplacementPlugin } from "webpack";
+import Sass from "sass";
+import Fiber from "fibers";
 import StylelintPlugin from "stylelint-webpack-plugin";
 import TerserJSPlugin from "terser-webpack-plugin";
+import ESLintPlugin from "eslint-webpack-plugin";
 import OptimizeCssAssetsPlugin from "optimize-css-assets-webpack-plugin";
-
-import imageminMozjpeg from "imagemin-mozjpeg";
-import open from "open";
 import global from "./utils/global";
 import getRoutes from "./utils/getRoutes";
 import getSiteMeta from "./utils/getSiteMeta";
 /* -∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-
   Use Global Variables
 -∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴- */
-// require('dotenv').config() // from .env
-
 // path
+// const baseUrl = process.env.BASE_URL || protocol + '://' + host + ':' + ports.local;
 const baseUrl = process.env.BASE_URL || "http://localhost:3000";
 const baseDir = process.env.BASE_DIR || "/";
 const basePath = baseUrl + baseDir;
@@ -38,31 +38,26 @@ const shortName = "Nuxtation";
 const splashscreens = baseUrl + "/img/splashscreens/";
 const meta = getSiteMeta();
 
-// etc
-// const apiUrl = process.env.API_URL || 'https://example.com'
-// const colorPrimary = '#0A428C'
-// const colorSecondary = '#FA4988'
-
 /* -∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-
   Settings
 -∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴-∵-∴- */
-export default {
+export default defineNuxtConfig({
+  // bridge: false,
+  bridge: {
+    meta: true,
+    nitro: false, // trueでエラー →https://v3.nuxtjs.org/concepts/esm/
+    app: true,
+    capi: false, // trueでfoundation-sitesが効かなくなる。composition api
+    transpile: true,
+    scriptSetup: true,
+    autoImports: true,
+  },
   telemetry: false,
-  server: {
-    // rethinkdb and socket.io
-    // port: ports.local,
-    // host: host
-    host: "0",
-  },
-  hooks: {
-    listen(server, { host, port }) {
-      open(`http://${host}:${port}`);
-    },
-  },
   dev: process.env.NODE_ENV !== "production",
   ssr: true,
-  target: "server",
+  // ssr: false,
   // target: "static",
+  target: "server",
   env: {
     baseUrl,
     baseDir,
@@ -77,6 +72,8 @@ export default {
   router: {
     base: baseDir,
     middleware: "pages",
+    prefetchLinks: false,
+    // middleware: ['pages','visits','user-agent'],
     linkActiveClass: "is-active",
     linkExactActiveClass: "is-exact-active",
   },
@@ -90,12 +87,16 @@ export default {
   generate: {
     dir: "dist",
     fallback: true,
+    interval: 2000,
   },
   vue: {
     config: {
       productionTip: true,
       devtools: true,
     },
+  },
+  ignoreOptions: {
+    ignorecase: false,
   },
   /*
    ** Headers of the page
@@ -110,7 +111,6 @@ export default {
     meta: [
       // standard settings
       { charset: "utf-8" },
-      { name: "HandheldFriendly", content: "True" },
       { "http-equive": "x-ua-compatible", content: "ie=edge" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { property: "og:site_name", content: global.siteName || "" },
@@ -145,11 +145,12 @@ export default {
       { property: "article:publisher", content: "FacebookURL" },
       { property: "fb:app_id", content: "FacebookAppID" },
     ],
-    // script: [
-    //   {
-    //     src: '//polyfill.io/v2/polyfill.min.js?features=WebAnimations,IntersectionObserver'
-    //   }
-    // ],
+    script: [
+      // polifills
+      // {
+      //   src: '//polyfill.io/v2/polyfill.min.js?features=WebAnimations,IntersectionObserver',
+      // },
+    ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
@@ -363,15 +364,12 @@ export default {
       ],
     },
     workbox: {
+      // dev: true,
       skipWaiting: true,
       clientsClaim: true,
       offline: false,
       cacheAssets: false,
       runtimeCaching: [
-        {
-          urlPattern: "https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css",
-          handler: "cacheFirst",
-        },
         {
           urlPattern: "^https://fonts.(?:googleapis|gstatic).com/(.*)",
           handler: "cacheFirst",
@@ -399,6 +397,19 @@ export default {
           handler: "networkFirst",
           method: "GET",
         },
+        {
+          urlPattern: ".*api.*",
+          handler: "StaleWhileRevalidate",
+          strategyOptions: {
+            cacheName: "api",
+            chacheExpiration: {
+              maxAgeSeconds: 72 * 60 * 60,
+            },
+            cacheableResponse: {
+              statuses: [200],
+            },
+          },
+        },
       ],
     },
   },
@@ -406,33 +417,37 @@ export default {
   // features: {
   //   transitions: false
   // },
+  alias: {
+    "~/*": resolve(__dirname, "src/*"),
+    "@/*": resolve(__dirname, "src/*"),
+  },
   vueMeta: { refreshOnceOnNavigation: true },
-
   /*
    ** Customize the progress-bar color
    */
-  // loading: '~/components/loading.vue',
+  // loading: "~/components/loading.vue",
 
   /*
    ** Global CSS
    */
   css: [
-    "~/assets/scss/app.scss",
-    "~/assets/scss/transitions.scss",
+    "foundation-icon-fonts/foundation-icons.css",
+    "~assets/scss/app.scss",
+    "~assets/scss/transitions.scss",
+    // "@fortawesome/fontawesome-svg-core/styles.css",
     // LESS files in the project.
-    // "~assets/less/main.less",
+    "~assets/less/main.less",
   ],
-  /*
-   ** Auto import components
-   ** See https://nuxtjs.org/api/configuration-components
-   */
   components: [
     {
       path: "~/components",
       pathPrefix: false,
     },
   ],
-  // Content module configuration: https://go.nuxtjs.dev/config-content
+  /*
+   ** Content module configuration
+   ** See https://content.nuxtjs.org/configuration
+   */
   content: {
     markdown: {
       prism: {
@@ -489,116 +504,173 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    "~/plugins/client-only/foundation.client",
-    "~/plugins/client-only/aos.client",
-    "~/plugins/client-only/vue-lazyload.client",
-    "~/plugins/client-only/localStorage.client",
-    "~/plugins/client-only/cookie-storage.client",
-    "~/plugins/client-only/service-worker.client",
-    "~/plugins/client-only/ga.client",
-    "~/plugins/client-only/vue-notifications.client",
-    "~plugins/client-only/logger.client",
-    "~plugins/client-only/vue-scrollto.client",
-    "~plugins/client-only/page-top.client",
-    "~plugins/server-client/axios",
-    "~plugins/nuxt-mq",
-    // '~plugins/vee-validate',
-    "~plugins/vue2-perfect-scrollbar",
-    "~plugins/vue-rellax",
-    // '~plugins/font-awesome',
-    // '~plugins/csvtojson',
-    "~plugins/window",
-    "~plugins/gtm",
+    "~/plugins/client-only/foundation.client.js",
+    "~/plugins/client-only/motion-ui.client.js",
+    "~/plugins/client-only/aos.client.js",
+    "~/plugins/client-only/ga.client.js",
+    // "~/plugins/client-only/font-awesome.js",
+    // "~/plugins/client-only/vue-lazyload.client.js",
+    "~/plugins/server-client/axios.server.js",
+    // "~/plugins/server-client/vue3-mq.server.js",
+    // "~/plugins/vee-validate.js",
+    "~/plugins/client-only/logger.client.js",
+    "~/plugins/vue-scrollto.js",
+    "~/plugins/vue2-perfect-scrollbar.js",
+    "~~/node_modules/vue-rellax/lib/nuxt-plugin",
+    // "~/plugins/vue-rellax.js",
+    // '~/pluginsc/client-only/localStorage.client.js',
+    // '~/plugins/client-only/cookie-storage.client.js',
+    "~/plugins/client-only/pageTop.client.js",
+    "~/plugins/client-only/external.client.js",
+    "~/plugins/client-only/service-worker.client.js",
+    "~/plugins/client-only/window.client.js",
+    "~/plugins/client-only/mixin-utils.client.js",
+    "~/plugins/basic-import",
+    "~/plugins/client-only/vue-notifications.client.js",
+    // "~/plugins/utils.js",
   ],
   /*
    ** Nuxt.js dev-modules
    */
   stylelint: {
-    files: ["./src/assets/**/*.{s?(a|c)ss}", "{components,layouts,pages}/**/*.vue"],
+    files: [
+      "./src/assets/**/*.{s?(a|c)ss}",
+      "{components,layouts,pages}/**/*.vue",
+    ],
     fix: true,
   },
   /*
    ** Nuxt.js modules
    */
   buildModules: [
+    // "nuxt-vite",
+    // [
+    //   "@nuxtjs/fontawesome",
+    //   {
+    //     component: "fontAwesome",
+    //     suffix: true,
+    //   },
+    // ],
+    [
+      "@nuxt/typescript-build",
+      {
+        typeCheck: true,
+        ignoreNotFoundWarnings: true,
+      },
+    ],
+    "@aceforth/nuxt-optimized-images",
     "@nuxtjs/pwa",
     "@nuxtjs/gtm",
-    // '@nuxtjs/google-analytics',
-    ["@nuxtjs/moment", ["ja"]],
+    "@nuxtjs/google-analytics",
+    "nuxt-purgecss",
     // Doc: https://github.com/nuxt-community/eslint-module
     ["@nuxtjs/eslint-module", { ignorePath: ".eslintignore" }],
     // Doc: https://github.com/nuxt-community/stylelint-module
     "@nuxtjs/stylelint-module",
   ],
-  // googleAnalytics: {
-  //   id: process.env.GOOGLE_ANALYTICS_ID, // Use as fallback if no runtime config is provided
-  //   debug: {
-  //     enabled: true,
-  //     sendHitTask: true,
-  //   },
-  //   autoTracking: {
-  //     pageviewTemplate: (route) => {
-  //       return {
-  //         page: route.path,
-  //         title: window.document.title,
-  //         location: window.location.href,
-  //       };
+  loaders: {
+    ts: {
+      silent: true,
+    },
+    tsx: {
+      silent: true,
+    },
+  },
+  typescript: {
+    shim: false,
+    typeCheck: {
+      eslint: {
+        files: "./**/*,{ts,vue}",
+      },
+    },
+  },
+  vite: false,
+  // vite: {
+  //   ssr: true,
+  //   css: {
+  //     preprocessorOptions: {
+  //       scss: {
+  //         additionalData: "@import '@/assets/scss/app-resources.scss';",
+  //       },
   //     },
   //   },
+  //   vue: {},
   // },
+  googleAnalytics: {
+    id: process.env.GOOGLE_ANALYTICS_ID, // Use as fallback if no runtime config is provided
+    debug: {
+      enabled: true,
+      sendHitTask: true,
+    },
+    autoTracking: {
+      pageviewTemplate: (route) => {
+        return {
+          page: route.path,
+          title: window.document.title,
+          location: window.location.href,
+        };
+      },
+    },
+  },
   modules: [
     "@nuxt/content",
     "@nuxtjs/axios",
+    // '@nuxtjs/proxy',
     "@nuxtjs/style-resources",
     "nuxt-svg-loader",
-    // '@nuxtjs/svg',
+    // "@nuxtjs/svg",
     "@nuxtjs/sitemap",
     "nuxt-client-init-module",
     "vue-scrollto/nuxt",
-    [
-      "nuxt-mq",
-      {
-        defaultBreakpoint: "large",
-        breakpoints: {
-          small: 640,
-          medium: 768,
-          tablet: 1024,
-          large: 1200,
-          xlarge: 1440,
-          xxlarge: Infinity,
-        },
-      },
-    ],
-    [
-      "nuxt-imagemin",
-      {
-        pngquant: { quality: "80" },
-        plugins: [imageminMozjpeg({ quality: "80" })],
-      },
-    ],
   ],
-
+  optimizedImages: {
+    optimizeImages: true,
+    imagesName: ({ isDev }) =>
+      isDev ? "[path][name][hash:optimized].[ext]" : "img/[name].[ext]",
+  },
+  // fontawesome: {
+  //   icons: {
+  //     solid: FontAwesome.solid,
+  //     regular: FontAwesome.regular,
+  //     brands: FontAwesome.brands,
+  //   },
+  // },
   sitemap: {
     hostname: global.siteUrl,
-    // hostname: baseUrl,
     routes() {
       return getRoutes();
     },
     cacheTime: 1000 * 60 * 15,
     gzip: true,
-    // explude: [
-    //   The directory you don't want to include
-    // ],
-    // routes: [
-    //   If there is an auto-generated page
-    // ]
+    //   // explude: [
+    //   //   含めたくないディレクトリ
+    //   // ],
+    //   // routes: [
+    //   //   自動生成ページがあれば
+    //   // ]
   },
-  // axios: {
-  //   browserBaseURL: basePath,
-  //   // baseURL:
-  //   //   process.env.BASE_URL === "production"
-  //   //     ? "https://phantomoon.com"
-  //   //     : "http://localhost:3000"
+  axios: {
+    // proxy: true,
+    // browserBaseURL: basePath,
+    // baseURL:
+    //   process.env.BASE_URL === "production"
+    //     ? "https://phantomoon.com"
+    //     : "http://localhost:3000"
+  },
+  proxy: {},
+  auth: {
+    cookie: {
+      options: {
+        secure: true,
+        sameSite: "lax",
+      },
+    },
+  },
+  /*
+   ** FontAwesome
+   */
+  // fontawesome: {
+  //   component: "fa",
   // },
 
   styleResources: {
@@ -609,43 +681,36 @@ export default {
    ** Build configuration
    */
   build: {
+    loaders: {
+      // vite
+      scss: {
+        implementation: Sass,
+        sassOptions: {
+          fiber: Fiber,
+        },
+      },
+    },
     postcss: {
+      // プリセット名
+      // order: 'cssnanoLast',
+      // // 順序付けされたプラグイン名
+      // order: ['postcss-import', 'postcss-preset-env', 'cssnano'],
+      // プラグインの順番を算出するための関数
+      order: (names, presets) => presets.cssnanoLast(names),
       plugins: {
-        "postcss-url": {},
+        "postcss-url": false, // 画像を相対パスに
         "postcss-nested": {},
         "postcss-responsive-type": {},
         "postcss-hexrgba": {},
       },
       presets: {
         autoprefixer: {
-          grid: "autoplace",
+          grid: true,
         },
       },
     },
     // babel: {
     //   configFile: "./babel.config.js",
-    // },
-    babelrc: true,
-    fallback: false,
-    // extractCSS: true,
-    extractCSS: {
-      ignoreOrder: true,
-    },
-    parallel: false,
-    cache: true,
-    hardsource: false,
-    // babel: {
-    //   presets({ isServer }) {
-    //     return [
-    //       [
-    //         require.resolve("@nuxt/babel-preset-app"),
-    //         {
-    //           buildTarget: isServer ? "server" : "client",
-    //           corejs: { version: 3 }
-    //         }
-    //       ]
-    //     ];
-    //   }
     // },
     collapseBooleanAttributes: true,
     decodeEntities: true,
@@ -674,6 +739,11 @@ export default {
         },
       }),
     ],
+    extractCSS: true,
+    // extractCSS: {
+    //   ignoreOrder: true,
+    // },
+    // extractCSS: process.env.NODE_ENV === 'production',
     optimization: {
       splitChunks: {
         cacheGroups: {
@@ -686,11 +756,33 @@ export default {
         },
       },
     },
-    // transpile: ['vee-validate/dist/rules'],
+    splitChunks: {
+      //   layouts: true,
+      //   pages: true,
+      //   commons: {
+      //     test: /[\\/]node_modules[\\/]/,
+      //     name: "vendor",
+      //     chunks: "initial",
+      //   },
+      cacheGroups: {
+        styles: {
+          name: "styles",
+          test: /\.(css|vue)$/,
+          chunks: "all",
+          enforce: true,
+        },
+      },
+    },
+    // transpile: ["@vee-validate/rules"],
     quiet: false,
-    // publicPath: 'CDN-address'
+    // publicPath: 'CDNアドレス'
     followSymlinks: true,
     plugins: [
+      // new ESLintPlugin({
+      //   extensions: [".ts", ".js"],
+      //   formatter: "stylish",
+      //   exclude: "node_modules",
+      // }),
       new webpack.ProvidePlugin({
         $: "jquery",
         jQuery: "jquery",
@@ -699,7 +791,10 @@ export default {
       }),
     ],
     // analyze: true,
+    babelrc: true,
     hardSource: false,
+    fallback: false,
+    // publicPath: '/assets/',
     devtools: process.env.NODE_ENV === "production",
     // subFolders: false,
     filenames: {
@@ -712,25 +807,8 @@ export default {
     /*
      ** Run ESLint on save
      */
-    //   extend(config, { isDev, isClient }) {
-    //     if (isDev && isClient) {
-    //       config.module.rules.push({
-    //         enforce: "pre",
-    //         test: /\.(js|vue)$/,
-    //         loader: "eslint-loader",
-    //         exclude: /(node_modules)/,
-    //       });
-
-    //       // Add postcss loader for CSS files
-    //       const cssLoader = config.module.rules.find(
-    //         (loader) => loader.test.toString() === "/\\.css$/"
-    //       );
-    //       cssLoader.use.push("postcss-loader");
-    //     }
-    //   },
-    // },
-    extend(config, { isClient, loaders: { vue } }) {
-      if (isClient) {
+    extend(config, { isDev, isClient }) {
+      if (isDev && process.client) {
         config.node = {
           fs: "empty",
           child_process: "empty",
@@ -752,7 +830,21 @@ export default {
             formatter: require("eslint-friendly-formatter"),
           },
         });
-        if (!isClient) {
+        config.plugins.push(
+          new ESLintPlugin({
+            extensions: [".ts", ".js"],
+            formatter: "stylish",
+            exclude: "node_modules",
+          })
+        );
+        // Vue.transformAssetUrls.video = ["src", "poster"];
+        config.plugins.push(new webpack.HotModuleReplacementPlugin());
+        config.module.rules.push({
+          test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+          loader: "file-loader",
+        });
+        config.optimization.splitChunks.maxSize = 200000;
+        if (isDev) {
           config.mode = "development";
         }
       }
@@ -770,7 +862,9 @@ export default {
         }
       }
       // vue-svg-inline-loader
-      const vueRule = config.module.rules.find((rule) => rule.test.test(".vue"));
+      const vueRule = config.module.rules.find((rule) =>
+        rule.test.test(".vue")
+      );
       vueRule.use = [
         {
           loader: vueRule.loader,
@@ -785,4 +879,21 @@ export default {
       config.performance.maxAssetSize = 50000000;
     },
   },
-};
+});
+//   extend(config, { isDev, isClient }) {
+//     if (isDev && isClient) {
+//       config.module.rules.push({
+//         enforce: "pre",
+//         test: /\.(js|vue)$/,
+//         loader: "eslint-loader",
+//         exclude: /(node_modules)/,
+//       });
+
+//       // Add postcss loader for CSS files
+//       const cssLoader = config.module.rules.find(
+//         (loader) => loader.test.toString() === "/\\.css$/"
+//       );
+//       cssLoader.use.push("postcss-loader");
+//     }
+//   },
+// },

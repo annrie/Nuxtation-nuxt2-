@@ -103,7 +103,7 @@
   .title-bar-right {
     margin-top: -5px;
     margin-right: 20px;
-    @include breakpoint(tablet) {
+    @include tablet-breakpoint {
       display: inline-block !important;
     }
     .menu-icon {

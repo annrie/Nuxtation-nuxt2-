@@ -7,6 +7,7 @@
           <span class="show-for-sr">トップへ戻る</span>
         </nuxt-link>
       </aside>
+      <!-- <back-to-top /> -->
     </client-only>
 
     <footer id="footer" class="footer">
@@ -15,7 +16,6 @@
           <div class="cell small-shrink medium-6 text-center">
             <nav class="nav-social">
               <ul class="menu align-center">
-                <!-- vue - loop -->
                 <template v-for="item in social">
                   <li :key="item.index">
                     <a :href="item.link" target="_blank"><i :class="item.classes" /></a>
@@ -61,7 +61,6 @@ const social = [
     classes: "fa fa-facebook-official",
   },
 ];
-
 export default {
   name: "TheFooter",
   props: {
@@ -87,3 +86,13 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+.font-awesome-size {
+  font-size: 30px;
+  color: #696969;
+}
+.font-awesome-size-solid {
+  font-size: 30px;
+  color: #f83979;
+}
+</style>

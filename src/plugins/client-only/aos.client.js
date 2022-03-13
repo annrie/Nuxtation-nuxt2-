@@ -4,6 +4,8 @@ import "aos/dist/aos.css";
 aos.init({
   duration: 2000,
 });
+
+export default () => {};
 // // ↓eslintの設定を一部無視
 // /* eslint new-cap: 0 */
 

@@ -1,15 +1,16 @@
 <template>
   <div class="back-to-top-sticky hide-for-print" data-sticky-container>
-    <client-only>
-      <aside class="back_to_top">
-        <nuxt-link v-scroll-to="'#top'" to="">
-          <i class="fa fa-arrow-circle-o-up fa-3x" aria-hidden="true" />
-          <span class="show-for-sr">トップへ戻る</span>
-        </nuxt-link>
-      </aside>
-    </client-only>
+    <!-- <client-only> -->
+    <aside class="back_to_top">
+      <nuxt-link v-scroll-to="'#top'" to="">
+        <i class="fa fa-arrow-circle-o-up fa-3x" aria-hidden="true" />
+        <span class="show-for-sr">トップへ戻る</span>
+      </nuxt-link>
+    </aside>
+    <!-- </client-only> -->
 
     <footer id="footer" class="footer">
+      <!-- <d÷v class="section-spacing"> -->
       <div class="footer-container">
         <div class="grid-y grid-padding-y align-justify">
           <div class="cell small-shrink medium-9 text-center">
@@ -21,6 +22,7 @@
                     <a :href="item.link" target="_blank"><i :class="item.classes" /></a>
                   </li>
                 </template>
+                <!-- vue - loop -->
               </ul>
             </nav>
           </div>
@@ -40,6 +42,7 @@
           </div>
         </div>
       </div>
+      <!-- </div> -->
     </footer>
   </div>
 </template>
@@ -64,7 +67,7 @@ const social = [
   {
     name: "twitter",
     link: "https://twitter.com/muraie_jin",
-    classes: "fa fa-twitter-square ",
+    classes: "fa fa-twitter-square",
   },
   {
     name: "facebook",
@@ -89,12 +92,6 @@ export default {
     return {
       social,
     };
-  },
-  mounted() {
-    const hash = this.$route.hash;
-    if (hash && hash.match(/^#.+$/)) {
-      this.$scrollTo(hash);
-    }
   },
 };
 </script>

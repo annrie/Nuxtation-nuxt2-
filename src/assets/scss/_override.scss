@@ -30,11 +30,11 @@ $blue: #1971ff; //  rgb (25,113,255)
 $magenta: #990; // rgb (153,0,153)
 
 // font size
-$h1-font-size: rem-calc (40);
-$h2-font-size: rem-calc (32);
-$h3-font-size: rem-calc (28);
-$h4-font-size: rem-calc (24);
-$h5-font-size: rem-calc (20);
+$h1-font-size: rem-calc(40);
+$h2-font-size: rem-calc(32);
+$h3-font-size: rem-calc(28);
+$h4-font-size: rem-calc(24);
+$h5-font-size: rem-calc(20);
 $h6-font-size: 1rem;
 
 $global-lineheight: 1.6;
@@ -46,15 +46,17 @@ $body-font-family: -apple-system, blinkmacsystemfont, 'Segoe UI', 'Roboto', 'Oxy
   'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Apple Color Emoji', 'Segoe UI Emoji',
   'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
 
+// $body-safe-padding: true;
 $breakpoints: (
   small: 0,
+  xsmall: 320px,
   medium: 640px,
   tablet: 768px,
   large: 1024px,
   xlarge: 1200px,
   xxlarge: 1440px,
 );
-$breakpoint-classes: (small medium tablet large xlarge xxlarge);
+$breakpoint-classes: (small xsmall medium tablet large xlarge xxlarge);
 
 $print-breakpoint: medium;
 $font-family-monospace: $font-family-monospace;
@@ -78,6 +80,10 @@ $titlebar-icon-color-hover: lighten ($primary-color, 30%);
 $topbar-padding: 0;
 $topbar-background: $primary-color;
 $topbar-submenu-background: $topbar-background;
+$image-ratio: ratio-to-percentage(9 by 16);
+$code-background: transparent;
+$code-border: 0 solid $medium-gray;
+$code-color: #fefefe;
 $button-palette: map-merge(
   $foundation-palette,
   (

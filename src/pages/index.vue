@@ -26,21 +26,6 @@
           GitHub
         </a>
       </div>
-      <div>
-        <div>{{ $mq }} Size</div>
-        <div v-if="small">small Size</div>
-        <div v-else-if="medium">medium Size</div>
-        <div v-else-if="tablet">tablet Size</div>
-        <div v-else-if="largePlus">desktop+ Size</div>
-        <div v-else-if="large">desktop Size</div>
-        <div v-else-if="xlarge">desktop+ Size</div>
-        <div v-else>desktop+ Size</div>
-        <client-only>
-          <div>window width: {{ $window.width }} px</div>
-          <div>window height: {{ $window.height }} px</div>
-          <div>amount of scrolling: {{ $window.pageYOffset }} px</div>
-        </client-only>
-      </div>
     </div>
   </div>
 </template>
@@ -49,23 +34,13 @@
 import Meta from "~/assets/mixins/meta";
 
 export default {
+  name: "TopPage",
   mixins: [Meta],
   head() {
     return {
       title: process.env.siteName,
       titleTemplate: false,
     };
-  },
-  watch: {
-    "$window.width"() {
-      console.log(`width: ${this.$window.width}`);
-    },
-    "$window.height"() {
-      console.log(`height: ${this.$window.height}`);
-    },
-    "$window.pageYOffset"() {
-      console.log(`pageYOffset: ${this.$window.pageYOffset}`);
-    },
   },
 };
 </script>
