@@ -1,17 +1,17 @@
 <template>
   <div class="expanded button-group align-center">
     <div v-if="currentPage === 1" :class="disabledStyle">
-      <span class="hidden text-inline">First</span>
+      <span class="hidden display-inline">First</span>
       <SingleBack />
     </div>
 
     <nuxt-link v-else :to="{ name: 'blog-page-page', params: { page: 1 } }" :class="buttonStyles">
       <DoubleBack />
-      <span class="hidden text-inline">First</span>
+      <span class="hidden display-inline">First</span>
     </nuxt-link>
 
     <div v-if="currentPage === 1" :class="disabledStyle">
-      <span class="hidden text-inline">Prev</span>
+      <span class="hidden display-inline">Prev</span>
       <SingleBack />
     </div>
 
@@ -21,11 +21,11 @@
       :class="buttonStyles"
     >
       <SingleBack />
-      <span class="hidden text-inline">Prev</span>
+      <span class="hidden display-inline">Prev</span>
     </nuxt-link>
 
     <div v-if="currentPage === totalPages" :class="disabledStyle">
-      <span class="hidden text-inline">Next</span>
+      <span class="hidden display-inline">Next</span>
       <SingleFwd />
     </div>
 
@@ -34,12 +34,12 @@
       :to="{ name: 'blog-page-page', params: { page: nextPage } }"
       :class="buttonStyles"
     >
-      <span class="hidden text-inline">Next</span>
+      <span class="hidden display-inline">Next</span>
       <SingleFwd />
     </nuxt-link>
 
     <div v-if="currentPage === totalPages" :class="disabledStyle">
-      <span class="hidden text-inline">Last</span>
+      <span class="hidden display-inline">Last</span>
       <DoubleFwd />
     </div>
 
@@ -48,7 +48,7 @@
       :to="{ name: 'blog-page-page', params: { page: totalPages } }"
       :class="buttonStyles"
     >
-      <span class="hidden text-inline">Last</span>
+      <span class="hidden display-inline">Last</span>
       <DoubleFwd />
     </nuxt-link>
   </div>

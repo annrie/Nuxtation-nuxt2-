@@ -8,19 +8,21 @@
   }
 }
 .main-grid {
-  @include xy-grid();
+  @include xy-grid;
   @include flex-align(center);
 
   /*
   padding-top: 1rem;
   padding-bottom: 1rem;
 */
-  // @include breakpoint(medium) {
-  //  /*
-  //   padding-top: 3rem;
-  //   padding-bottom: 3rem;
+
+  //   @include breakpoint(medium) {
+
+  //     /*
+  //     padding-top: 3rem;
+  //     padding-bottom: 3rem;
   // */
-  // }
+  //   }
   &.sidebar-left {
     // Place the sidebar below main content on small screens ...
     @include breakpoint(small) {

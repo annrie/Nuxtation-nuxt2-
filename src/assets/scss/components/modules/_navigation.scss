@@ -101,9 +101,9 @@
     }
   }
   .title-bar-right {
-    margin-right: 20px;
     margin-top: -5px;
-    @include breakpoint(tablet) {
+    margin-right: 20px;
+    @include tablet-breakpoint {
       display: inline-block !important;
     }
     .menu-icon {

@@ -1,3 +1,5 @@
+import $ from "jquery";
+
 $(function () {
   const pageTop = $(".back_to_top");
   pageTop.hide();
@@ -9,3 +11,4 @@ $(function () {
     }
   });
 });
+export default () => {};

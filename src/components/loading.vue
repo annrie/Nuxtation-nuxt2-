@@ -1,14 +1,15 @@
 <template>
   <div v-if="loading" class="loading-page">
-    <p>
-      <i class="fa fa-spinner fa-spin fa-3x fa-fw" aria-hidden="true" />
-      <span class="sr-only">Loading...</span>
-    </p>
+    <p>Loading...</p>
   </div>
 </template>
 
 <script>
 export default {
+  // data: () => ({
+  //   loading: false
+  // }),
+  // Same as:
   data() {
     return {
       loading: false,
@@ -25,21 +26,17 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .loading-page {
-  // @include absolute-center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.8);
-  text-align: center;
   padding-top: 200px;
-  font-size: 5rem;
-  z-index: 50;
-  & i.fa {
-    color: $grey-dark;
-  }
+  font-family: sans-serif;
+  font-size: 30px;
+  text-align: center;
+  background: rgba(255 255 255 / 80%);
 }
 </style>

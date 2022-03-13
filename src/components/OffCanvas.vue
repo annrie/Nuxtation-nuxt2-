@@ -21,14 +21,14 @@
         <li v-if="menu.sub" :key="menu.id" class="is-drilldown-submenu-parent" data-open>
           <a>{{ menu.category }}</a>
           <ul class="vertical dropdown menu">
-            <li v-for="submenu in menu.sub" :key="submenu.index">
+            <li v-for="submenu in menu.sub" :key="submenu.id">
               <nuxt-link :to="submenu.link" :exact="submenu.link == '/'" data-close>
                 {{ submenu.category }}
               </nuxt-link>
             </li>
           </ul>
         </li>
-        <li v-else :key="menu.id">
+        <li v-else :key="menu.link">
           <nuxt-link :to="menu.link" :exact="menu.link == '/'">
             {{ menu.category }}
           </nuxt-link>
@@ -49,11 +49,13 @@ export default {
     }),
   },
   mounted() {
-    this.offCanvas = new Foundation.OffCanvas($("#offCanvas"));
-    this.drillDown = new Foundation.Drilldown($("#drillDown"), {
-      // These options can be declarative using the data attributes
-      animationDuration: 1500,
-    });
+    $(document).foundation();
+    //  $(document).foundation();
+    // this.offCanvas = new Foundation.OffCanvas($("#offCanvas"));
+    // this.drillDown = new Foundation.Drilldown($("#drillDown"), {
+    //   // These options can be declarative using the data attributes
+    //   animationDuration: 1500,
+    // });
   },
 };
 </script>

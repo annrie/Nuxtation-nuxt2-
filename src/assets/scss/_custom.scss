@@ -22,67 +22,67 @@ footer a {
 // blog
 .blog {
   .hero {
-    @include breakpoint(small) {
-      height: 22rem;
+    @include small-breakpoint {
       width: 100%;
-      margin-top: -32px;
+      height: 22rem;
+      margin-top: -42px;
     }
-    @include breakpoint(large) {
+    @include large-breakpoint {
       height: 100vh;
       margin-top: -52px;
     }
   }
   .first {
     position: relative;
-    @include breakpoint(small) {
+    @include small-breakpoint {
       height: 22rem;
       .article-img {
         position: static;
         display: block;
+        width: 100%;
+        max-width: 100%;
         height: 22rem;
         object-fit: cover;
-        max-width: 100%;
-        width: 100%;
       }
     }
-    @include breakpoint(large) {
+    @include large-breakpoint {
       height: 100vh;
       overflow-y: hidden;
       .article-img {
         position: fixed;
         display: block;
-        object-fit: cover;
-        height: 100vh;
-        max-width: 100%;
         width: 48%;
+        max-width: 100%;
+        height: 100vh;
+        object-fit: cover;
       }
     }
   }
   .bloglogo {
-    width: 55px;
     display: inline-block;
+    width: 55px;
   }
   h1 {
-    font-size: rem-calc(48);
     margin-top: -10px;
+    font-size: rem-calc(48);
   }
   h2 {
     font-size: $h5-font-size;
   }
   .included-1 {
-    @include breakpoint(small) {
+    @include small-breakpoint {
       position: absolute;
       top: 1rem;
       left: 2em;
-      color: $white;
       width: 100%;
+      color: $white;
     }
-    @include breakpoint(large) {
+    @include large-breakpoint {
       position: fixed;
       top: 8rem;
       left: 1em;
-      color: $white;
       width: 48%;
+      color: $white;
     }
     a {
       color: $white;
@@ -97,41 +97,41 @@ footer a {
     }
   }
   .included-2 {
-    @include breakpoint(small) {
+    @include small-breakpoint {
       position: absolute;
       top: 6rem;
       left: 2em;
-      color: $white;
-      width: 100%;
       z-index: 10;
+      width: 100%;
+      color: $white;
     }
-    @include breakpoint(large) {
+    @include large-breakpoint {
       position: fixed;
       top: 15rem;
       left: 1em;
-      color: $white;
-      width: 45%;
       z-index: 10;
+      width: 45%;
+      color: $white;
     }
   }
   .hollow {
-    border-radius: 20px;
     margin-right: 6px;
-    border-width: 6px;
     //  padding: 5px inherit;
     font-size: $h6-font-size;
+    border-width: 6px;
+    border-radius: 20px;
   }
   .second {
-    @include breakpoint(small) {
-      overflow: scroll;
-      margin-top: 3rem;
+    @include small-breakpoint {
       padding: 0 30px;
+      margin-top: 3rem;
+      overflow: scroll;
     }
-    @include breakpoint(large) {
-      // overflow: scroll;
-      margin-top: 10rem;
+    @include large-breakpoint {
       // margin-right: 30px;
       padding: 0;
+      // overflow: scroll;
+      margin-top: 10rem;
     }
   }
   // .nuxt-content p {
@@ -146,14 +146,14 @@ footer a {
   //   font-size: 22px;
   // }
   .icon.icon-link {
-    background-image: url('~assets/svg/icon-hashtag.svg');
     display: inline-block;
     width: 20px;
     height: 20px;
+    background-image: url('~assets/svg/icon-hashtag.svg');
     background-size: 20px 20px;
   }
   .bg-blue-500 {
-    background-color: rgba(66, 153, 225, 1);
+    background-color: rgba(66 153 225 / 100%);
   }
   .text-white {
     color: $white;
@@ -163,15 +163,15 @@ footer a {
   }
   .content-img {
     display: block;
-    height: 12rem;
     width: 100%;
     max-width: 100%;
-    object-fit: cover;
+    height: 12rem;
     margin-bottom: 10px;
+    object-fit: cover;
   }
   .article-card {
-    border-radius: 8px;
     margin-bottom: 20px;
+    border-radius: 8px;
   }
   .article-card a {
     background-color: #fff;
@@ -186,43 +186,33 @@ footer a {
   .nuxt-content-highlight .filename {
     position: absolute;
     right: 0;
-    color: rgba(113, 128, 150, 1);
-    font-weight: 300;
     z-index: 10;
-    margin-right: 0.5rem;
     margin-top: 0.25rem;
+    margin-right: 0.5rem;
     font-size: 0.875rem;
+    font-weight: 300;
+    color: rgba(113 128 150 / 100%);
   }
   .token.keyword {
-    color: #c792ea;
     font-style: italic;
+    color: #c792ea;
   }
+  // .PrevNext {
   .icon.icon-left {
-    background-image: url('~assets/svg/icon_left.svg');
     display: inline-block;
     width: 15px;
     height: 15px;
-    background-size: 15px 15px;
+    background-image: url('~assets/svg/icon_left.svg');
     background-position: top left -30px;
+    background-size: 15px 15px;
   }
   .icon.icon-right {
-    background-image: url('~assets/svg/icon_right.svg');
     display: inline-block;
     width: 15px;
     height: 15px;
-    background-size: 15px 15px;
+    background-image: url('~assets/svg/icon_right.svg');
     background-position: top right 0;
-  }
-  .code-inline,
-  code {
-    border: 0 solid #cacaca;
-    background-color: transparent;
-    font-family: consolas, 'Liberation Mono', courier, monospace;
-    font-weight: normal;
-    color: #fefefe;
-    display: inline;
-    word-wrap: break-word;
-    padding: 0.125rem 0.3125rem 0.0625rem;
+    background-size: 15px 15px;
   }
   .articleSize {
     display: block;
@@ -234,25 +224,24 @@ footer a {
   // Pagenation
   .container {
     max-width: 1280px;
-
     .button.arrow {
-      border: 1px solid #1779ba;
-      color: #1779ba;
-      background-color: $white;
-      border-radius: 0.25rem;
       padding-top: 0.25rem;
       padding-bottom: 0.25rem;
-      margin-left: 1rem;
       margin-right: 1rem;
+      margin-left: 1rem;
       font-size: 0.875rem;
+      color: #1779ba;
+      background-color: $white;
+      border: 1px solid #1779ba;
+      border-radius: 0.25rem;
       &:hover {
-        background-color: rgba(66, 153, 225, 1);
         color: $white;
+        background-color: rgba(66 153 225 / 100%);
       }
     }
     &.mx-auto {
-      margin-left: auto;
       margin-right: auto;
+      margin-left: auto;
     }
     .my-5 {
       margin-top: 1.25rem;
@@ -264,27 +253,26 @@ footer a {
     .w-5 {
       width: 1.25rem;
       &:hover {
-        background-color: rgba(66, 153, 225, 1);
         color: $white;
+        background-color: rgba(66 153 225 / 100%);
       }
     }
     .h-5 {
       height: 1.25rem;
     }
   }
-
   .nuxt-content .placeholder500 {
-    color: rgba(160, 174, 192, 0.8);
     padding-left: 20px;
+    color: rgba(160 174 192 / 80%);
   }
   .nuxt-content .border-gray-500 {
-    border-color: rgba(160, 174, 192, 1);
+    border-color: rgba(160 174 192 / 100%);
   }
   .nuxt-content .text-gray-600 {
-    color: rgba(113, 128, 150, 1);
+    color: rgba(113 128 150 / 100%);
   }
   .nuxt-content .text-gray-700 {
-    color: rgba(74, 85, 104, 1);
+    color: rgba(74 85 104 / 100%);
   }
   .nuxt-content .rounded-md {
     border-radius: 0.375rem;
@@ -296,10 +284,4 @@ i {
 }
 .transition {
   transition: all 0.5s;
-}
-.pb-6 {
-  padding-bottom: 1.5rem;
-}
-.fa.fa-arrow-circle-o-up {
-  font-style: normal;
 }

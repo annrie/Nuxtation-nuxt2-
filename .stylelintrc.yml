@@ -1,7 +1,9 @@
 extends:
-  - stylelint-config-recommended-scss
+  - stylelint-config-standard-scss
+  - stylelint-config-recommended-vue/scss
+  # - stylelint-config-recommended-scss
   # - stylelint-config-standard-scss
-  # - stylelint-config-recess-order
+  - stylelint-config-recess-order
   - stylelint-config-prettier
   - stylelint-prettier/recommended
 plugins:
@@ -16,7 +18,13 @@ rules:
   scss/dollar-variable-colon-space-before: never
   scss/operator-no-unspaced: true
   scss/at-rule-no-unknown: true
+  scss/double-slash-comment-empty-line-before: null
+  scss/no-global-function-names: null
+  scss/dollar-variable-empty-line-before: null
+  scss/double-slash-comment-whitespace-inside: null
   # at-rule-no-unknown: null
+  no-invalid-position-at-import-rule: null
+  scss/at-mixin-argumentless-call-parentheses: never
   at-rule-allowed-list:
     [
       "extend",
@@ -40,7 +48,11 @@ rules:
       "scale-color",
       "each",
     ]
-  # at-rule-no-unknown: null
+  at-rule-no-unknown: null
+  function-no-unknown: null
+  number-max-precision: 10
+  selector-class-pattern: null
+  scss/at-mixin-pattern: null
   at-rule-no-vendor-prefix: true # @ルールのベンタープリフィックス禁止
   font-family-name-quotes: always-where-recommended # 'font-family'はスペースで区切られたフォント名の場合クオートで囲む
   # font-weight-notation: [ numeric, { ignore: ["relative"]}] # 'font-weight'はnormalなどのキーワードが使える場合はそちらを使う（400はNG）
@@ -86,7 +98,7 @@ rules:
   # block-opening-brace-space-before: always # 単一行で閉じ括弧前に空白を必須
   # block-opening-brace-space-after: always-single-line #単一行の時に閉じ括弧後に空白を必須
   # block-closing-brace-empty-line-before: never
-  # rule-empty-line-before: never
+  rule-empty-line-before: never
   # function-max-empty-lines: 0
   # max-empty-lines: 1
   # selector-max-empty-lines: 0
@@ -128,6 +140,7 @@ rules:
       /invert/,
       /repeat/,
       /minmax/,
+      /var/,
     ]
   unit-allowed-list:
     ["em", "rem", "%", "s", "ms", "vh", "vw", "px", "deg", "dpi", "fr"]
@@ -136,7 +149,7 @@ rules:
   selector-type-no-unknown: [true, {ignoreTypes: ['_','x']}]
   declaration-no-important: null
   font-family-no-duplicate-names: true
-  function-calc-no-invalid: true
+  # function-calc-no-invalid: true // v.14でremove
   max-nesting-depth: 10
   # unit-case: lower
   unit-no-unknown:
@@ -146,8 +159,9 @@ rules:
   # value-keyword-case: lower
 ignoreFiles:
   - node_modules/**
-  - client/assets/fonts/**
-  # - client/assets/less/**
-  - client/**/*.json
-  - client/assets/images/**
-  - client/assets/img/**
+  - src/assets/fonts/**
+  - src/assets/less/**
+  - src/**/*.json
+  - src/assets/images/**
+  - src/assets/img/**
+  - .nuxt/**/*

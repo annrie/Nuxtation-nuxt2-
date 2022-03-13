@@ -23,3 +23,27 @@
     transform: rotate (45deg);
   }
 }
+@mixin small-breakpoint {
+  @include breakpoint(small) {
+    @content;
+  }
+}
+
+@mixin medium-breakpoint {
+  @include breakpoint(medium) {
+    @content;
+  }
+}
+
+@mixin tablet-breakpoint {
+  @include breakpoint(tablet) {
+    @content;
+  }
+}
+
+@mixin large-breakpoint {
+  @include breakpoint(large) {
+    @content;
+  }
+}
+

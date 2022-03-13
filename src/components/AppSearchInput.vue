@@ -41,7 +41,7 @@ export default {
 
 <style lang="scss" scoped>
 input[type="search"] {
+  border-color: rgba(160 174 192 / 100%);
   border-radius: 0.375rem;
-  border-color: rgba(160, 174, 192, 1);
 }
 </style>

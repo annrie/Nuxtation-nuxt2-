@@ -29,10 +29,10 @@ export default {
 <style lang="scss" scoped>
 img {
   display: block;
-  height: 12rem;
   width: 100%;
   max-width: 100%;
-  object-fit: cover;
+  height: 12rem;
   margin-bottom: 10px;
+  object-fit: cover;
 }
 </style>
