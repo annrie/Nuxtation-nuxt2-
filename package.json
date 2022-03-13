@@ -136,7 +136,7 @@
     "postcss-discard-duplicates": "~5.0.1",
     "postcss-hexrgba": "^2.0.1",
     "postcss-import": "^13.0.0",
-    "postcss-loader": "^4.1.0",
+    "postcss-loader": "^4.3.0",
     "postcss-nested": "^5.0.5",
     "postcss-responsive-type": "^1.0.0",
     "postcss-short": "^5.0.0",
