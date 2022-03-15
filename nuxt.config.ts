@@ -70,7 +70,7 @@ export default defineNuxtConfig({
     lang,
   },
   router: {
-    base: baseDir,
+    base: 'nuxtation',
     middleware: "pages",
     prefetchLinks: false,
     // middleware: ['pages','visits','user-agent'],
@@ -85,7 +85,7 @@ export default defineNuxtConfig({
   },
   privateRuntimeConfig: {},
   generate: {
-    dir: "dist",
+    dir: "docs",
     fallback: true,
     interval: 2000,
   },
