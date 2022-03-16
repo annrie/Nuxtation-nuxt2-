@@ -21,6 +21,14 @@ import getSiteMeta from "./utils/getSiteMeta";
 const baseUrl = process.env.BASE_URL || "http://localhost:3000";
 const baseDir = process.env.BASE_DIR || "/";
 const basePath = baseUrl + baseDir;
+const routerBase =
+  process.env.DEPLOY_ENV === "GH_PAGES"
+    ? {
+        router: {
+          base: "/Nuxtation/",
+        },
+      }
+    : {};
 
 // meta
 const lang = "en";
@@ -69,14 +77,15 @@ export default defineNuxtConfig({
     shortName,
     lang,
   },
-  router: {
-    base: '/nuxtation/',
-    middleware: "pages",
-    prefetchLinks: false,
-    // middleware: ['pages','visits','user-agent'],
-    linkActiveClass: "is-active",
-    linkExactActiveClass: "is-exact-active",
-  },
+  ...routerBase,
+  // router: {
+  //   base: '/nuxtation/',
+  //   middleware: "pages",
+  //   prefetchLinks: false,
+  //   // middleware: ['pages','visits','user-agent'],
+  //   linkActiveClass: "is-active",
+  //   linkExactActiveClass: "is-exact-active",
+  // },
   publicRuntimeConfig: {
     baseUrl: process.env.BASE_URL || "http://localhost:3000",
     googleAnalytics: {
@@ -533,10 +542,7 @@ export default defineNuxtConfig({
    ** Nuxt.js dev-modules
    */
   stylelint: {
-    files: [
-      "./src/assets/**/*.{s?(a|c)ss}",
-      "{components,layouts,pages}/**/*.vue",
-    ],
+    files: ["./src/assets/**/*.{s?(a|c)ss}", "{components,layouts,pages}/**/*.vue"],
     fix: true,
   },
   /*
@@ -625,8 +631,7 @@ export default defineNuxtConfig({
   ],
   optimizedImages: {
     optimizeImages: true,
-    imagesName: ({ isDev }) =>
-      isDev ? "[path][name][hash:optimized].[ext]" : "img/[name].[ext]",
+    imagesName: ({ isDev }) => (isDev ? "[path][name][hash:optimized].[ext]" : "img/[name].[ext]"),
   },
   // fontawesome: {
   //   icons: {
@@ -862,9 +867,7 @@ export default defineNuxtConfig({
         }
       }
       // vue-svg-inline-loader
-      const vueRule = config.module.rules.find((rule) =>
-        rule.test.test(".vue")
-      );
+      const vueRule = config.module.rules.find((rule) => rule.test.test(".vue"));
       vueRule.use = [
         {
           loader: vueRule.loader,
