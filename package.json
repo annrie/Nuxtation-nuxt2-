@@ -9,7 +9,7 @@
     "production": "nuxi build --modern=server && nuxt start",
     "build": "nuxi build",
     "build:hg-pages": "DEPLOY_ENV=GH_PAGES nuxi build",
-    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxi generate"
+    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxi generate",
     "start": "node .output/server/index.mjs",
     "generate": "nuxi generate",
     "generate:production": "cross-env BASE_URL=https://nuxtation.phantomoon.com BASE_DIR=/ nuxt generate --fail-on-error --modern",
