@@ -1,7 +1,8 @@
-.nuxt/
+.nuxt/*
 node_modules/
 dist/
 !.*.js
 !.build
 .build/*
 .yarn/*
+docs/.nuxt/*

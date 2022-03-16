@@ -165,3 +165,4 @@ ignoreFiles:
   - src/assets/images/**
   - src/assets/img/**
   - .nuxt/**/*
+  - docs/.nuxt/**/*

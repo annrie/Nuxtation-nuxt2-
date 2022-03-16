@@ -70,7 +70,7 @@ export default defineNuxtConfig({
     lang,
   },
   router: {
-    base: 'nuxtation',
+    base: '/nuxtation/',
     middleware: "pages",
     prefetchLinks: false,
     // middleware: ['pages','visits','user-agent'],
