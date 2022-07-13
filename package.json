@@ -55,7 +55,7 @@
     "jquery": "^3.5.1",
     "js-cookie": "^2.2.1",
     "lodash.clonedeep": "^4.5.0",
-    "motion-ui": "git+https://github.com/annrie/motion-ui.git",
+    "motion-ui": "^2.0.4",
     "node-fetch": "^2.6.1",
     "npm": "^8.1.4",
     "nuxt-client-init-module": "^0.3.0",

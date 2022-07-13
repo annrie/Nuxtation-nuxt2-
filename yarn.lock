@@ -15072,9 +15072,10 @@ modify-values@^1.0.0:
   resolved "https://registry.npmjs.org/modify-values/-/modify-values-1.0.1.tgz"
   integrity sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==
 
-"motion-ui@git+https://github.com/annrie/motion-ui.git":
-  version "2.0.3"
-  resolved "git+https://github.com/annrie/motion-ui.git#df3b9aa5d7fd0150faa79173e9312ae97bc0a391"
+motion-ui@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/motion-ui/-/motion-ui-2.0.4.tgz#3d9423c26b76e577da19b5f0915fea067433bf1a"
+  integrity sha512-7GjtcXXqRHUQGH9Gm8KLbvx9sz5tNGlftsaJ/J5d4q33PzfgKnUm+OynDji4VR3fiZXPT3nMkzBQlZsifYTIOg==
 
 move-concurrently@^1.0.1:
   version "1.0.1"
