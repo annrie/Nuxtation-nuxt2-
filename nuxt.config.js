@@ -8,7 +8,7 @@ import TerserJSPlugin from "terser-webpack-plugin";
 import OptimizeCssAssetsPlugin from "optimize-css-assets-webpack-plugin";
 
 import imageminMozjpeg from "imagemin-mozjpeg";
-import open from "open";
+// import open from "open";
 import global from "./utils/global";
 import getRoutes from "./utils/getRoutes";
 import getSiteMeta from "./utils/getSiteMeta";
@@ -52,11 +52,11 @@ export default {
     // rethinkdb and socket.io
     // port: ports.local,
     // host: host
-    host: "0",
+    host: "localhost",
   },
   hooks: {
     listen(server, { host, port }) {
-      open(`http://${host}:${port}`);
+      // open(`http://${host}:${port}`);
     },
   },
   dev: process.env.NODE_ENV !== "production",
@@ -82,9 +82,9 @@ export default {
   },
   publicRuntimeConfig: {
     baseUrl: process.env.BASE_URL || "http://localhost:3000",
-    googleAnalytics: {
-      id: process.env.GOOGLE_ANALYTICS_ID,
-    },
+    // googleAnalytics: {
+    //   id: process.env.GOOGLE_ANALYTICS_ID,
+    // },
   },
   privateRuntimeConfig: {},
   generate: {

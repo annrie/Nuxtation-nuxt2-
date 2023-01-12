@@ -27,7 +27,7 @@ RewriteRule ^(.*)index.php$ $1 [R=301,L]
 
 # なし
 RewriteCond %{HTTP_HOST} ^www\.example\.com$
-RewriteRule ^(.*)$ https://example.com/$1 [R=301,L]
+RewriteRule ^(.*)$ https://nuxtation.phantomoon.com/$1 [R=301,L]
 
 # --- httpsに統一 ---
 
