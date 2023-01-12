@@ -4,7 +4,7 @@
   access any variable via object syntax global.yourVarName
 */
 export default {
-  siteUrl: "https://example.com",
+  siteUrl: "https://nuxtation.phantomoon.com",
   siteName: "Nuxtation",
   author: "annrie",
   twitterHandle: "@muraie_jin",

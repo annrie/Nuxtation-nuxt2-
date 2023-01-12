@@ -151,4 +151,4 @@ ignoreFiles:
   - src/**/*.json
   - src/assets/images/**
   - src/assets/img/**
-  # - .nuxt/**
+  - .nuxt/**

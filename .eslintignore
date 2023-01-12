@@ -1,5 +1,5 @@
-.nuxt/
-node_modules/
+.nuxt/**/*
+node_modulesa/
 dist/
 !.*.js
 !.build
